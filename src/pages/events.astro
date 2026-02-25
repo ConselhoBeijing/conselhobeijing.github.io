@@ -1,0 +1,31 @@
+---
+import Layout from '../layouts/Layout.astro';
+import EventTimelineList from '../components/EventTimelineList';
+import { getCollection } from 'astro:content';
+import { toLocalEventSummary } from '../utils/events';
+
+const localEvents = (await getCollection('events'))
+  .sort((a, b) => a.data.start.valueOf() - b.data.start.valueOf())
+  .map((entry) => toLocalEventSummary(entry));
+---
+
+<Layout title="Eventos - Conselho dos Cidadãos" description="Lista de eventos locais do Conselho dos Cidadãos.">
+  <div class="max-w-7xl mx-auto px-3 py-8 sm:px-5 lg:px-6">
+    <header class="internal-page-header flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
+      <div>
+        <h1 class="internal-page-title">Eventos</h1>
+        <p class="internal-page-subtitle">
+          Eventos locais em formato de timeline com filtro de período para próximos e anteriores.
+        </p>
+      </div>
+      <a
+        href="/events/calendario"
+        class="site-button internal-page-cta"
+      >
+        Ver Calendário
+      </a>
+    </header>
+
+    <EventTimelineList client:load events={localEvents} />
+  </div>
+</Layout>

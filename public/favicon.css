@@ -1,0 +1,9 @@
+.favicon-path {
+  fill: #000;
+}
+
+@media (prefers-color-scheme: dark) {
+  .favicon-path {
+    fill: #fff;
+  }
+}

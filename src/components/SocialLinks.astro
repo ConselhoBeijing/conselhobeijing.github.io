@@ -1,0 +1,56 @@
+---
+import { socialLinks as socialLinksList, socialLinksConfig } from "../config/site-links";
+
+interface Props {
+    class?: string;
+    popoverAlign?: "left" | "right";
+    popoverPosition?: "top" | "bottom";
+}
+
+const { class: className = "", popoverAlign = "right", popoverPosition = "bottom" } = Astro.props;
+const popoverAlignClass = popoverAlign === "left" ? "left-0" : "right-0";
+const popoverPositionClass = popoverPosition === "top" ? "bottom-full mb-2" : "top-full mt-2";
+---
+
+<div class={`social-links flex items-center ${className}`}>
+    {
+        socialLinksList.map((social) =>
+            social.showQrPopover ? (
+                <div class="navbar-wechat-popover group relative">
+                    <a
+                        href={social.href}
+                        target={social.external ? "_blank" : "_self"}
+                        rel={social.external ? "noopener noreferrer" : undefined}
+                        class="social-link-button inline-flex rounded transition focus:outline-none focus:ring-2"
+                        aria-label={social.name}
+                        aria-haspopup="dialog"
+                    >
+                        <span class="sr-only">{social.name}</span>
+                        <i class={`${social.iconClass} social-link-icon`} aria-hidden="true" />
+                    </a>
+          <div
+            class={`navbar-wechat-popover-panel social-popover-panel pointer-events-none invisible absolute ${popoverAlignClass} ${popoverPositionClass} z-30 flex w-52 flex-col items-center rounded-xl p-3 text-center opacity-0 shadow-lg transition group-hover:pointer-events-auto group-hover:visible group-hover:opacity-100 group-focus-within:pointer-events-auto group-focus-within:visible group-focus-within:opacity-100`}
+          >
+                        <p class="social-popover-title text-xs font-semibold">{social.name}</p>
+                        <img
+                            src={socialLinksConfig.wechatQrImage}
+                            alt="Use o WeChat para escanear este código e seguir nossa Conta Oficial"
+                            class="social-popover-qr mt-2 h-40 w-40 rounded-lg p-1 center"
+                        />
+                        <p class="social-popover-hint mt-2 text-[11px] leading-tight">{socialLinksConfig.wechatHint}</p>
+                    </div>
+                </div>
+            ) : (
+                <a
+                    href={social.href}
+                    target={social.external ? "_blank" : "_self"}
+                    rel={social.external ? "noopener noreferrer" : undefined}
+                    class="social-link-anchor"
+                >
+                    <span class="sr-only">{social.name}</span>
+                    <i class={`${social.iconClass} social-link-icon`} aria-hidden="true" />
+                </a>
+            ),
+        )
+    }
+</div>

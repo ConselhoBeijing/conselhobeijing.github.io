@@ -1,0 +1,25 @@
+---
+import Layout from "../layouts/Layout.astro";
+import { getEntry } from "astro:content";
+
+const aboutEntry = await getEntry("pages", "about");
+
+if (!aboutEntry) {
+    throw new Error("Conteúdo da página sobre não encontrado em src/content/pages/about.md.");
+}
+
+const { Content } = await aboutEntry.render();
+---
+
+<Layout title="Sobre - Conselho dos Cidadãos" description="Informações sobre o Conselho de Cidadãos do Brasil em Pequim.">
+    <div class="max-w-4xl mx-auto px-3 py-8 sm:px-5">
+        <header class="internal-page-header">
+            <h1 class="internal-page-title">{aboutEntry.data.title}</h1>
+            {aboutEntry.data.subtitle && <p class="about-page-subtitle">{aboutEntry.data.subtitle}</p>}
+        </header>
+
+        <section class="markdown-content">
+            <Content />
+        </section>
+    </div>
+</Layout>

@@ -1,0 +1,2 @@
+export const HOME_LATEST_NEWS_CARDS_LIMIT = 5;
+export const HOME_FAQ_ITEMS_PREVIEW_LIMIT = 4;

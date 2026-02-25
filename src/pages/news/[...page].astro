@@ -1,0 +1,83 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import { getCollection } from "astro:content";
+
+export async function getStaticPaths({ paginate }) {
+    const allNews = await getCollection("news");
+    const sortedNews = allNews.sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+    return paginate(sortedNews, { pageSize: 12 });
+}
+
+const { page } = Astro.props;
+
+function stripMarkdown(markdown: string): string {
+    return markdown
+        .replace(/```[\s\S]*?```/g, " ")
+        .replace(/`[^`]*`/g, " ")
+        .replace(/!\[[^\]]*\]\([^)]*\)/g, " ")
+        .replace(/\[[^\]]*\]\([^)]*\)/g, " ")
+        .replace(/[>#*_~\-]/g, " ")
+        .replace(/\s+/g, " ")
+        .trim();
+}
+
+function summarize(text: string, maxLength = 120): string {
+    if (text.length <= maxLength) {
+        return text;
+    }
+    return `${text.slice(0, maxLength).trimEnd()}...`;
+}
+---
+
+<Layout title="Notícias - Conselho dos Cidadãos">
+    <div class="max-w-7xl mx-auto px-3 py-8 sm:px-5 lg:px-6">
+        <header class="internal-page-header">
+            <h1 class="internal-page-title">Notícias</h1>
+            <p class="internal-page-subtitle">Atualizações locais e links externos de interesse para a comunidade.</p>
+        </header>
+        <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+            {
+                page.data.map((post) => (
+                    <article class="news-list-card rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow flex flex-col h-full">
+                        {post.data.thumbnail && <img src={post.data.thumbnail} alt={post.data.title} class="w-full h-48 object-cover" />}
+                        <div class="p-6 flex flex-col flex-1">
+                            <div class="news-list-meta text-sm mb-2">
+                                {post.data.date.toLocaleDateString()}
+                                {post.data.type === "external" && <span class="news-list-badge ml-2 text-xs px-2 py-1 rounded">↗</span>}
+                            </div>
+                            <h2 class="text-xl font-bold mb-2 flex-1">
+                                <a
+                                    href={post.data.type === "external" ? post.data.externalLink : `/news/${post.slug}`}
+                                    target={post.data.type === "external" ? "_blank" : "_self"}
+                                    rel={post.data.type === "external" ? "noopener noreferrer" : undefined}
+                                    class="news-list-title-link"
+                                >
+                                    {post.data.title}
+                                </a>
+                            </h2>
+                            <p class="news-list-summary">
+                                {summarize(stripMarkdown((post.data.description ?? post.body) || "Leia a notícia completa para mais detalhes."))}
+                            </p>
+                        </div>
+                    </article>
+                ))
+            }
+        </div>
+        <div class="mt-8 flex justify-center space-x-4">
+            {
+                page.url.prev ? (
+                    <a href={page.url.prev} class="site-button news-pagination-link">
+                        Anterior
+                    </a>
+                ) : null
+            }
+            {
+                page.url.next ? (
+                    <a href={page.url.next} class="site-button news-pagination-link">
+                        Próxima
+                    </a>
+                ) : null
+            }
+        </div>
+    </div>
+</Layout>

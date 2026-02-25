@@ -1,0 +1,115 @@
+---
+import Layout from "../layouts/Layout.astro";
+import { getCollection, type CollectionEntry } from "astro:content";
+
+const team = await getCollection("team");
+
+function sortMembersByName(members: CollectionEntry<"team">[]) {
+    return [...members].sort((a, b) => a.data.name.localeCompare(b.data.name, "pt-BR", { sensitivity: "base" }));
+}
+
+const directors = sortMembersByName(team.filter((member) => member.data.group === "director"));
+const executives = sortMembersByName(team.filter((member) => member.data.group === "executive"));
+
+const sectionConfig = [
+    {
+        title: "Conselheiros Diretores",
+        members: directors,
+        emptyMessage: "Nenhum conselheiro diretor cadastrado.",
+        titleClass: "team-section-title team-section-title--yellow",
+    },
+    {
+        title: "Conselheiros Executivos",
+        members: executives,
+        emptyMessage: "Nenhum conselheiro executivo cadastrado.",
+        titleClass: "team-section-title team-section-title--blue",
+    },
+];
+
+const socialConfig = [
+    { key: "wechat", label: "WeChat", iconClass: "bi bi-wechat" },
+    { key: "linkedin", label: "LinkedIn", iconClass: "bi bi-linkedin" },
+    { key: "instagram", label: "Instagram", iconClass: "bi bi-instagram" },
+    { key: "youtube", label: "YouTube", iconClass: "bi bi-youtube" },
+];
+
+function getSocialLinks(member: CollectionEntry<"team">) {
+    const values = member.data as Record<string, unknown>;
+    return socialConfig
+        .map((social) => {
+            const value = values[social.key];
+            if (typeof value !== "string" || !value.trim()) {
+                return null;
+            }
+
+            return {
+                ...social,
+                href: value,
+            };
+        })
+        .filter(Boolean);
+}
+---
+
+<Layout title="Equipe - Conselho dos Cidadãos">
+    <div class="max-w-7xl mx-auto px-3 py-8 sm:px-5 lg:px-6">
+        <header class="internal-page-header">
+            <h1 class="internal-page-title">Equipe</h1>
+            <p class="internal-page-subtitle pt-6">
+                A seguir, apresentamos os membros que integram o Conselho dos Cidadãos Brasileiros de Beijing. Cada representante desempenha um papel
+                fundamental na promoção da cultura, integração e bem-estar da comunidade brasileira na China. Com formações e experiências variadas, nossos
+                voluntários se dedicam a fortalecer os laços entre os brasileiros e a criar oportunidades de colaboração com a comunidade local.
+            </p>
+        </header>
+
+        {
+            sectionConfig.map((section) => (
+                <section class="mb-16 last:mb-0">
+                    <h2 class={section.titleClass}>{section.title}</h2>
+
+                    <div class="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+                        {section.members.map((member) => {
+                            const socials = getSocialLinks(member);
+                            return (
+                                <article class="team-member-card h-full flex flex-col rounded-3xl p-6 text-center shadow-md transition-shadow hover:shadow-xl">
+                                    <div class="team-member-content flex flex-1 flex-col items-center">
+                                        {member.data.photo ? (
+                                            <div class="team-member-photo-frame w-40 h-40 rounded-full mx-auto mb-4">
+                                                <img src={member.data.photo} alt={member.data.name} class="team-member-photo h-full w-full object-cover" />
+                                            </div>
+                                        ) : (
+                                            <div class="team-member-photo-frame team-member-avatar-fallback w-40 h-40 rounded-full mx-auto mb-4 flex items-center justify-center text-4xl">
+                                                👤
+                                            </div>
+                                        )}
+                                        <h3 class="team-member-name text-xl font-bold">{member.data.name}</h3>
+                                        <p class="team-member-role font-medium mb-2">{member.data.role}</p>
+                                        <p class="team-member-bio mb-4 w-full text-justify">{member.data.bio}</p>
+                                    </div>
+
+                                    {socials.length > 0 ? (
+                                        <div class="team-member-socials mt-auto flex w-full justify-center gap-2 pt-4">
+                                            {socials.map((social) => (
+                                                <a
+                                                    href={social.href}
+                                                    target="_blank"
+                                                    rel="noopener noreferrer"
+                                                    class="team-member-social-link inline-flex h-8 w-8 items-center justify-center rounded-full transition"
+                                                >
+                                                    <span class="sr-only">{social.label}</span>
+                                                    <i class={`${social.iconClass} text-sm`} aria-hidden="true" />
+                                                </a>
+                                            ))}
+                                        </div>
+                                    ) : null}
+                                </article>
+                            );
+                        })}
+
+                        {section.members.length === 0 ? <p class="team-empty-message italic">{section.emptyMessage}</p> : null}
+                    </div>
+                </section>
+            ))
+        }
+    </div>
+</Layout>

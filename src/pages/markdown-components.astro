@@ -1,0 +1,25 @@
+---
+import Layout from "../layouts/Layout.astro";
+import { getEntry } from "astro:content";
+
+const sampleEntry = await getEntry("pages", "markdown-components");
+
+if (!sampleEntry) {
+    throw new Error("Conteúdo de markdown de exemplo não encontrado.");
+}
+
+const { Content } = await sampleEntry.render();
+---
+
+<Layout title="Markdown Components - Conselho dos Cidadãos" description="Página de demonstração dos componentes markdown suportados no site.">
+    <div class="max-w-4xl mx-auto px-3 py-8 sm:px-5">
+        <header class="internal-page-header">
+            <h1 class="internal-page-title">{sampleEntry.data.title}</h1>
+            {sampleEntry.data.subtitle && <p class="internal-page-subtitle">{sampleEntry.data.subtitle}</p>}
+        </header>
+
+        <section class="markdown-content">
+            <Content />
+        </section>
+    </div>
+</Layout>

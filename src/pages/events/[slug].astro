@@ -1,0 +1,64 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import { getCollection, type CollectionEntry } from "astro:content";
+
+export async function getStaticPaths() {
+    const events = await getCollection("events");
+    return events.map((entry) => ({
+        params: { slug: entry.slug },
+        props: { entry },
+    }));
+}
+
+const { entry } = Astro.props as { entry: CollectionEntry<"events"> };
+const { Content } = await entry.render();
+
+const dateText = entry.data.start.toLocaleDateString("pt-BR", {
+    weekday: "long",
+    day: "2-digit",
+    month: "long",
+    year: "numeric",
+});
+
+const startTime = entry.data.start.toLocaleTimeString("pt-BR", {
+    hour: "2-digit",
+    minute: "2-digit",
+});
+
+const endTime = entry.data.end
+    ? entry.data.end.toLocaleTimeString("pt-BR", {
+          hour: "2-digit",
+          minute: "2-digit",
+      })
+    : null;
+---
+
+<Layout title={`${entry.data.title} - Eventos`} description={`Detalhes do evento ${entry.data.title}`}>
+    <article class="max-w-4xl mx-auto px-3 py-8 sm:px-5">
+        <a href="/events" class="internal-back-link text-sm font-semibold hover:underline">← Voltar para Eventos</a>
+        <h1 class="internal-page-title mt-4">{entry.data.title}</h1>
+
+        <header class="event-detail-header mt-4 rounded-3xl p-8 shadow-sm">
+            <p class="event-detail-kicker text-xs uppercase tracking-[0.18em]">Evento Local</p>
+
+            <dl class="event-detail-meta mt-6 grid gap-4 text-sm md:grid-cols-3">
+                <div>
+                    <dt class="event-detail-term font-semibold">Data</dt>
+                    <dd class="mt-1 capitalize">{dateText}</dd>
+                </div>
+                <div>
+                    <dt class="event-detail-term font-semibold">Horário</dt>
+                    <dd class="mt-1">{endTime ? `${startTime} - ${endTime}` : startTime}</dd>
+                </div>
+                <div>
+                    <dt class="event-detail-term font-semibold">Local</dt>
+                    <dd class="mt-1">{entry.data.location ?? "Local a confirmar"}</dd>
+                </div>
+            </dl>
+        </header>
+
+        <section class="markdown-content max-w-none p-8">
+            <Content />
+        </section>
+    </article>
+</Layout>

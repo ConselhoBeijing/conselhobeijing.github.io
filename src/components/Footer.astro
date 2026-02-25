@@ -1,0 +1,25 @@
+---
+import { branding } from "../config/site-links";
+import SocialLinks from "./SocialLinks.astro";
+---
+
+<footer class="site-footer shrink-0">
+    <div class="site-footer-top">
+        <div class="mx-auto flex max-w-7xl items-center justify-between gap-3 px-3 pt-14 pb-14 sm:px-5 lg:px-6">
+            <p class="footer-caption">🇧🇷 Made by brazilians</p>
+            <!-- <SocialLinks class="footer-social-links hidden md:flex" popoverAlign="left" popoverPosition="top" /> -->
+            <a href="/" class="footer-branding-link inline-flex items-center" aria-label={branding.footerLogoAlt ?? branding.logoAlt}>
+                <img
+                    src={branding.footerLogoLightPath ?? "/icons/conselho-footer-light.png"}
+                    alt={branding.footerLogoAlt ?? branding.logoAlt}
+                    class="h-8 w-36 object-contain sm:h-10 sm:w-52 dark:hidden"
+                />
+                <img
+                    src={branding.footerLogoDarkPath ?? branding.footerLogoLightPath ?? "/icons/conselho-footer-dark.png"}
+                    alt={branding.footerLogoAlt ?? branding.logoAlt}
+                    class="hidden h-8 w-36 object-contain sm:h-10 sm:w-52 dark:block"
+                />
+            </a>
+        </div>
+    </div>
+</footer>

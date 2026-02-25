@@ -1,0 +1,165 @@
+---
+import Layout from "../layouts/Layout.astro";
+
+const formspreeEndpoint = import.meta.env.PUBLIC_FORMSPREE_ENDPOINT ?? "";
+---
+
+<Layout title="Contato - Conselho dos Cidadãos">
+    <div class="max-w-3xl mx-auto px-3 py-8 sm:px-5">
+        <header class="internal-page-header">
+            <h1 class="internal-page-title">Contato</h1>
+            <p class="internal-page-subtitle">Preencha o formulário para enviar sua mensagem ao Conselho.</p>
+        </header>
+
+        <div class="p-8 rounded-3xl shadow-md">
+            <form id="contact-form" action={formspreeEndpoint} method="POST" data-endpoint={formspreeEndpoint} class="space-y-6" novalidate>
+                <div>
+                    <label for="name" class="contact-form-label">Nome</label>
+                    <input type="text" name="name" id="name" data-validate="name" required autocomplete="name" class="contact-form-field" />
+                    <p class="contact-form-error mt-1 text-sm hidden" data-error-for="name"></p>
+                </div>
+
+                <div>
+                    <label for="email" class="contact-form-label">Email</label>
+                    <input type="email" name="email" id="email" data-validate="email" required autocomplete="email" class="contact-form-field" />
+                    <p class="contact-form-error mt-1 text-sm hidden" data-error-for="email"></p>
+                </div>
+
+                <div>
+                    <label for="subject" class="contact-form-label">Assunto</label>
+                    <input type="text" name="subject" id="subject" data-validate="subject" required class="contact-form-field" />
+                    <p class="contact-form-error mt-1 text-sm hidden" data-error-for="subject"></p>
+                </div>
+
+                <div>
+                    <label for="message" class="contact-form-label">Mensagem</label>
+                    <textarea name="message" id="message" rows="5" data-validate="message" required class="contact-form-textarea"></textarea>
+                    <p class="contact-form-error mt-1 text-sm hidden" data-error-for="message"></p>
+                </div>
+
+                <button type="submit" class="site-button contact-form-submit"> Enviar Mensagem </button>
+                <p id="contact-form-status" class="contact-form-status text-sm hidden" role="status" aria-live="polite"></p>
+            </form>
+        </div>
+    </div>
+</Layout>
+
+<script is:inline>
+    const form = document.getElementById("contact-form");
+    const status = document.getElementById("contact-form-status");
+
+    if (form && status) {
+        const fields = ["name", "email", "subject", "message"];
+        const messages = {
+            name: "Informe seu nome.",
+            email: "Informe um email válido.",
+            subject: "Informe o assunto.",
+            message: "Informe a mensagem.",
+        };
+
+        function setStatus(message, isError) {
+            status.textContent = message;
+            status.classList.remove("hidden", "contact-form-status-error", "contact-form-status-success");
+            status.classList.add(isError ? "contact-form-status-error" : "contact-form-status-success");
+        }
+
+        function setFieldError(fieldName, message) {
+            const target = form.querySelector(`[data-error-for="${fieldName}"]`);
+            if (!target) {
+                return;
+            }
+
+            target.textContent = message;
+            target.classList.toggle("hidden", !message);
+        }
+
+        function validateField(fieldName) {
+            const field = form.elements.namedItem(fieldName);
+            if (!field || typeof field.value !== "string") {
+                return true;
+            }
+
+            const value = field.value.trim();
+            let error = "";
+            if (!value) {
+                error = messages[fieldName];
+            } else if (fieldName === "email" && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value)) {
+                error = messages.email;
+            }
+
+            setFieldError(fieldName, error);
+            return !error;
+        }
+
+        for (const fieldName of fields) {
+            const field = form.elements.namedItem(fieldName);
+            if (field) {
+                field.addEventListener("blur", () => validateField(fieldName));
+            }
+        }
+
+        form.addEventListener("submit", async (event) => {
+            event.preventDefault();
+            status.classList.add("hidden");
+
+            let valid = true;
+            for (const fieldName of fields) {
+                if (!validateField(fieldName)) {
+                    valid = false;
+                }
+            }
+
+            if (!valid) {
+                setStatus("Corrija os campos destacados para continuar.", true);
+                return;
+            }
+
+            const endpoint = form.dataset.endpoint || form.getAttribute("action") || "";
+            if (!endpoint) {
+                setStatus("Formulário indisponível no momento. Configure PUBLIC_FORMSPREE_ENDPOINT.", true);
+                return;
+            }
+
+            const submitButton = form.querySelector('button[type="submit"]');
+            if (submitButton) {
+                submitButton.disabled = true;
+            }
+
+            try {
+                const response = await fetch(endpoint, {
+                    method: "POST",
+                    body: new FormData(form),
+                    headers: {
+                        Accept: "application/json",
+                    },
+                });
+
+                if (!response.ok) {
+                    let apiError = "Não foi possível enviar a mensagem. Tente novamente.";
+                    try {
+                        const body = await response.json();
+                        if (Array.isArray(body.errors) && body.errors[0]?.message) {
+                            apiError = body.errors[0].message;
+                        }
+                    } catch {
+                        // Keep fallback message when response is not JSON.
+                    }
+                    setStatus(apiError, true);
+                    return;
+                }
+
+                form.reset();
+                for (const fieldName of fields) {
+                    setFieldError(fieldName, "");
+                }
+                setStatus("Message sent successfully!", false);
+            } catch {
+                setStatus("Falha de conexão ao enviar a mensagem.", true);
+            } finally {
+                if (submitButton) {
+                    submitButton.disabled = false;
+                }
+            }
+        });
+    }
+</script>

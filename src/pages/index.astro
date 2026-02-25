@@ -1,0 +1,316 @@
+---
+import Layout from "../layouts/Layout.astro";
+import BentoGrid from "../components/BentoGrid.astro";
+import BentoCard from "../components/BentoCard.astro";
+import { getCollection, getEntry } from "astro:content";
+import { toLocalEventSummary } from "../utils/events";
+import { HOME_FAQ_ITEMS_PREVIEW_LIMIT, HOME_LATEST_NEWS_CARDS_LIMIT } from "../config/home";
+
+const allNews = await getCollection("news");
+
+function stripMarkdown(markdown: string): string {
+    return markdown
+        .replace(/```[\s\S]*?```/g, " ")
+        .replace(/`[^`]*`/g, " ")
+        .replace(/!\[[^\]]*\]\([^)]*\)/g, " ")
+        .replace(/\[[^\]]*\]\([^)]*\)/g, " ")
+        .replace(/[>#*_~\-]/g, " ")
+        .replace(/\s+/g, " ")
+        .trim();
+}
+
+function summarize(text: string, maxLength = 180): string {
+    if (text.length <= maxLength) {
+        return text;
+    }
+    return `${text.slice(0, maxLength).trimEnd()}...`;
+}
+
+function extractFaqQuestions(markdown: string, limit: number): string[] {
+    if (!markdown) {
+        return [];
+    }
+
+    return Array.from(markdown.matchAll(/:::details\{summary="([^"]+)"/g), (match) => match[1]?.trim())
+        .filter((value): value is string => Boolean(value))
+        .map((value) => value.replace(/^\d+\.\s*/, ""))
+        .slice(0, limit);
+}
+
+const latestNewsCards = [...allNews]
+    .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
+    .slice(0, HOME_LATEST_NEWS_CARDS_LIMIT)
+    .map((entry) => ({
+        entry,
+        href: entry.data.type === "external" ? (entry.data.externalLink ?? "/news") : `/news/${entry.slug}`,
+        isExternal: entry.data.type === "external",
+        description: summarize(stripMarkdown((entry.data.description ?? entry.body) || "Leia a notícia completa para mais detalhes.")),
+    }));
+const hasNewsCarouselControls = latestNewsCards.length > 1;
+const primaryBentoButtonClass = "site-button home-bento-cta";
+
+const allEvents = await getCollection("events");
+const todayStart = new Date();
+todayStart.setHours(0, 0, 0, 0);
+const todayStartValue = todayStart.valueOf();
+
+const upcomingEvents = allEvents
+    .filter((entry) => entry.data.start.valueOf() >= todayStartValue)
+    .sort((a, b) => a.data.start.valueOf() - b.data.start.valueOf())
+    .slice(0, 3)
+    .map((entry) => toLocalEventSummary(entry));
+const pastEvents = allEvents
+    .filter((entry) => entry.data.start.valueOf() < todayStartValue)
+    .sort((a, b) => b.data.start.valueOf() - a.data.start.valueOf())
+    .map((entry) => toLocalEventSummary(entry));
+const visiblePastEvents = pastEvents.slice(0, 3);
+
+const allProjects = await getCollection("projects");
+const projects = [...allProjects].sort((a, b) => a.data.title.localeCompare(b.data.title, "pt-BR"));
+
+const faqEntry = await getEntry("pages", "faq");
+const faqPreviewItems = extractFaqQuestions(faqEntry?.body ?? "", HOME_FAQ_ITEMS_PREVIEW_LIMIT);
+---
+
+<Layout title="Conselho dos Cidadãos">
+    <div class="relative z-10 max-w-7xl mx-auto px-3 py-8 sm:px-5 lg:px-6">
+        <BentoGrid class="home-bento-layout">
+            <BentoCard
+                colSpan="col-span-1 md:col-span-2 lg:col-span-2"
+                rowSpan="row-span-2"
+                title="Últimas Notícias"
+                class="home-main-news-card lg:col-start-1 lg:row-start-1"
+            >
+                {
+                    latestNewsCards.length > 0 ? (
+                        <div class="flex h-full flex-col gap-4" data-news-carousel>
+                            <div class="home-news-carousel-viewport flex-1" data-news-carousel-viewport>
+                                <div class="home-news-carousel-track h-full" data-news-carousel-track>
+                                    {latestNewsCards.map(({ entry, href, isExternal, description }, index) => (
+                                        <article
+                                            class="home-news-carousel-slide flex h-full min-w-full snap-start flex-col gap-4"
+                                            data-news-carousel-slide
+                                            data-news-carousel-slide-index={index}
+                                        >
+                                            {entry.data.thumbnail && (
+                                                <a
+                                                    href={href}
+                                                    target={isExternal ? "_blank" : "_self"}
+                                                    rel={isExternal ? "noopener noreferrer" : undefined}
+                                                    class="home-main-news-image-link block overflow-hidden rounded-xl"
+                                                >
+                                                    <img
+                                                        src={entry.data.thumbnail}
+                                                        alt={entry.data.title}
+                                                        class="home-main-news-image h-52 w-full object-cover transition duration-200 hover:scale-[1.02] md:h-64"
+                                                    />
+                                                </a>
+                                            )}
+                                            <div class="space-y-3">
+                                                <p class="home-bento-kicker text-xs font-semibold uppercase tracking-wide">
+                                                    {entry.data.date.toLocaleDateString("pt-BR")}
+                                                </p>
+                                                <a
+                                                    href={href}
+                                                    target={isExternal ? "_blank" : "_self"}
+                                                    rel={isExternal ? "noopener noreferrer" : undefined}
+                                                    class="home-bento-headline block text-2xl font-black leading-tight hover:underline"
+                                                >
+                                                    {entry.data.title}
+                                                </a>
+                                                <p class="home-bento-description">{description}</p>
+                                            </div>
+                                        </article>
+                                    ))}
+                                </div>
+                            </div>
+                            <div class="mt-auto flex items-center justify-between gap-3 pt-2">
+                                <a href="/news" class={primaryBentoButtonClass}>
+                                    Ver todas as notícias
+                                </a>
+                                {hasNewsCarouselControls && (
+                                    <div class="home-news-carousel-controls ml-auto hidden items-center gap-2 md:flex">
+                                        <button
+                                            type="button"
+                                            class="site-button home-news-carousel-control home-news-carousel-prev"
+                                            data-news-carousel-prev
+                                            aria-label="Notícia anterior"
+                                        >
+                                            <span aria-hidden="true">‹</span>
+                                        </button>
+                                        <button
+                                            type="button"
+                                            class="site-button home-news-carousel-control home-news-carousel-next"
+                                            data-news-carousel-next
+                                            aria-label="Próxima notícia"
+                                        >
+                                            <span aria-hidden="true">›</span>
+                                        </button>
+                                    </div>
+                                )}
+                            </div>
+                        </div>
+                    ) : (
+                        <div class="flex h-full flex-col justify-between">
+                            <p class="home-bento-description">As últimas notícias da comunidade vão aparecer aqui em breve.</p>
+                            <a href="/news" class={`mt-6 w-fit ${primaryBentoButtonClass}`}>
+                                Ver todas as notícias
+                            </a>
+                        </div>
+                    )
+                }
+            </BentoCard>
+
+            <BentoCard colSpan="col-span-1" rowSpan="row-span-1" title="Próximos Eventos" class="home-upcoming-events-card lg:col-start-3 lg:row-start-1">
+                <div class="space-y-3">
+                    {
+                        upcomingEvents.length > 0 ? (
+                            upcomingEvents.map((event) => (
+                                <a href={event.url} class="home-upcoming-event-link group block rounded-xl p-3 transition">
+                                    <p class="home-bento-kicker text-xs font-semibold uppercase tracking-wide">
+                                        {new Date(event.startISO).toLocaleDateString("pt-BR", { day: "2-digit", month: "short" }).replace(".", "")}
+                                    </p>
+                                    <p class="home-bento-item-title mt-1 text-sm font-semibold group-hover:underline">{event.title}</p>
+                                </a>
+                            ))
+                        ) : (
+                            <p class="home-bento-description">Nenhum evento próximo no momento.</p>
+                        )
+                    }
+                    <a href="/events" class={primaryBentoButtonClass}> Ver todos os eventos </a>
+                </div>
+            </BentoCard>
+
+            <BentoCard colSpan="col-span-1" rowSpan="row-span-1" title="Eventos Anteriores" class="home-past-events-card lg:col-start-3 lg:row-start-2">
+                <div class="space-y-3">
+                    {
+                        visiblePastEvents.length > 0 ? (
+                            visiblePastEvents.map((event) => (
+                                <a href={event.url} class="home-upcoming-event-link group block rounded-xl p-3 transition">
+                                    <p class="home-bento-kicker text-xs font-semibold uppercase tracking-wide">
+                                        {new Date(event.startISO).toLocaleDateString("pt-BR", { day: "2-digit", month: "short" }).replace(".", "")}
+                                    </p>
+                                    <p class="home-bento-item-title mt-1 text-sm font-semibold group-hover:underline">{event.title}</p>
+                                </a>
+                            ))
+                        ) : (
+                            <p class="home-bento-description">Nenhum evento passado registrado no momento.</p>
+                        )
+                    }
+                    {
+                        visiblePastEvents.length > 0 && (
+                            <a href="/events?view=past" class="home-bento-cta home-past-events-more-link">
+                                Ver outros eventos anteriores
+                            </a>
+                        )
+                    }
+                </div>
+            </BentoCard>
+
+            <BentoCard
+                colSpan="col-span-1 md:col-span-2 lg:col-span-1"
+                rowSpan="row-span-1"
+                title="Projetos"
+                class="home-projects-card order-4 lg:order-none lg:col-start-4 lg:row-start-1"
+            >
+                <div>
+                    {
+                        projects.length > 0 ? (
+                            <div class="home-projects-menu space-y-2">
+                                {projects.map((project) => (
+                                    <a
+                                        href={`/projects/${project.slug}`}
+                                        class="home-project-item home-project-item--right group block rounded-xl px-4 py-3 transition"
+                                    >
+                                        <p class="home-project-item-title group-hover:underline">{project.data.title}</p>
+                                    </a>
+                                ))}
+                            </div>
+                        ) : (
+                            <p class="home-bento-description">Projetos em atualização. Confira novamente em breve.</p>
+                        )
+                    }
+                </div>
+            </BentoCard>
+
+            <BentoCard
+                colSpan="col-span-1 md:col-span-2 lg:col-span-1"
+                rowSpan="row-span-1"
+                title="FAQ"
+                class="home-faq-card order-5 lg:order-none lg:col-start-4 lg:row-start-2"
+            >
+                <div class="space-y-2">
+                    {
+                        faqPreviewItems.length > 0 ? (
+                            faqPreviewItems.map((question) => (
+                                <a href="/faq" class="home-faq-item group block rounded-xl px-3 py-2.5 transition">
+                                    <p class="home-faq-item-title group-hover:underline">{question}</p>
+                                </a>
+                            ))
+                        ) : (
+                            <p class="home-bento-description">As principais dúvidas da comunidade serão publicadas aqui em breve.</p>
+                        )
+                    }
+                    <a href="/faq" class={primaryBentoButtonClass}> Ver todas as perguntas </a>
+                </div>
+            </BentoCard>
+        </BentoGrid>
+    </div>
+
+    <script is:inline>
+        (() => {
+            const carousels = document.querySelectorAll("[data-news-carousel]");
+            for (const carousel of carousels) {
+                const track = carousel.querySelector("[data-news-carousel-track]");
+                if (!(track instanceof HTMLElement)) {
+                    continue;
+                }
+
+                const slides = Array.from(track.querySelectorAll("[data-news-carousel-slide]")).filter((slide) => slide instanceof HTMLElement);
+                if (slides.length <= 1) {
+                    continue;
+                }
+
+                const getCurrentIndex = () => {
+                    let closestIndex = 0;
+                    let closestDistance = Number.POSITIVE_INFINITY;
+                    const currentScrollLeft = track.scrollLeft;
+
+                    slides.forEach((slide, index) => {
+                        const slideOffset = slide.offsetLeft - track.offsetLeft;
+                        const distance = Math.abs(slideOffset - currentScrollLeft);
+                        if (distance < closestDistance) {
+                            closestDistance = distance;
+                            closestIndex = index;
+                        }
+                    });
+
+                    return closestIndex;
+                };
+
+                const scrollToIndex = (index) => {
+                    const normalizedIndex = (index + slides.length) % slides.length;
+                    slides[normalizedIndex].scrollIntoView({
+                        behavior: "smooth",
+                        block: "nearest",
+                        inline: "start",
+                    });
+                };
+
+                const previousButton = carousel.querySelector("[data-news-carousel-prev]");
+                if (previousButton instanceof HTMLButtonElement) {
+                    previousButton.addEventListener("click", () => {
+                        scrollToIndex(getCurrentIndex() - 1);
+                    });
+                }
+
+                const nextButton = carousel.querySelector("[data-news-carousel-next]");
+                if (nextButton instanceof HTMLButtonElement) {
+                    nextButton.addEventListener("click", () => {
+                        scrollToIndex(getCurrentIndex() + 1);
+                    });
+                }
+            }
+        })();
+    </script>
+</Layout>

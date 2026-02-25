@@ -1,0 +1,56 @@
+---
+import "../styles/global.css";
+
+interface Props {
+    title: string;
+    description?: string;
+}
+
+const { title, description = "Conselho de Cidadãos do Brasil em Pequim" } = Astro.props;
+const lang = Astro.currentLocale || "pt";
+
+import Navbar from "../components/Navbar.astro";
+import Footer from "../components/Footer.astro";
+---
+
+<!doctype html>
+<html lang={lang}>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="description" content={description} />
+        <meta name="viewport" content="width=device-width" />
+        <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+        <link rel="icon" type="image/png" href="/favicon.png" sizes="any" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+        <link rel="icon" href="/favicon.ico" sizes="any" />
+        <link rel="manifest" href="/site.webmanifest" />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" />
+        <meta name="generator" content={Astro.generator} />
+        <title>{title}</title>
+        <script is:inline>
+            (() => {
+                try {
+                    const storedTheme = localStorage.getItem('color-theme');
+                    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+                    const isDark = storedTheme ? storedTheme === 'dark' : prefersDark;
+                    document.documentElement.classList.toggle('dark', isDark);
+                } catch {
+                    // Leave default light theme when storage access fails.
+                }
+            })();
+        </script>
+    </head>
+    <body class="site-body transition-colors duration-300">
+        <div class="site-shell min-h-screen min-h-dvh flex flex-col">
+            <Navbar />
+            <main class="flex-1">
+                <slot />
+            </main>
+            <Footer />
+        </div>
+    </body>
+</html>

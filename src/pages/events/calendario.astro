@@ -1,0 +1,30 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import CalendarWidget from "../../components/CalendarWidget";
+import { getCollection } from "astro:content";
+import holidaysCn from "../../data/holidays-cn.json";
+import holidaysBr from "../../data/holidays-br.json";
+
+const events = await getCollection("events");
+const localEvents = events.map((entry) => ({
+    title: entry.data.title,
+    start: entry.data.start.toISOString(),
+    end: entry.data.end?.toISOString(),
+    location: entry.data.location,
+    url: `/events/${entry.slug}`,
+}));
+---
+
+<Layout title="Calendário - Conselho dos Cidadãos" description="Visualização mensal de eventos e feriados.">
+    <div class="max-w-7xl mx-auto px-3 py-8 sm:px-5 lg:px-6 space-y-8">
+        <header class="internal-page-header flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
+            <div>
+                <h1 class="internal-page-title">Calendário</h1>
+                <p class="internal-page-subtitle">Visão mensal com eventos locais e feriados.</p>
+            </div>
+            <a href="/events" class="site-button internal-page-cta"> Ver Eventos </a>
+        </header>
+
+        <CalendarWidget client:load holidaysCn={holidaysCn} holidaysBr={holidaysBr} localEvents={localEvents} />
+    </div>
+</Layout>

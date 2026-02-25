@@ -1,0 +1,36 @@
+---
+import type { SinglePageSectionTone } from "../../config/single-page";
+
+interface Props {
+  id: string;
+  title: string;
+  subtitle?: string;
+  tone: SinglePageSectionTone;
+  ctaLabel?: string;
+  ctaHref?: string;
+}
+
+const { id, title, subtitle = "", tone, ctaLabel, ctaHref } = Astro.props;
+---
+
+<section id={id} class={`single-page-section single-page-section--${tone} single-page-reveal`} data-single-page-section aria-labelledby={`${id}-title`}>
+  <div class="single-page-inner">
+    <header class="single-page-section-header">
+      <div class="single-page-section-heading">
+        <h2 id={`${id}-title`} class="single-page-section-title">{title}</h2>
+        {subtitle && <p class="single-page-section-subtitle">{subtitle}</p>}
+      </div>
+      {
+        ctaLabel && ctaHref ? (
+          <a href={ctaHref} class="site-button single-page-section-cta">
+            {ctaLabel}
+          </a>
+        ) : null
+      }
+    </header>
+
+    <div class="single-page-section-content">
+      <slot />
+    </div>
+  </div>
+</section>

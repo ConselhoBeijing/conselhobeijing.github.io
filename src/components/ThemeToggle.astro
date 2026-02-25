@@ -1,0 +1,88 @@
+---
+interface Props {
+  class?: string;
+}
+
+const { class: className = "" } = Astro.props;
+---
+
+<button
+  type="button"
+  aria-label="Alternar tema claro/escuro"
+  class={`theme-toggle-button ${className}`}
+  data-theme-toggle
+>
+  <span class="sr-only">Alternar tema</span>
+  <i class="bi bi-moon-stars-fill hidden text-sm" aria-hidden="true" data-theme-icon-dark></i>
+  <i class="bi bi-sun-fill hidden text-sm" aria-hidden="true" data-theme-icon-light></i>
+</button>
+
+<script>
+  (() => {
+    function getToggleButtons() {
+      return Array.from(document.querySelectorAll("[data-theme-toggle]"));
+    }
+
+    function syncIcons(isDark) {
+      const toggles = getToggleButtons();
+      for (const toggle of toggles) {
+        if (!(toggle instanceof HTMLElement)) {
+          continue;
+        }
+
+        const darkIcon = toggle.querySelector("[data-theme-icon-dark]");
+        const lightIcon = toggle.querySelector("[data-theme-icon-light]");
+        darkIcon?.classList.toggle("hidden", isDark);
+        lightIcon?.classList.toggle("hidden", !isDark);
+      }
+    }
+
+    syncIcons(document.documentElement.classList.contains("dark"));
+
+    if (window.__themeToggleInitialized) {
+      return;
+    }
+
+    window.__themeToggleInitialized = true;
+
+    function resolveIsDark() {
+      try {
+        const storedTheme = localStorage.getItem("color-theme");
+        if (storedTheme) {
+          return storedTheme === "dark";
+        }
+      } catch {
+        // Fall back to system preference when storage is blocked.
+      }
+      return window.matchMedia("(prefers-color-scheme: dark)").matches;
+    }
+
+    function applyTheme(isDark) {
+      document.documentElement.classList.toggle("dark", isDark);
+      syncIcons(isDark);
+    }
+
+    applyTheme(resolveIsDark());
+
+    document.addEventListener("click", (event) => {
+      const target = event.target;
+      if (!(target instanceof Element)) {
+        return;
+      }
+
+      const toggle = target.closest("[data-theme-toggle]");
+      if (!toggle) {
+        return;
+      }
+
+      const nextIsDark = !document.documentElement.classList.contains("dark");
+      applyTheme(nextIsDark);
+
+      try {
+        localStorage.setItem("color-theme", nextIsDark ? "dark" : "light");
+      } catch {
+        // Ignore persistence errors.
+      }
+    });
+  })();
+</script>

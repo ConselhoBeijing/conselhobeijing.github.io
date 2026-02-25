@@ -1,0 +1,45 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import { getCollection } from "astro:content";
+import BentoCard from "../../components/BentoCard.astro";
+
+const projects = await getCollection("projects");
+---
+
+<Layout title="Projetos - Conselho dos Cidadãos">
+    <div class="max-w-7xl mx-auto px-3 py-8 sm:px-5 lg:px-6">
+        <header class="internal-page-header">
+            <h1 class="internal-page-title">Projetos</h1>
+            <p class="internal-page-subtitle pt-6">
+                Aqui destacamos iniciativas desenvolvidas pelo <b>Conselho dos Cidadãos Brasileiros de Beijing</b>, voltadas ao fortalecimento da comunidade
+                brasileira na China. Nossos projetos promovem cultura, educação e apoio comunitário, com o objetivo de integrar, ampliar oportunidades e
+                valorizar as tradições brasileiras, reforçando a união e o bem-estar da nossa comunidade.
+            </p>
+        </header>
+        <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+            {
+                projects.map((project) => {
+                    const thumbnail = project.data.thumbnail ?? project.data.cover;
+
+                    return (
+                        <BentoCard title={project.data.title} href={`/projects/${project.slug}`} class="projects-overview-card h-full">
+                            {thumbnail ? (
+                                <img
+                                    src={thumbnail}
+                                    alt={`Miniatura do projeto ${project.data.title}`}
+                                    class="project-card-thumbnail w-full h-40 object-cover rounded-2xl mb-4"
+                                    loading="lazy"
+                                />
+                            ) : (
+                                <div class="project-card-thumbnail-placeholder mb-4 flex h-40 w-full items-center justify-center rounded-2xl">
+                                    <span class="text-sm font-semibold uppercase tracking-wide">Sem miniatura</span>
+                                </div>
+                            )}
+                            <p class="project-card-intro">{project.data.intro}</p>
+                        </BentoCard>
+                    );
+                })
+            }
+        </div>
+    </div>
+</Layout>

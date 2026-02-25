@@ -1,0 +1,1512 @@
+@import "tailwindcss";
+@import "katex/dist/katex.min.css";
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+    --color-brazil-green: #7ef056;
+    --color-brazil-light-green: #7ef056;
+    --color-brazil-yellow: #eae43f;
+    --color-brazil-gold: #ffc60f;
+    --color-brazil-blue: #61e3ff;
+    --color-brazil-white: #ffffff;
+    --color-brazil-black: #000000;
+    --color-brazil-cream: #f9f0e3;
+}
+
+/* FullCalendar injects unlayered CSS at runtime; keep overrides unlayered so they win. */
+.calendario-widget .fc {
+    --fc-button-text-color: rgb(15 23 42);
+    --fc-button-bg-color: rgb(238 235 229 / 0.92);
+    --fc-button-border-color: rgb(194 194 194 / 0.95);
+    --fc-button-hover-bg-color: rgb(246 243 237 / 0.95);
+    --fc-button-hover-border-color: rgb(188 188 188 / 0.98);
+    --fc-button-active-bg-color: rgb(246 243 237 / 0.95);
+    --fc-button-active-border-color: rgb(188 188 188 / 0.98);
+}
+
+.calendario-widget .fc .fc-toolbar .fc-button {
+    box-shadow: none;
+}
+
+.calendario-widget .fc .fc-toolbar .fc-button:focus {
+    box-shadow: 0 0 0 2px rgb(194 194 194 / 0.35);
+}
+
+.calendario-widget .fc .fc-toolbar .fc-button-group {
+    display: inline-flex;
+    gap: 0.75rem;
+}
+
+.calendario-widget .fc .fc-toolbar .fc-button-group > .fc-button {
+    margin: 0 !important;
+    min-height: 2.25rem;
+    min-width: 2.25rem;
+    border-radius: 9999px;
+    padding: 0;
+    font-size: 1.25rem;
+    font-weight: 900;
+    line-height: 1;
+}
+
+.calendario-widget .fc .fc-toolbar .fc-today-button {
+    min-height: 2.25rem;
+    border-radius: 9999px;
+    padding: 0.5rem 1.25rem;
+    font-size: 0.875rem;
+    font-weight: 700;
+    letter-spacing: normal;
+    text-transform: none;
+}
+
+.calendario-widget .fc .fc-toolbar .fc-today-button:disabled {
+    opacity: 1;
+    color: rgb(71 85 105);
+    background-color: rgb(210 215 221 / 0.95);
+    border-color: rgb(181 189 198 / 0.95);
+}
+
+:root.dark .calendario-widget .fc {
+    --fc-button-text-color: rgb(243 244 246);
+    --fc-button-bg-color: rgb(255 255 255 / 0.16);
+    --fc-button-border-color: rgb(255 255 255 / 0.28);
+    --fc-button-hover-bg-color: rgb(255 255 255 / 0.2);
+    --fc-button-hover-border-color: rgb(255 255 255 / 0.35);
+    --fc-button-active-bg-color: rgb(255 255 255 / 0.2);
+    --fc-button-active-border-color: rgb(255 255 255 / 0.35);
+}
+
+:root.dark .calendario-widget .fc .fc-toolbar .fc-button:focus {
+    box-shadow: 0 0 0 2px rgb(255 255 255 / 0.28);
+}
+
+:root.dark .calendario-widget .fc .fc-toolbar .fc-today-button:disabled {
+    opacity: 1;
+    color: rgb(209 213 219);
+    background-color: rgb(255 255 255 / 0.12);
+    border-color: rgb(255 255 255 / 0.24);
+}
+
+@layer base {
+    :root {
+        color-scheme: light;
+        --site-font-family: "Open Sans", "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    :root.dark {
+        color-scheme: dark;
+    }
+
+    html,
+    body {
+        font-family: var(--site-font-family);
+    }
+
+    button,
+    input,
+    textarea,
+    select {
+        font: inherit;
+    }
+}
+
+@layer components {
+    .site-button {
+        @apply inline-flex items-center justify-center rounded-full border border-black/15 bg-white/60 px-5 py-2 text-sm font-semibold transition hover:bg-white hover:text-brazil-green focus:outline-none focus:ring-2 focus:ring-brazil-green/30 focus:ring-offset-0 disabled:opacity-60 dark:border-white/20 dark:bg-white/10 dark:hover:bg-white/20;
+        color: var(--bento-text-primary, rgb(17 24 39));
+    }
+
+    .site-body {
+        @apply text-black dark:text-gray-100;
+        background-color: #f9f0e3;
+    }
+
+    :root.dark .site-body {
+        background-color: rgb(18 18 18);
+    }
+
+    .site-navbar {
+        @apply sticky top-0 z-40 w-full border-b backdrop-blur-sm;
+        background-color: rgb(249 240 227 / 0.88);
+        border-color: rgb(0 0 0 / 0.12);
+    }
+
+    :root.dark .site-navbar {
+        background-color: rgb(18 18 18 / 0.88);
+        border-color: rgb(255 255 255 / 0.2);
+    }
+
+    .site-navbar-accent {
+        @apply h-[2px] w-full;
+        background-image: linear-gradient(90deg, #eae43f 0%, #7ef056 52%, #61e3ff 100%);
+    }
+
+    .nav-primary-link {
+        @apply border-transparent text-black/85 dark:text-gray-200/90;
+    }
+
+    .nav-primary-link:hover {
+        @apply border-transparent text-black dark:text-white;
+    }
+
+    .site-menu-toggle {
+        @apply h-9 w-9 rounded-md border-0 bg-transparent p-0 text-black/80 hover:text-black focus:ring-brazil-blue/35 dark:text-gray-100/90 dark:hover:text-white;
+    }
+
+    .nav-mobile-link {
+        @apply border-transparent text-black/75 dark:text-gray-200/90;
+    }
+
+    .nav-mobile-link:hover {
+        @apply border-brazil-green bg-black/5 text-black dark:bg-white/10 dark:text-white;
+    }
+
+    .navbar-mobile-social {
+        @apply border-t border-black/10 dark:border-white/20;
+    }
+
+    .navbar-desktop-tools {
+        @apply gap-3;
+    }
+
+    .navbar-theme-toggle {
+        border: 0;
+        margin: 0;
+        padding: 0;
+        box-shadow: none;
+    }
+
+    .theme-toggle-button {
+        @apply h-9 w-9 border-0 bg-transparent p-0 text-black/80 hover:text-black focus:ring-brazil-blue/35 dark:text-gray-100 dark:hover:text-white dark:focus:ring-blue-500/40;
+    }
+
+    .social-links {
+        @apply gap-4;
+    }
+
+    .site-footer {
+        @apply w-full border-t;
+        border-color: rgb(0 0 0 / 0.12);
+        background-color: #f9f0e3;
+    }
+
+    :root.dark .site-footer {
+        border-color: rgb(255 255 255 / 0.2);
+        background-color: rgb(18 18 18);
+    }
+
+    .site-footer-top {
+        border-bottom: 1px solid rgb(0 0 0 / 0.1);
+        background-image: linear-gradient(90deg, rgb(250 228 63 / 0.35) 0%, rgb(126 240 86 / 0.3) 52%, rgb(97 227 255 / 0.34) 100%);
+    }
+
+    :root.dark .site-footer-top {
+        border-bottom-color: rgb(255 255 255 / 0.16);
+        background-image: linear-gradient(90deg, rgb(95 83 14 / 0.5) 0%, rgb(34 75 33 / 0.48) 52%, rgb(12 68 84 / 0.5) 100%);
+    }
+
+    .footer-caption {
+        @apply text-xs font-semibold leading-none text-black whitespace-nowrap dark:text-gray-100;
+    }
+
+    .footer-social-links {
+        @apply gap-3;
+    }
+
+    .footer-social-links .social-link-icon {
+        @apply text-base;
+    }
+
+    .social-link-button,
+    .social-link-anchor {
+        @apply text-black/70 hover:text-black dark:text-gray-200/85 dark:hover:text-white;
+    }
+
+    .social-link-icon {
+        @apply text-[0.9rem] leading-none;
+    }
+
+    .social-link-button {
+        @apply focus:ring-brazil-blue/40;
+    }
+
+    .social-popover-panel {
+        @apply border shadow-xl;
+        background-color: #f9f0e3;
+        border-color: rgb(0 0 0 / 0.14);
+    }
+
+    :root.dark .social-popover-panel {
+        background-color: rgb(18 18 18 / 0.96);
+        border-color: rgb(255 255 255 / 0.2);
+    }
+
+    .social-popover-title {
+        @apply text-black dark:text-gray-100;
+    }
+
+    .social-popover-qr {
+        @apply border bg-white;
+        border-color: rgb(0 0 0 / 0.14);
+    }
+
+    .social-popover-hint {
+        @apply text-black/70 dark:text-gray-300;
+    }
+
+    .content-surface {
+        @apply border dark:border-gray-700 dark:bg-gray-800;
+        border-color: rgb(0 0 0 / 0.08);
+        background-color: #f9f0e3;
+    }
+
+    .content-body-text {
+        @apply text-gray-700 dark:text-gray-200;
+    }
+
+    .home-bento-cta,
+    .internal-page-cta,
+    .news-pagination-link,
+    .contact-form-submit,
+    .eventos-detail-button,
+    .calendario-feed-switch {
+        @apply inline-flex items-center justify-center rounded-full border border-black/15 bg-white/60 px-5 py-2 text-sm font-semibold text-gray-900 transition hover:bg-white hover:text-brazil-green focus:outline-none focus:ring-2 focus:ring-brazil-green/30 focus:ring-offset-0 disabled:opacity-60 dark:border-white/20 dark:bg-white/10 dark:text-gray-100 dark:hover:bg-white/20;
+    }
+
+    .internal-back-link {
+        /*@apply text-brazil-green dark:text-green-300;*/
+    }
+
+    .event-detail-header {
+        @apply border border-brazil-green/15 bg-white dark:border-gray-700 dark:bg-gray-800;
+    }
+
+    .event-detail-kicker {
+        /*@apply text-brazil-green;*/
+    }
+
+    .event-detail-meta {
+        @apply text-gray-700 dark:text-gray-200;
+    }
+
+    .event-detail-term {
+        @apply text-gray-500 dark:text-gray-400;
+    }
+
+    .news-list-card {
+        @apply border border-black/10 bg-white/45 dark:border-white/20 dark:bg-white/5;
+    }
+
+    .news-list-meta {
+        @apply text-gray-500 dark:text-gray-400;
+    }
+
+    .news-list-badge {
+        @apply bg-gray-200 dark:bg-gray-700;
+    }
+
+    .news-list-title-link {
+        @apply text-gray-900 hover:text-brazil-green dark:text-gray-100;
+    }
+
+    .news-list-summary {
+        @apply text-base leading-relaxed text-gray-600 dark:text-gray-300;
+    }
+
+    .news-pagination-link {
+        @apply min-w-28;
+    }
+
+    .news-entry-meta {
+        @apply text-gray-500 dark:text-gray-400;
+    }
+
+    .project-card-intro {
+        @apply text-base leading-relaxed text-gray-600 dark:text-gray-400;
+        text-align: justify;
+    }
+
+    .project-card-thumbnail-placeholder {
+        @apply border border-dashed border-gray-300 bg-gray-100 text-gray-500 dark:border-gray-600 dark:bg-gray-900 dark:text-gray-300;
+    }
+
+    .team-section-title {
+        @apply mb-8 inline-block border-b-2 pb-2 text-2xl font-bold text-gray-900 dark:text-gray-100;
+    }
+
+    .team-section-title--yellow {
+        @apply border-brazil-yellow;
+    }
+
+    .team-section-title--blue {
+        @apply border-brazil-blue;
+    }
+
+    .team-member-card {
+        @apply h-full border border-black/10 bg-white/45 dark:border-white/20 dark:bg-white/5;
+    }
+
+    .team-member-content {
+        @apply flex-1;
+    }
+
+    .team-member-photo-frame {
+        @apply overflow-hidden border-4 border-gray-100 dark:border-gray-700;
+    }
+
+    .team-member-photo {
+        @apply transition-transform duration-300 ease-out;
+    }
+
+    .team-member-photo:hover {
+        @apply scale-110;
+    }
+
+    .team-member-avatar-fallback {
+        @apply bg-gray-200 text-gray-400 dark:bg-gray-700 dark:text-gray-300;
+    }
+
+    .team-member-name {
+        @apply text-gray-900 dark:text-gray-100;
+    }
+
+    .team-member-role {
+        @apply text-black transition-colors dark:text-gray-100;
+    }
+
+    .team-member-card:hover .team-member-role {
+        @apply text-brazil-green dark:text-green-300;
+    }
+
+    .team-member-bio {
+        @apply text-base leading-relaxed text-gray-600 dark:text-gray-400;
+        text-align: justify;
+    }
+
+    .team-member-socials {
+        @apply border-t border-black/10 dark:border-white/20;
+    }
+
+    .team-member-social-link {
+        @apply border border-gray-200 text-gray-600 hover:border-brazil-green hover:text-brazil-green dark:border-gray-600 dark:text-gray-200 dark:hover:border-green-400 dark:hover:text-green-300;
+    }
+
+    .team-empty-message {
+        @apply text-gray-500 dark:text-gray-400;
+    }
+
+    .about-page-subtitle {
+        @apply text-base leading-7 text-gray-700 dark:text-gray-200;
+    }
+
+    .en-entry-link {
+        @apply transition hover:brightness-110;
+    }
+
+    .en-entry-link--news {
+        @apply bg-brazil-green text-white;
+    }
+
+    .en-entry-link--events {
+        @apply bg-brazil-blue text-white;
+    }
+
+    .en-entry-link--home {
+        @apply border border-gray-300 text-gray-700 hover:bg-gray-100 dark:border-gray-600 dark:text-gray-200 dark:hover:bg-gray-700;
+    }
+
+    .contact-form-error {
+        @apply text-red-600;
+    }
+
+    .contact-form-status {
+        @apply text-gray-600 dark:text-gray-300;
+    }
+
+    .contact-form-status-error {
+        @apply text-red-600;
+    }
+
+    .contact-form-status-success {
+        @apply text-green-600;
+    }
+
+    .bento-card {
+        @apply border border-black/10 bg-transparent text-gray-900 shadow-none dark:border-white/20 dark:bg-transparent dark:text-gray-100;
+    }
+
+    .bento-card.projects-overview-card {
+        @apply border border-black/10 bg-white/45 shadow-md dark:border-white/20 dark:bg-white/5;
+        border-radius: 1.5rem;
+    }
+
+    .bento-card.projects-overview-card:hover {
+        @apply shadow-xl;
+    }
+
+    .projects-overview-card .bento-card-title {
+        @apply text-xl;
+    }
+
+    .projects-overview-card .project-card-thumbnail {
+        border-radius: 1rem;
+    }
+
+    .projects-overview-card .project-card-thumbnail-placeholder {
+        border-radius: 1rem;
+    }
+
+    .bento-card-title {
+        @apply text-base font-bold;
+        color: inherit;
+    }
+
+    .bento-card-title-line {
+        @apply h-[2px] flex-1;
+        background-color: var(--bento-title-line, rgb(209 213 219));
+    }
+
+    .home-main-news-card {
+        --bento-title-line: #7ef056;
+        --bento-text-primary: rgb(17 24 39);
+        --bento-text-muted: rgb(55 65 81);
+        --bento-text-subtle: rgb(107 114 128);
+    }
+
+    .home-upcoming-events-card {
+        --bento-title-line: #fae43f;
+        --bento-text-primary: rgb(17 24 39);
+        --bento-text-muted: rgb(55 65 81);
+        --bento-text-subtle: rgb(107 114 128);
+    }
+
+    .home-past-events-card {
+        --bento-title-line: #ffce0f;
+        --bento-text-primary: rgb(17 24 39);
+        --bento-text-muted: rgb(55 65 81);
+        --bento-text-subtle: rgb(107 114 128);
+    }
+
+    .home-projects-card {
+        --bento-title-line: #61e3ff;
+        --bento-text-primary: rgb(17 24 39);
+        --bento-text-muted: rgb(55 65 81);
+        --bento-text-subtle: rgb(107 114 128);
+    }
+
+    .home-faq-card {
+        --bento-title-line: #c9c9c9;
+        --bento-text-primary: rgb(17 24 39);
+        --bento-text-muted: rgb(55 65 81);
+        --bento-text-subtle: rgb(107 114 128);
+    }
+
+    :root.dark .home-main-news-card,
+    :root.dark .home-upcoming-events-card,
+    :root.dark .home-past-events-card,
+    :root.dark .home-projects-card,
+    :root.dark .home-faq-card {
+        --bento-text-primary: rgb(229 231 235);
+        --bento-text-muted: rgb(209 213 219);
+        --bento-text-subtle: rgb(156 163 175);
+    }
+
+    .home-upcoming-event-link {
+        @apply border border-black/10 bg-white/45 hover:bg-white/75 dark:border-white/20 dark:bg-white/5 dark:hover:bg-white/10;
+    }
+
+    .home-bento-headline,
+    .home-bento-item-title,
+    .home-project-link {
+        color: var(--bento-text-primary, currentColor);
+    }
+
+    .home-project-item {
+        @apply relative border border-black/10 bg-white/45 hover:bg-white/75 dark:border-white/20 dark:bg-white/5 dark:hover:bg-white/10;
+    }
+
+    .home-projects-menu {
+        @apply w-full lg:ml-auto lg:max-w-[14.5rem] lg:text-left;
+    }
+
+    .home-project-item--right {
+        @apply text-left lg:text-left;
+    }
+
+    .home-project-item::before {
+        content: "";
+        @apply absolute left-0 top-2 bottom-2 w-1 rounded-full;
+        /*background-color: #61e3ff;*/
+    }
+
+    .home-project-item-title {
+        @apply text-sm font-semibold text-gray-950 dark:text-gray-100;
+    }
+
+    .home-faq-item {
+        @apply border border-black/10 bg-white/45 hover:bg-white/75 dark:border-white/20 dark:bg-white/5 dark:hover:bg-white/10;
+    }
+
+    .home-faq-item-title {
+        @apply text-[0.82rem] font-semibold leading-snug;
+        color: var(--bento-text-primary, currentColor);
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+    }
+
+    .home-bento-description {
+        @apply text-base leading-relaxed;
+        color: var(--bento-text-muted, currentColor);
+    }
+
+    .home-bento-kicker {
+        color: var(--bento-text-subtle, currentColor);
+    }
+
+    .home-projects-list li::marker {
+        color: var(--bento-text-subtle, currentColor);
+    }
+
+    .home-news-carousel-viewport {
+        @apply overflow-hidden;
+    }
+
+    .home-news-carousel-track {
+        @apply flex h-full snap-x snap-mandatory gap-4 overflow-x-auto scroll-smooth pb-1;
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    .home-news-carousel-track::-webkit-scrollbar {
+        display: none;
+    }
+
+    .home-news-carousel-slide {
+        @apply rounded-xl border border-black/10 bg-white/45 p-4 dark:border-white/20 dark:bg-white/5;
+    }
+
+    .home-news-carousel-control {
+        @apply h-9 w-9 px-0 py-0 text-xl font-black;
+        color: var(--bento-text-primary, rgb(17 24 39));
+    }
+
+    .home-bento-cta {
+        @apply text-[0.66rem] font-bold;
+        color: var(--bento-text-primary, currentColor);
+    }
+
+    .home-past-events-more-link {
+        @apply mt-2 inline-flex;
+    }
+
+    .internal-page-header {
+        @apply mb-8;
+    }
+
+    .internal-page-title {
+        /*@apply text-4xl font-black tracking-tight text-brazil-green dark:text-green-300;*/
+        @apply text-4xl font-black tracking-tight text-black dark:text-white;
+    }
+
+    .internal-page-subtitle {
+        @apply mt-2 max-w-3xl text-base leading-relaxed text-gray-600 dark:text-gray-300;
+    }
+
+    .markdown-content {
+        @apply text-base leading-7 text-gray-700 dark:text-gray-200;
+    }
+
+    .markdown-content > * + * {
+        @apply mt-4;
+    }
+
+    .markdown-content :is(h1, h2, h3, h4, h5, h6) {
+        @apply mt-8 scroll-mt-24 font-black tracking-tight text-gray-900 dark:text-gray-100;
+    }
+
+    .markdown-content h1 {
+        @apply text-3xl;
+    }
+
+    .markdown-content h2 {
+        @apply text-2xl;
+    }
+
+    .markdown-content h3 {
+        @apply text-xl;
+    }
+
+    .markdown-content :is(h4, h5, h6) {
+        @apply text-lg;
+    }
+
+    .markdown-content .markdown-heading-anchor {
+        @apply ml-2 text-sm no-underline opacity-0 transition-opacity text-gray-400;
+    }
+
+    .markdown-content :is(h1, h2, h3, h4, h5, h6):hover .markdown-heading-anchor {
+        @apply opacity-100;
+    }
+
+    .markdown-content p {
+        @apply text-base leading-7 text-gray-700 dark:text-gray-200;
+    }
+
+    .markdown-content a {
+        @apply font-semibold text-brazil-green underline underline-offset-4 hover:text-green-700 dark:text-green-300 dark:hover:text-green-200;
+    }
+
+    .markdown-content ul {
+        @apply list-disc pl-6;
+    }
+
+    .markdown-content ol {
+        @apply list-decimal pl-6;
+    }
+
+    .markdown-content li {
+        @apply mt-1;
+    }
+
+    .markdown-content blockquote {
+        @apply border-l-4 border-brazil-green/45 bg-brazil-green/5 py-2 pl-4 italic text-gray-700 dark:border-green-400/45 dark:bg-green-900/20 dark:text-gray-200;
+    }
+
+    .markdown-content hr {
+        @apply my-8 border-gray-200 dark:border-gray-700;
+    }
+
+    .markdown-content pre {
+        @apply overflow-x-auto rounded-xl border border-gray-200 bg-gray-950 p-4 text-sm text-gray-100 dark:border-gray-700;
+    }
+
+    .markdown-content pre code {
+        @apply bg-transparent p-0 text-inherit;
+    }
+
+    .markdown-content code {
+        @apply rounded bg-gray-100 px-1.5 py-0.5 text-[0.92em] text-gray-900 dark:bg-gray-900 dark:text-gray-100;
+    }
+
+    .markdown-content img {
+        @apply h-auto max-w-full;
+    }
+
+    .markdown-content table {
+        @apply block w-full overflow-x-auto rounded-xl border border-gray-200 dark:border-gray-700;
+        border-collapse: collapse;
+    }
+
+    .markdown-content thead {
+        @apply bg-gray-100 dark:bg-gray-900;
+    }
+
+    .markdown-content th,
+    .markdown-content td {
+        @apply border border-gray-200 px-3 py-2 text-left text-sm dark:border-gray-700;
+    }
+
+    .markdown-content .contains-task-list {
+        @apply list-none pl-0;
+    }
+
+    .markdown-content .task-list-item {
+        @apply list-none;
+    }
+
+    .markdown-content .task-list-item-checkbox {
+        @apply mr-2 rounded accent-brazil-green;
+    }
+
+    .markdown-content .footnotes {
+        @apply mt-8 border-t border-gray-200 pt-4 text-sm text-gray-600 dark:border-gray-700 dark:text-gray-300;
+    }
+
+    .markdown-content .admonition {
+        @apply my-6 rounded-2xl border p-4;
+    }
+
+    .markdown-content .admonition-title {
+        @apply mb-2 text-xs font-black uppercase tracking-[0.16em];
+    }
+
+    .markdown-content .admonition-note,
+    .markdown-content .admonition-info {
+        @apply border-blue-300 bg-blue-50 text-blue-900 dark:border-blue-700 dark:bg-blue-950/40 dark:text-blue-100;
+    }
+
+    .markdown-content .admonition-tip {
+        @apply border-green-300 bg-green-50 text-green-900 dark:border-green-700 dark:bg-green-950/40 dark:text-green-100;
+    }
+
+    .markdown-content .admonition-warning,
+    .markdown-content .admonition-caution {
+        @apply border-yellow-300 bg-yellow-50 text-yellow-900 dark:border-yellow-700 dark:bg-yellow-950/40 dark:text-yellow-100;
+    }
+
+    .markdown-content .admonition-danger,
+    .markdown-content .admonition-important {
+        @apply border-red-300 bg-red-50 text-red-900 dark:border-red-700 dark:bg-red-950/40 dark:text-red-100;
+    }
+
+    .markdown-content .markdown-details {
+        @apply my-6 rounded-2xl border border-black/10 bg-white/45 p-4 dark:border-white/20 dark:bg-white/5;
+    }
+
+    .markdown-content .markdown-details-summary {
+        @apply cursor-pointer font-semibold text-gray-900 dark:text-gray-100;
+    }
+
+    .markdown-content .katex-display {
+        @apply my-6 overflow-x-auto overflow-y-hidden py-2;
+    }
+
+    .contact-form-label {
+        @apply block text-sm font-semibold text-gray-700 dark:text-gray-300;
+    }
+
+    .contact-form-field,
+    .contact-form-textarea {
+        @apply mt-1 block w-full rounded-2xl border border-brazil-green/20 bg-white px-4 py-3 text-sm text-gray-900 transition outline-none focus:border-brazil-green focus:ring-2 focus:ring-brazil-green/20 dark:border-gray-600 dark:bg-gray-900 dark:text-gray-100 dark:focus:border-green-400 dark:focus:ring-green-400/20;
+    }
+
+    .contact-form-textarea {
+        @apply min-h-36;
+    }
+
+    .contact-form-submit {
+        @apply w-full py-3;
+    }
+
+    .eventos-filter-panel {
+        @apply border border-black/10 bg-white/45 dark:border-white/20 dark:bg-white/5;
+    }
+
+    .eventos-filter-label {
+        @apply text-gray-700 dark:text-gray-200;
+    }
+
+    .eventos-filter-input {
+        @apply border border-[#ffce0f]/55 bg-white/80 text-gray-900 ring-[#ffce0f]/40 dark:border-[#ffce0f]/45 dark:bg-white/10 dark:text-gray-100;
+        accent-color: #ffce0f;
+        color-scheme: light;
+    }
+
+    .eventos-filter-input:hover,
+    .eventos-filter-input:focus {
+        border-color: #ffce0f;
+        background-color: rgb(255 206 15 / 0.18);
+    }
+
+    :root.dark .eventos-filter-input:hover,
+    :root.dark .eventos-filter-input:focus {
+        background-color: rgb(255 206 15 / 0.2);
+    }
+
+    .eventos-filter-input::-webkit-calendar-picker-indicator {
+        cursor: pointer;
+        opacity: 0.92;
+        filter: saturate(160%) sepia(62%) hue-rotate(352deg) brightness(1.08);
+    }
+
+    .eventos-empty-state {
+        @apply border-black/15 bg-white/45 text-gray-700 dark:border-white/20 dark:bg-white/5 dark:text-gray-200;
+    }
+
+    .eventos-timeline-track {
+        @apply bg-[#ffce0f];
+    }
+
+    .eventos-date-chip {
+        @apply border bg-white/35 text-gray-900 dark:bg-white/5 dark:text-gray-100;
+        border-color: #ffce0f;
+    }
+
+    .eventos-node {
+        @apply bg-[#ffce0f];
+        border-color: #ffce0f;
+    }
+
+    .eventos-card {
+        @apply border border-black/10 bg-white/45 dark:border-white/20 dark:bg-white/5;
+    }
+
+    .eventos-card-title {
+        @apply text-gray-900 dark:text-gray-100;
+    }
+
+    .eventos-card-meta {
+        @apply text-gray-700 dark:text-gray-200;
+    }
+
+    .eventos-card-icon {
+        @apply border border-black/20 bg-black/5 text-black dark:border-white/25 dark:bg-white/10 dark:text-gray-100;
+    }
+
+    .eventos-card-intro {
+        @apply text-gray-700 dark:text-gray-300;
+    }
+
+    .eventos-detail-button {
+        @apply mt-5 text-gray-900 dark:text-gray-100;
+    }
+
+    .eventos-card:hover .eventos-card-title {
+        color: #ffce0f;
+    }
+
+    .eventos-card:hover .eventos-card-icon {
+        border-color: #ffce0f;
+        color: #ffce0f;
+    }
+
+    .eventos-card:hover .eventos-detail-button {
+        border-color: #ffce0f;
+        color: #111827;
+    }
+
+    :root.dark .eventos-card:hover .eventos-detail-button {
+        color: rgb(243 244 246);
+    }
+
+    .calendario-feed-panel {
+        @apply border border-black/10  bg-white/45  dark:border-white/20 dark:bg-white/5;
+        /*background-color: rgb(249 240 227 / 0.72);*/
+    }
+
+    .calendario-feed-title {
+        @apply text-gray-700 dark:text-gray-200;
+    }
+
+    .calendario-feed-description {
+        @apply text-base leading-relaxed text-gray-700 dark:text-gray-300;
+    }
+
+    .calendario-feed-switch--active {
+        border-color: rgb(255 206 15 / 0.62);
+        background-color: rgb(249 240 227 / 0.88);
+        color: rgb(17 24 39);
+    }
+
+    .calendario-feed-switch--active-cn {
+        border-color: rgb(255 206 15 / 0.62);
+        background-color: rgb(249 240 227 / 0.88);
+        color: rgb(17 24 39);
+    }
+
+    .calendario-feed-switch--active-br {
+        border-color: rgb(255 206 15 / 0.62);
+        background-color: rgb(249 240 227 / 0.88);
+        color: rgb(17 24 39);
+    }
+
+    .calendario-feed-switch--active-local {
+        border-color: rgb(255 206 15 / 0.62);
+        background-color: rgb(249 240 227 / 0.88);
+        color: rgb(17 24 39);
+    }
+
+    .calendario-feed-switch--inactive {
+        @apply border-black/15 text-gray-700 hover:bg-white/70 dark:border-white/20 dark:bg-white/5 dark:text-gray-300 dark:hover:bg-white/10;
+        background-color: rgb(249 240 227 / 0.56);
+    }
+
+    .calendario-feed-switch--inactive:hover {
+        border-color: rgb(17 24 39 / 0.22);
+        color: rgb(17 24 39);
+    }
+
+    :root.dark .calendario-feed-switch--active-cn {
+        border-color: rgb(255 206 15 / 0.5);
+        background-color: rgb(255 255 255 / 0.12);
+        color: rgb(243 244 246);
+    }
+
+    :root.dark .calendario-feed-switch--active-br {
+        border-color: rgb(255 206 15 / 0.5);
+        background-color: rgb(255 255 255 / 0.12);
+        color: rgb(243 244 246);
+    }
+
+    :root.dark .calendario-feed-switch--active-local {
+        border-color: rgb(255 206 15 / 0.5);
+        background-color: rgb(255 255 255 / 0.12);
+        color: rgb(243 244 246);
+    }
+
+    :root.dark .calendario-feed-switch--inactive:hover {
+        border-color: rgb(255 255 255 / 0.34);
+        color: rgb(243 244 246);
+    }
+
+    .calendario-feed-dot--cn {
+        background-color: #e65454;
+    }
+
+    .calendario-feed-dot--br {
+        background-color: #7ef056;
+    }
+
+    .calendario-feed-dot--local {
+        background-color: #ffce0f;
+    }
+
+    .calendario-feed-dot--off {
+        @apply bg-gray-400 dark:bg-gray-500;
+    }
+
+    .calendario-main-panel {
+        @apply border border-black/10 bg-white/45 text-gray-900 dark:border-white/20 dark:bg-white/5 dark:text-gray-100;
+    }
+
+    .calendario-filtered-list-panel {
+        @apply border border-black/10 bg-white/45 text-gray-900 dark:border-white/20 dark:bg-white/5 dark:text-gray-100;
+    }
+
+    .calendario-filtered-count {
+        @apply text-gray-700 dark:text-gray-300;
+    }
+
+    .calendario-filtered-item {
+        @apply border border-black/10 bg-white/70 dark:border-white/20 dark:bg-white/10;
+    }
+
+    .calendario-filtered-item--link {
+        @apply transition hover:-translate-y-0.5 hover:shadow-sm;
+        border-color: rgb(0 0 0 / 0.14);
+    }
+
+    .calendario-filtered-item--button {
+        @apply transition hover:-translate-y-0.5 hover:shadow-sm;
+        border-color: rgb(0 0 0 / 0.14);
+    }
+
+    .calendario-filtered-item--link:hover {
+        border-color: rgb(17 24 39 / 0.28);
+        background-color: rgb(255 255 255 / 0.86);
+    }
+
+    .calendario-filtered-item--button:hover {
+        border-color: rgb(17 24 39 / 0.28);
+        background-color: rgb(255 255 255 / 0.86);
+    }
+
+    :root.dark .calendario-filtered-item--link {
+        border-color: rgb(255 255 255 / 0.22);
+    }
+
+    :root.dark .calendario-filtered-item--button {
+        border-color: rgb(255 255 255 / 0.22);
+    }
+
+    :root.dark .calendario-filtered-item--link:hover {
+        border-color: rgb(255 255 255 / 0.38);
+        background-color: rgb(255 255 255 / 0.16);
+    }
+
+    :root.dark .calendario-filtered-item--button:hover {
+        border-color: rgb(255 255 255 / 0.38);
+        background-color: rgb(255 255 255 / 0.16);
+    }
+
+    .calendario-filtered-title {
+        @apply text-gray-900 dark:text-gray-100;
+    }
+
+    .calendario-filtered-meta {
+        @apply text-gray-700 dark:text-gray-300;
+    }
+
+    .calendario-filtered-type {
+        @apply inline-flex rounded-full border px-3 py-1 text-[0.68rem] font-bold uppercase tracking-wide;
+    }
+
+    .calendario-filtered-type--cn {
+        border-color: rgb(248 113 113 / 0.5);
+        background-color: rgb(255 226 226 / 0.9);
+        color: rgb(159 31 31);
+    }
+
+    .calendario-filtered-type--br {
+        border-color: rgb(126 240 86 / 0.55);
+        background-color: rgb(126 240 86 / 0.2);
+        color: rgb(22 101 52);
+    }
+
+    .calendario-filtered-type--local {
+        border-color: rgb(255 206 15 / 0.55);
+        background-color: rgb(255 206 15 / 0.22);
+        color: rgb(113 63 18);
+    }
+
+    :root.dark .calendario-filtered-type--br {
+        border-color: rgb(126 240 86 / 0.45);
+        background-color: rgb(20 83 45 / 0.35);
+        color: rgb(187 247 208);
+    }
+
+    :root.dark .calendario-filtered-type--cn {
+        border-color: rgb(248 113 113 / 0.45);
+        background-color: rgb(127 29 29 / 0.45);
+        color: rgb(254 226 226);
+    }
+
+    :root.dark .calendario-filtered-type--local {
+        border-color: rgb(255 206 15 / 0.45);
+        background-color: rgb(120 53 15 / 0.35);
+        color: rgb(254 243 199);
+    }
+
+    .calendario-filtered-link {
+        @apply shrink-0 text-xs;
+    }
+
+    .calendario-filtered-empty {
+        @apply border border-black/10 bg-white/70 text-gray-700 dark:border-white/20 dark:bg-white/10 dark:text-gray-300;
+    }
+
+    .calendario-widget .fc .fc-toolbar-title {
+        @apply text-2xl font-black tracking-tight text-gray-900 dark:text-gray-100;
+    }
+
+    .calendario-widget .fc .fc-button-primary {
+        @apply shadow-none transition;
+    }
+
+    .calendario-widget .fc .fc-button-primary:focus {
+        box-shadow: none;
+    }
+
+    .calendario-widget .fc .fc-today-button {
+        min-height: 2.25rem;
+        border-radius: 9999px;
+        border-color: rgb(194 194 194 / 0.95);
+        background-color: rgb(238 235 229 / 0.92);
+        color: rgb(15 23 42);
+        padding: 0.5rem 1.25rem;
+        font-size: 0.875rem;
+        font-weight: 700;
+        letter-spacing: normal;
+        text-transform: none;
+    }
+
+    .calendario-widget .fc .fc-today-button:hover {
+        border-color: rgb(188 188 188 / 0.98);
+        color: rgb(15 23 42);
+        background-color: rgb(246 243 237 / 0.95);
+    }
+
+    .calendario-widget .fc .fc-today-button:focus {
+        box-shadow: 0 0 0 2px rgb(194 194 194 / 0.35);
+    }
+
+    .calendario-widget .fc .fc-today-button:disabled {
+        opacity: 0.6;
+    }
+
+    .calendario-widget .fc .fc-prev-button,
+    .calendario-widget .fc .fc-next-button {
+        min-height: 2.25rem;
+        min-width: 2.25rem;
+        border-radius: 9999px;
+        border-color: rgb(194 194 194 / 0.95);
+        background-color: rgb(238 235 229 / 0.92);
+        color: rgb(15 23 42);
+        padding: 0;
+        font-size: 1.25rem;
+        font-weight: 900;
+        line-height: 1;
+    }
+
+    .calendario-widget .fc .fc-prev-button:hover,
+    .calendario-widget .fc .fc-next-button:hover {
+        border-color: rgb(188 188 188 / 0.98);
+        color: rgb(15 23 42);
+        background-color: rgb(246 243 237 / 0.95);
+    }
+
+    .calendario-widget .fc .fc-prev-button:focus,
+    .calendario-widget .fc .fc-next-button:focus {
+        box-shadow: 0 0 0 2px rgb(194 194 194 / 0.35);
+    }
+
+    :root.dark .calendario-widget .fc .fc-today-button {
+        border-color: rgb(255 255 255 / 0.28);
+        background-color: rgb(255 255 255 / 0.16);
+        color: rgb(243 244 246);
+    }
+
+    :root.dark .calendario-widget .fc .fc-prev-button,
+    :root.dark .calendario-widget .fc .fc-next-button {
+        border-color: rgb(255 255 255 / 0.28);
+        background-color: rgb(255 255 255 / 0.16);
+        color: rgb(243 244 246);
+    }
+
+    :root.dark .calendario-widget .fc .fc-today-button:hover,
+    :root.dark .calendario-widget .fc .fc-prev-button:hover,
+    :root.dark .calendario-widget .fc .fc-next-button:hover {
+        border-color: rgb(255 255 255 / 0.35);
+        color: rgb(243 244 246);
+        background-color: rgb(255 255 255 / 0.2);
+    }
+
+    .calendario-widget .fc .fc-col-header-cell-cushion {
+        @apply py-2 text-xs font-semibold uppercase tracking-wide text-gray-700 dark:text-gray-300;
+    }
+
+    .calendario-widget .fc .fc-daygrid-day-number {
+        @apply p-1 text-sm font-semibold text-gray-700 dark:text-gray-200;
+    }
+
+    .calendario-widget .fc .fc-daygrid-event {
+        @apply rounded-lg border-0 px-1.5 py-0.5 font-semibold;
+    }
+
+    .calendario-widget .fc-theme-standard td,
+    .calendario-widget .fc-theme-standard th {
+        @apply border-gray-200 dark:border-gray-700;
+    }
+
+    .calendario-widget .fc-theme-standard .fc-scrollgrid {
+        border-color: rgb(126 240 86 / 0.45);
+    }
+
+    .calendario-widget .fc .fc-daygrid-day.fc-day-today {
+        background-color: rgb(234 228 63 / 0.2);
+    }
+
+    .calendario-widget .fc .fc-daygrid-day.fc-day-today .fc-daygrid-day-number {
+        color: #111827;
+        font-weight: 700;
+    }
+
+    :root.dark .calendario-widget .fc-theme-standard .fc-scrollgrid {
+        border-color: rgb(97 227 255 / 0.35);
+    }
+
+    :root.dark .calendario-widget .fc .fc-daygrid-day.fc-day-today {
+        background-color: rgb(97 227 255 / 0.14);
+    }
+
+    :root.dark .calendario-widget .fc .fc-daygrid-day.fc-day-today .fc-daygrid-day-number {
+        color: rgb(243 244 246);
+    }
+
+    .single-page-root {
+        @apply flex flex-col;
+    }
+
+    .single-page-section {
+        @apply border-b border-black/10;
+        color: var(--single-page-text, rgb(17 24 39));
+        background-color: var(--single-page-bg, #f9f0e3);
+        background-image: none;
+    }
+
+    .single-page-inner {
+        @apply mx-auto flex min-h-[78vh] w-full max-w-7xl flex-col justify-center gap-8 px-3 py-16 sm:px-5 lg:px-6;
+    }
+
+    .single-page-section-header {
+        @apply flex flex-col gap-5 md:flex-row md:items-end md:justify-between;
+    }
+
+    .single-page-section-title {
+        @apply text-4xl font-black tracking-tight;
+    }
+
+    .single-page-section-subtitle {
+        @apply mt-2 max-w-3xl text-base leading-relaxed;
+        color: var(--single-page-muted, rgb(55 65 81));
+    }
+
+    .single-page-section-cta {
+        color: var(--single-page-text, rgb(17 24 39));
+    }
+
+    .single-page-section-content {
+        @apply text-base leading-7;
+    }
+
+    .single-page-hero-content {
+        @apply max-w-4xl space-y-6;
+    }
+
+    .single-page-hero-kicker {
+        @apply text-xs font-bold uppercase tracking-[0.2em];
+        color: var(--single-page-muted, rgb(55 65 81));
+    }
+
+    .single-page-hero-title {
+        @apply text-4xl font-black leading-tight md:text-6xl;
+    }
+
+    .single-page-hero-description {
+        @apply max-w-3xl text-base leading-relaxed;
+        color: var(--single-page-muted, rgb(55 65 81));
+    }
+
+    .single-page-hero-actions {
+        @apply flex flex-wrap gap-3;
+    }
+
+    .single-page-hero-button {
+        color: var(--single-page-text, rgb(17 24 39));
+    }
+
+    .single-page-summary-text {
+        @apply max-w-4xl text-base leading-relaxed;
+    }
+
+    .single-page-card-grid {
+        @apply grid gap-4 md:grid-cols-2 lg:grid-cols-3;
+    }
+
+    .single-page-card {
+        @apply rounded-2xl border border-black/10 p-5 shadow-sm transition hover:-translate-y-0.5 hover:shadow-md;
+        background-color: var(--single-page-surface, rgb(255 255 255 / 0.68));
+    }
+
+    .single-page-card-image {
+        @apply mb-4 h-40 w-full rounded-xl object-cover;
+    }
+
+    .single-page-card-kicker {
+        @apply text-xs font-semibold uppercase tracking-wide;
+        color: var(--single-page-muted, rgb(55 65 81));
+    }
+
+    .single-page-card-title {
+        @apply mt-1 text-xl font-black leading-snug;
+    }
+
+    .single-page-card-title a:hover {
+        @apply underline;
+    }
+
+    .single-page-card-description {
+        @apply mt-2 text-base leading-relaxed;
+        color: var(--single-page-muted, rgb(55 65 81));
+    }
+
+    .single-page-events-list {
+        @apply space-y-3;
+    }
+
+    .single-page-events-item {
+        @apply list-none;
+    }
+
+    .single-page-events-link {
+        @apply flex items-center gap-4 rounded-2xl border border-black/10 p-4 transition hover:-translate-y-0.5 hover:shadow-md;
+        background-color: var(--single-page-surface, rgb(255 255 255 / 0.68));
+    }
+
+    .single-page-event-image {
+        @apply h-20 w-20 shrink-0 rounded-lg object-cover;
+    }
+
+    .single-page-events-date {
+        @apply inline-flex min-w-20 items-center justify-center rounded-xl px-3 py-2 text-sm font-black uppercase;
+        background-color: rgb(255 255 255 / 0.56);
+    }
+
+    .single-page-events-body {
+        @apply flex flex-col gap-1;
+    }
+
+    .single-page-events-title {
+        @apply text-lg font-bold;
+    }
+
+    .single-page-events-meta {
+        @apply text-sm;
+        color: var(--single-page-muted, rgb(55 65 81));
+    }
+
+    .single-page-project-grid {
+        @apply grid gap-4 md:grid-cols-2 lg:grid-cols-3;
+    }
+
+    .single-page-project-item {
+        @apply rounded-2xl border border-black/10 p-5 transition hover:-translate-y-0.5 hover:shadow-md;
+        background-color: var(--single-page-surface, rgb(255 255 255 / 0.68));
+    }
+
+    .single-page-project-image {
+        @apply mb-4 h-40 w-full rounded-xl object-cover;
+    }
+
+    .single-page-project-title {
+        @apply text-xl font-black leading-snug;
+    }
+
+    .single-page-project-intro {
+        @apply mt-2 text-base leading-relaxed;
+        color: var(--single-page-muted, rgb(55 65 81));
+    }
+
+    .single-page-members-grid {
+        @apply grid gap-5 md:grid-cols-2;
+    }
+
+    .single-page-members-group {
+        @apply rounded-2xl border border-black/10 p-5;
+        background-color: var(--single-page-surface, rgb(255 255 255 / 0.68));
+    }
+
+    .single-page-members-title {
+        @apply text-lg font-black;
+    }
+
+    .single-page-members-list {
+        @apply mt-3 grid gap-3;
+    }
+
+    .single-page-member-card {
+        @apply flex items-center gap-3 rounded-xl border border-black/10 px-3 py-3;
+        background-color: rgb(255 255 255 / 0.48);
+    }
+
+    .single-page-member-photo {
+        @apply h-12 w-12 rounded-full object-cover;
+    }
+
+    .single-page-member-photo-placeholder {
+        @apply inline-flex h-12 w-12 items-center justify-center rounded-full border border-black/10 bg-white/70 text-xl;
+    }
+
+    .single-page-member-body {
+        @apply flex min-w-0 flex-col;
+    }
+
+    .single-page-member-name {
+        @apply font-semibold;
+    }
+
+    .single-page-member-role {
+        @apply text-sm;
+        color: var(--single-page-muted, rgb(55 65 81));
+    }
+
+    .single-page-faq-list {
+        @apply grid gap-3;
+    }
+
+    .single-page-faq-item {
+        @apply rounded-2xl border border-black/10 p-4;
+        background-color: var(--single-page-surface, rgb(255 255 255 / 0.68));
+    }
+
+    .single-page-faq-item-summary {
+        @apply flex cursor-pointer items-center gap-2 text-base font-semibold leading-snug;
+        list-style: none;
+    }
+
+    .single-page-faq-item-summary::-webkit-details-marker {
+        display: none;
+    }
+
+    .single-page-faq-item-summary::before {
+        content: "▶";
+        @apply text-xs text-black/75 transition-transform dark:text-gray-200;
+    }
+
+    .single-page-faq-item[open] .single-page-faq-item-summary::before {
+        transform: rotate(90deg);
+    }
+
+    .single-page-faq-item-content {
+        @apply mt-3 space-y-3 text-base leading-6;
+        color: var(--single-page-muted, rgb(55 65 81));
+    }
+
+    .single-page-empty-text {
+        @apply text-base italic;
+        color: var(--single-page-muted, rgb(55 65 81));
+    }
+
+    .single-page-section--hero {
+        --single-page-bg: #7ef056;
+        --single-page-text: rgb(12 46 19);
+        --single-page-muted: rgb(20 81 34);
+        --single-page-surface: rgb(255 255 255 / 0.52);
+    }
+
+    .single-page-section--yellow {
+        --single-page-bg: #eae43f;
+        --single-page-text: rgb(56 44 1);
+        --single-page-muted: rgb(92 69 5);
+        --single-page-surface: rgb(255 255 255 / 0.58);
+    }
+
+    .single-page-section--blue {
+        --single-page-bg: #61e3ff;
+        --single-page-text: rgb(4 48 62);
+        --single-page-muted: rgb(6 81 103);
+        --single-page-surface: rgb(255 255 255 / 0.58);
+    }
+
+    .single-page-section--gold {
+        --single-page-bg: #ffc60f;
+        --single-page-text: rgb(70 41 0);
+        --single-page-muted: rgb(100 60 5);
+        --single-page-surface: rgb(255 255 255 / 0.58);
+    }
+
+    :root.dark .single-page-section {
+        @apply border-white/16;
+    }
+
+    :root.dark .single-page-section--hero {
+        --single-page-bg: #294d26;
+        --single-page-text: rgb(240 255 233);
+        --single-page-muted: rgb(194 235 180);
+        --single-page-surface: rgb(7 18 9 / 0.36);
+    }
+
+    :root.dark .single-page-section--yellow {
+        --single-page-bg: #5a5414;
+        --single-page-text: rgb(255 250 213);
+        --single-page-muted: rgb(235 224 155);
+        --single-page-surface: rgb(20 17 4 / 0.34);
+    }
+
+    :root.dark .single-page-section--blue {
+        --single-page-bg: #0f4352;
+        --single-page-text: rgb(222 248 255);
+        --single-page-muted: rgb(171 224 237);
+        --single-page-surface: rgb(3 19 24 / 0.38);
+    }
+
+    :root.dark .single-page-section--gold {
+        --single-page-bg: #5b430a;
+        --single-page-text: rgb(255 239 194);
+        --single-page-muted: rgb(238 207 142);
+        --single-page-surface: rgb(24 16 2 / 0.34);
+    }
+
+    .single-page-reveal {
+        opacity: 0;
+        transform: translateY(22px);
+        transition:
+            opacity 560ms ease,
+            transform 560ms ease;
+    }
+
+    .single-page-reveal.is-visible {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+        .single-page-reveal {
+            opacity: 1;
+            transform: none;
+            transition: none;
+        }
+    }
+}

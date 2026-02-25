@@ -1,0 +1,29 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import { getCollection } from "astro:content";
+
+export async function getStaticPaths() {
+    const allNews = await getCollection("news");
+    const localNews = allNews.filter((post) => post.data.type === "local");
+    return localNews.map((entry) => ({
+        params: { slug: entry.slug },
+        props: { entry },
+    }));
+}
+
+const { entry } = Astro.props;
+const { Content } = await entry.render();
+---
+
+<Layout title={`${entry.data.title} - Notícias`}>
+    <article class="max-w-3xl mx-auto px-3 py-8 sm:px-5">
+        <div class="mb-8">
+            <span class="news-entry-meta text-sm">{entry.data.date.toLocaleDateString()}</span>
+            <h1 class="internal-page-title mt-2 mb-4">{entry.data.title}</h1>
+            {entry.data.thumbnail && <img src={entry.data.thumbnail} alt={entry.data.title} class="w-full h-auto rounded-lg shadow-md" />}
+        </div>
+        <div class="markdown-content max-w-none">
+            <Content />
+        </div>
+    </article>
+</Layout>

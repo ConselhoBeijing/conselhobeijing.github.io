@@ -1,0 +1,340 @@
+---
+import Layout from "../layouts/Layout.astro";
+import { getCollection, getEntry } from "astro:content";
+import SinglePageSection from "../components/single-page/SinglePageSection.astro";
+import { toLocalEventSummary } from "../utils/events";
+import { stripMarkdown, summarize, extractFirstImageUrl, extractFaqEntries } from "../utils/content-preview";
+import { singlePageSections } from "../config/single-page";
+
+const aboutEntry = await getEntry("pages", "about");
+const faqEntry = await getEntry("pages", "faq");
+const allNews = await getCollection("news");
+const allEvents = await getCollection("events");
+const allProjects = await getCollection("projects");
+const teamMembers = await getCollection("team");
+
+if (!aboutEntry) {
+  throw new Error("Conteúdo da página sobre não encontrado em src/content/pages/about.md.");
+}
+
+if (!faqEntry) {
+  throw new Error("Conteúdo da página FAQ não encontrado em src/content/pages/faq.md.");
+}
+
+const projects = [...allProjects].sort((a, b) => a.data.title.localeCompare(b.data.title, "pt-BR"));
+
+const latestNews = [...allNews]
+  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
+  .slice(0, 3)
+  .map((entry) => ({
+    title: entry.data.title,
+    dateLabel: entry.data.date.toLocaleDateString("pt-BR"),
+    href: entry.data.type === "external" ? (entry.data.externalLink ?? "/news") : `/news/${entry.slug}`,
+    isExternal: entry.data.type === "external",
+    newsThumbnail: entry.data.thumbnail ?? extractFirstImageUrl(entry.body || ""),
+    summary: summarize(stripMarkdown((entry.data.description ?? entry.body) || "Leia a notícia completa para mais detalhes."), 160),
+  }));
+
+const todayStart = new Date();
+todayStart.setHours(0, 0, 0, 0);
+const todayStartValue = todayStart.valueOf();
+
+const upcomingEvents = allEvents
+  .filter((entry) => entry.data.start.valueOf() >= todayStartValue)
+  .sort((a, b) => a.data.start.valueOf() - b.data.start.valueOf())
+  .slice(0, 3)
+  .map((entry) => {
+    const summary = toLocalEventSummary(entry);
+    return {
+      ...summary,
+      eventThumbnail: extractFirstImageUrl(entry.body || ""),
+    };
+  });
+
+const directors = teamMembers
+  .filter((member) => member.data.group === "director")
+  .sort((a, b) => a.data.name.localeCompare(b.data.name, "pt-BR"));
+
+const executives = teamMembers
+  .filter((member) => member.data.group === "executive")
+  .sort((a, b) => a.data.name.localeCompare(b.data.name, "pt-BR"));
+
+const aboutSummary = summarize(stripMarkdown(aboutEntry.body || aboutEntry.data.subtitle || ""), 320);
+const faqEntries = extractFaqEntries(faqEntry.body || "");
+
+const heroSection = singlePageSections.find((section) => section.key === "hero");
+const sobreSection = singlePageSections.find((section) => section.key === "sobre");
+const noticiasSection = singlePageSections.find((section) => section.key === "noticias");
+const agendaSection = singlePageSections.find((section) => section.key === "agenda");
+const projetosSection = singlePageSections.find((section) => section.key === "projetos");
+const equipeSection = singlePageSections.find((section) => section.key === "equipe");
+const faqSection = singlePageSections.find((section) => section.key === "faq");
+
+if (!heroSection || !sobreSection || !noticiasSection || !agendaSection || !projetosSection || !equipeSection || !faqSection) {
+  throw new Error("Configuração incompleta da singlePageSections em src/config/single-page.ts.");
+}
+
+function formatEventDate(startISO: string): string {
+  return new Date(startISO).toLocaleDateString("pt-BR", { day: "2-digit", month: "short" }).replace(".", "");
+}
+
+function splitFaqContent(content: string): string[] {
+  return content
+    .split(/\n{2,}/)
+    .map((part) => part.trim())
+    .filter(Boolean);
+}
+---
+
+<Layout title="Visão Geral - Conselho dos Cidadãos" description="Página única com visão geral das principais seções do Conselho dos Cidadãos.">
+  <div class="single-page-root">
+    <SinglePageSection
+      id="single-page-section-hero"
+      title={heroSection.title}
+      subtitle={heroSection.subtitle}
+      tone={heroSection.tone}
+      ctaLabel={heroSection.ctaLabel}
+      ctaHref={heroSection.ctaHref}
+    >
+      <div class="single-page-hero-content">
+        <p class="single-page-hero-kicker">Visão Geral</p>
+        <h1 class="single-page-hero-title">Tudo em um só fluxo de leitura.</h1>
+        <p class="single-page-hero-description">
+          Explore as principais iniciativas, notícias e agendas do conselho em um percurso contínuo, com acesso rápido aos conteúdos completos de cada área.
+        </p>
+        <div class="single-page-hero-actions">
+          <a href="/news" class="site-button single-page-hero-button">Últimas Notícias</a>
+          <a href="/events" class="site-button single-page-hero-button">Próximos Eventos</a>
+        </div>
+      </div>
+    </SinglePageSection>
+
+    <SinglePageSection
+      id="single-page-section-sobre"
+      title={sobreSection.title}
+      subtitle={sobreSection.subtitle}
+      tone={sobreSection.tone}
+      ctaLabel={sobreSection.ctaLabel}
+      ctaHref={sobreSection.ctaHref}
+    >
+      <p class="single-page-summary-text">{aboutSummary}</p>
+    </SinglePageSection>
+
+    <SinglePageSection
+      id="single-page-section-noticias"
+      title={noticiasSection.title}
+      subtitle={noticiasSection.subtitle}
+      tone={noticiasSection.tone}
+      ctaLabel={noticiasSection.ctaLabel}
+      ctaHref={noticiasSection.ctaHref}
+    >
+      {
+        latestNews.length > 0 ? (
+          <div class="single-page-card-grid">
+            {latestNews.map((item) => (
+              <article class="single-page-card">
+                {item.newsThumbnail && <img src={item.newsThumbnail} alt={`Imagem da notícia ${item.title}`} class="single-page-card-image" loading="lazy" />}
+                <p class="single-page-card-kicker">{item.dateLabel}</p>
+                <h3 class="single-page-card-title">
+                  <a href={item.href} target={item.isExternal ? "_blank" : "_self"} rel={item.isExternal ? "noopener noreferrer" : undefined}>
+                    {item.title}
+                  </a>
+                </h3>
+                <p class="single-page-card-description">{item.summary}</p>
+              </article>
+            ))}
+          </div>
+        ) : (
+          <p class="single-page-empty-text">Ainda não há notícias publicadas.</p>
+        )
+      }
+    </SinglePageSection>
+
+    <SinglePageSection
+      id="single-page-section-agenda"
+      title={agendaSection.title}
+      subtitle={agendaSection.subtitle}
+      tone={agendaSection.tone}
+      ctaLabel={agendaSection.ctaLabel}
+      ctaHref={agendaSection.ctaHref}
+    >
+      {
+        upcomingEvents.length > 0 ? (
+          <ul class="single-page-events-list">
+            {upcomingEvents.map((event) => (
+              <li class="single-page-events-item">
+                <a href={event.url} class="single-page-events-link">
+                  {event.eventThumbnail && (
+                    <img src={event.eventThumbnail} alt={`Imagem do evento ${event.title}`} class="single-page-event-image" loading="lazy" />
+                  )}
+                  <span class="single-page-events-date">{formatEventDate(event.startISO)}</span>
+                  <span class="single-page-events-body">
+                    <span class="single-page-events-title">{event.title}</span>
+                    <span class="single-page-events-meta">{event.location}</span>
+                  </span>
+                </a>
+              </li>
+            ))}
+          </ul>
+        ) : (
+          <p class="single-page-empty-text">Nenhum evento próximo no momento.</p>
+        )
+      }
+    </SinglePageSection>
+
+    <SinglePageSection
+      id="single-page-section-projetos"
+      title={projetosSection.title}
+      subtitle={projetosSection.subtitle}
+      tone={projetosSection.tone}
+      ctaLabel={projetosSection.ctaLabel}
+      ctaHref={projetosSection.ctaHref}
+    >
+      {
+        projects.length > 0 ? (
+          <div class="single-page-project-grid">
+            {projects.map((project) => {
+              const projectThumbnail = project.data.thumbnail ?? project.data.cover;
+
+              return (
+                <a href={`/projects/${project.slug}`} class="single-page-project-item">
+                  {projectThumbnail && (
+                    <img src={projectThumbnail} alt={`Miniatura do projeto ${project.data.title}`} class="single-page-project-image" loading="lazy" />
+                  )}
+                  <h3 class="single-page-project-title">{project.data.title}</h3>
+                  <p class="single-page-project-intro">{project.data.intro}</p>
+                </a>
+              );
+            })}
+          </div>
+        ) : (
+          <p class="single-page-empty-text">Projetos em atualização. Confira novamente em breve.</p>
+        )
+      }
+    </SinglePageSection>
+
+    <SinglePageSection
+      id="single-page-section-equipe"
+      title={equipeSection.title}
+      subtitle={equipeSection.subtitle}
+      tone={equipeSection.tone}
+      ctaLabel={equipeSection.ctaLabel}
+      ctaHref={equipeSection.ctaHref}
+    >
+      <div class="single-page-members-grid">
+        <section class="single-page-members-group">
+          <h3 class="single-page-members-title">Conselheiros Diretores</h3>
+          {
+            directors.length > 0 ? (
+              <ul class="single-page-members-list">
+                {directors.map((member) => (
+                  <li class="single-page-member-card">
+                    {
+                      member.data.photo ? (
+                        <img src={member.data.photo} alt={`Foto de ${member.data.name}`} class="single-page-member-photo" loading="lazy" />
+                      ) : (
+                        <span class="single-page-member-photo-placeholder" aria-hidden="true">👤</span>
+                      )
+                    }
+                    <span class="single-page-member-body">
+                      <span class="single-page-member-name">{member.data.name}</span>
+                      <span class="single-page-member-role">{member.data.role}</span>
+                    </span>
+                  </li>
+                ))}
+              </ul>
+            ) : (
+              <p class="single-page-empty-text">Nenhum conselheiro diretor cadastrado.</p>
+            )
+          }
+        </section>
+
+        <section class="single-page-members-group">
+          <h3 class="single-page-members-title">Conselheiros Executivos</h3>
+          {
+            executives.length > 0 ? (
+              <ul class="single-page-members-list">
+                {executives.map((member) => (
+                  <li class="single-page-member-card">
+                    {
+                      member.data.photo ? (
+                        <img src={member.data.photo} alt={`Foto de ${member.data.name}`} class="single-page-member-photo" loading="lazy" />
+                      ) : (
+                        <span class="single-page-member-photo-placeholder" aria-hidden="true">👤</span>
+                      )
+                    }
+                    <span class="single-page-member-body">
+                      <span class="single-page-member-name">{member.data.name}</span>
+                      <span class="single-page-member-role">{member.data.role}</span>
+                    </span>
+                  </li>
+                ))}
+              </ul>
+            ) : (
+              <p class="single-page-empty-text">Nenhum conselheiro executivo cadastrado.</p>
+            )
+          }
+        </section>
+      </div>
+    </SinglePageSection>
+
+    <SinglePageSection
+      id="single-page-section-faq"
+      title={faqSection.title}
+      subtitle={faqSection.subtitle}
+      tone={faqSection.tone}
+      ctaLabel={faqSection.ctaLabel}
+      ctaHref={faqSection.ctaHref}
+    >
+      {
+        faqEntries.length > 0 ? (
+          <div class="single-page-faq-list">
+            {faqEntries.map((item) => (
+              <details class="single-page-faq-item">
+                <summary class="single-page-faq-item-summary">{item.question}</summary>
+                <div class="single-page-faq-item-content">
+                  {splitFaqContent(item.content).map((paragraph) => (
+                    <p>{paragraph}</p>
+                  ))}
+                </div>
+              </details>
+            ))}
+          </div>
+        ) : (
+          <p class="single-page-empty-text">{faqEntry.data.subtitle}</p>
+        )
+      }
+    </SinglePageSection>
+  </div>
+
+  <script is:inline>
+    (() => {
+      const sections = Array.from(document.querySelectorAll("[data-single-page-section]"));
+      if (sections.length === 0) {
+        return;
+      }
+
+      const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+      if (prefersReducedMotion) {
+        sections.forEach((section) => section.classList.add("is-visible"));
+        return;
+      }
+
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("is-visible");
+            }
+          });
+        },
+        {
+          threshold: 0.2,
+          rootMargin: "0px 0px -8% 0px",
+        },
+      );
+
+      sections.forEach((section) => observer.observe(section));
+    })();
+  </script>
+</Layout>

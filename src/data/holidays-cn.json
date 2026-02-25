@@ -1,0 +1,64 @@
+[
+  {
+    "title": "Ano Novo / New Year's Day (元旦)",
+    "start": "2025-01-01",
+    "allDay": true
+  },
+  {
+    "title": "Ano Novo Chinês / Chinese New Year (春节)",
+    "start": "2025-01-29",
+    "allDay": true
+  },
+  {
+    "title": "Dia do Trabalho / Labour Day (劳动节)",
+    "start": "2025-05-01",
+    "allDay": true
+  },
+  {
+    "title": "Festival do Barco-Dragão / Dragon Boat Festival (端午节)",
+    "start": "2025-05-31",
+    "allDay": true
+  },
+  {
+    "title": "Dia Nacional da China / China National Day (国庆节)",
+    "start": "2025-10-01",
+    "allDay": true
+  },
+  {
+    "title": "Festival do Meio do Outono / Mid-Autumn Festival (中秋节)",
+    "start": "2025-10-06",
+    "allDay": true
+  },
+  {
+    "title": "Ano Novo / New Year's Day (元旦)",
+    "start": "2026-01-01",
+    "allDay": true
+  },
+  {
+    "title": "Ano Novo Chinês / Chinese New Year (春节)",
+    "start": "2026-02-15",
+    "end": "2026-02-23",
+    "allDay": true
+  },
+  {
+    "title": "Dia do Trabalho / Labour Day (劳动节)",
+    "start": "2026-05-01",
+    "allDay": true
+  },
+  {
+    "title": "Festival do Barco-Dragão / Dragon Boat Festival (端午节)",
+    "start": "2026-06-19",
+    "allDay": true
+  },
+  {
+    "title": "Festival do Meio do Outono / Mid-Autumn Festival (中秋节)",
+    "start": "2026-09-25",
+    "allDay": true
+  },
+  {
+    "title": "Dia Nacional da China / China National Day (国庆节)",
+    "start": "2026-10-01",
+    "end": "2026-10-07",
+    "allDay": true
+  }
+]

@@ -1,0 +1,100 @@
+<div id="animated-background" class="fixed inset-0 -z-10 overflow-hidden pointer-events-none opacity-20 dark:opacity-10">
+  <canvas id="flag-canvas" class="w-full h-full"></canvas>
+</div>
+
+<script>
+  const canvas = document.getElementById('flag-canvas') as HTMLCanvasElement;
+  const ctx = canvas.getContext('2d');
+
+  let width = window.innerWidth;
+  let height = window.innerHeight;
+  let particles: any[] = [];
+
+  // Brazilian Flag Palette
+  const colors = ['#009B3A', '#FEDF00', '#002776', '#FFFFFF'];
+
+  function resize() {
+    width = window.innerWidth;
+    height = window.innerHeight;
+    canvas.width = width;
+    canvas.height = height;
+    initParticles();
+  }
+
+  window.addEventListener('resize', resize);
+
+  class Particle {
+    x: number;
+    y: number;
+    size: number;
+    speedX: number;
+    speedY: number;
+    color: string;
+    shape: 'circle' | 'rhombus';
+
+    constructor() {
+      this.x = Math.random() * width;
+      this.y = Math.random() * height;
+      this.size = Math.random() * 50 + 10; // Varied sizes
+      this.speedX = (Math.random() - 0.5) * 0.5;
+      this.speedY = (Math.random() - 0.5) * 0.5;
+      this.color = colors[Math.floor(Math.random() * colors.length)];
+      this.shape = Math.random() > 0.5 ? 'circle' : 'rhombus';
+    }
+
+    update() {
+      this.x += this.speedX;
+      this.y += this.speedY;
+
+      // Wrap around screen
+      if (this.x > width + this.size) this.x = -this.size;
+      else if (this.x < -this.size) this.x = width + this.size;
+      if (this.y > height + this.size) this.y = -this.size;
+      else if (this.y < -this.size) this.y = height + this.size;
+    }
+
+    draw() {
+      if (!ctx) return;
+      ctx.beginPath();
+      ctx.globalAlpha = 0.6;
+      ctx.strokeStyle = this.color;
+      ctx.lineWidth = 1;
+
+      if (this.shape === 'circle') {
+        ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+        ctx.stroke();
+      } else {
+        // Rhombus (like flag)
+        ctx.moveTo(this.x, this.y - this.size);
+        ctx.lineTo(this.x + this.size * 1.5, this.y); // Slightly stretched
+        ctx.lineTo(this.x, this.y + this.size);
+        ctx.lineTo(this.x - this.size * 1.5, this.y);
+        ctx.closePath();
+        ctx.stroke();
+      }
+    }
+  }
+
+  function initParticles() {
+    particles = [];
+    const particleCount = Math.floor((width * height) / 15000); // Density based on screen size
+    for (let i = 0; i < particleCount; i++) {
+      particles.push(new Particle());
+    }
+  }
+
+  function animate() {
+    if (!ctx) return;
+    ctx.clearRect(0, 0, width, height);
+    
+    particles.forEach(p => {
+      p.update();
+      p.draw();
+    });
+
+    requestAnimationFrame(animate);
+  }
+
+  resize();
+  animate();
+</script>

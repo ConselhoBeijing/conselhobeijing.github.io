@@ -1,0 +1,31 @@
+---
+interface Props {
+  title?: string;
+  href?: string;
+  colSpan?: string; // e.g., "col-span-1 md:col-span-2"
+  rowSpan?: string;
+  class?: string;
+  titleLineClass?: string;
+}
+
+const { title, href, colSpan = "col-span-1", rowSpan = "row-span-1", class: className = "", titleLineClass = "" } = Astro.props;
+
+const Tag = href ? 'a' : 'div';
+---
+
+<Tag 
+  href={href} 
+  class={`bento-card rounded-xl p-6 transition-all flex flex-col ${href ? 'cursor-pointer' : ''} ${colSpan} ${rowSpan} ${className}`}
+>
+  {
+    title && (
+      <div class="bento-card-title-row mb-4 flex items-center gap-3">
+        <h3 class="bento-card-title">{title}</h3>
+        <span class={`bento-card-title-line ${titleLineClass}`} aria-hidden="true"></span>
+      </div>
+    )
+  }
+  <div class="flex-1">
+    <slot />
+  </div>
+</Tag>
