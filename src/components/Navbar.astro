@@ -73,7 +73,7 @@ import { branding, primaryNavLinks } from "../config/site-links";
     </div>
     <div class="site-navbar-accent" aria-hidden="true"></div>
 
-    <div class="hidden sm:hidden" id="mobile-menu">
+    <div class="site-mobile-menu sm:hidden" id="mobile-menu" aria-hidden="true">
         <div class="pt-2 pb-3 space-y-1">
             {
                 primaryNavLinks.map((link) => (
@@ -101,11 +101,72 @@ import { branding, primaryNavLinks } from "../config/site-links";
     const btn = document.querySelector("button.mobile-menu-button");
     const menu = document.querySelector("#mobile-menu");
 
-    if (btn && menu) {
+    if (btn instanceof HTMLButtonElement && menu instanceof HTMLElement) {
+        let openScrollY = 0;
+        let isMenuSettling = false;
+        let lastScrollIntentAt = 0;
+        const SCROLL_INTENT_WINDOW_MS = 450;
+
+        const markScrollIntent = () => {
+            lastScrollIntentAt = performance.now();
+        };
+
+        const closeMobileMenu = () => {
+            if (!menu.classList.contains("is-open")) {
+                return;
+            }
+
+            menu.classList.remove("is-open");
+            menu.setAttribute("aria-hidden", "true");
+            btn.setAttribute("aria-expanded", "false");
+        };
+
+        const openMobileMenu = () => {
+            isMenuSettling = true;
+            openScrollY = window.scrollY;
+            menu.classList.add("is-open");
+            menu.setAttribute("aria-hidden", "false");
+            btn.setAttribute("aria-expanded", "true");
+
+            requestAnimationFrame(() => {
+                openScrollY = window.scrollY;
+                isMenuSettling = false;
+            });
+        };
+
+        const handleScrollClose = () => {
+            if (!menu.classList.contains("is-open")) {
+                return;
+            }
+
+            if (isMenuSettling) {
+                return;
+            }
+
+            if (performance.now() - lastScrollIntentAt > SCROLL_INTENT_WINDOW_MS) {
+                return;
+            }
+
+            if (Math.abs(window.scrollY - openScrollY) < 2) {
+                return;
+            }
+
+            closeMobileMenu();
+        };
+
         btn.addEventListener("click", () => {
-            menu.classList.toggle("hidden");
-            const expanded = btn.getAttribute("aria-expanded") === "true" || false;
-            btn.setAttribute("aria-expanded", (!expanded).toString());
+            const expanded = btn.getAttribute("aria-expanded") === "true";
+
+            if (expanded) {
+                closeMobileMenu();
+                return;
+            }
+
+            openMobileMenu();
         });
+
+        window.addEventListener("scroll", handleScrollClose, { passive: true });
+        window.addEventListener("touchmove", markScrollIntent, { passive: true });
+        window.addEventListener("wheel", markScrollIntent, { passive: true });
     }
 </script>

@@ -17,17 +17,16 @@ const popoverPositionClass = popoverPosition === "top" ? "bottom-full mb-2" : "t
         socialLinksList.map((social) =>
             social.showQrPopover ? (
                 <div class="navbar-wechat-popover group relative">
-                    <a
-                        href={social.href}
-                        target={social.external ? "_blank" : "_self"}
-                        rel={social.external ? "noopener noreferrer" : undefined}
+                    <button
+                        type="button"
                         class="social-link-button inline-flex rounded transition focus:outline-none focus:ring-2"
                         aria-label={social.name}
                         aria-haspopup="dialog"
+                        aria-expanded="false"
                     >
                         <span class="sr-only">{social.name}</span>
                         <i class={`${social.iconClass} social-link-icon`} aria-hidden="true" />
-                    </a>
+                    </button>
           <div
             class={`navbar-wechat-popover-panel social-popover-panel pointer-events-none invisible absolute ${popoverAlignClass} ${popoverPositionClass} z-30 flex w-52 flex-col items-center rounded-xl p-3 text-center opacity-0 shadow-lg transition group-hover:pointer-events-auto group-hover:visible group-hover:opacity-100 group-focus-within:pointer-events-auto group-focus-within:visible group-focus-within:opacity-100`}
           >
@@ -54,3 +53,53 @@ const popoverPositionClass = popoverPosition === "top" ? "bottom-full mb-2" : "t
         )
     }
 </div>
+
+<script>
+    const popovers = document.querySelectorAll(".navbar-wechat-popover");
+
+    const closeAllPopovers = () => {
+        popovers.forEach((popover) => {
+            popover.classList.remove("is-open");
+            const trigger = popover.querySelector(".social-link-button");
+            trigger?.setAttribute("aria-expanded", "false");
+        });
+    };
+
+    popovers.forEach((popover) => {
+        const trigger = popover.querySelector(".social-link-button");
+        if (!(trigger instanceof HTMLButtonElement)) {
+            return;
+        }
+
+        trigger.addEventListener("click", (event) => {
+            event.preventDefault();
+            const isOpen = popover.classList.contains("is-open");
+
+            closeAllPopovers();
+
+            if (isOpen) {
+                return;
+            }
+
+            popover.classList.add("is-open");
+            trigger.setAttribute("aria-expanded", "true");
+        });
+    });
+
+    document.addEventListener("click", (event) => {
+        if (!(event.target instanceof Node)) {
+            return;
+        }
+
+        const clickedPopover = event.target instanceof Element ? event.target.closest(".navbar-wechat-popover") : null;
+        if (!clickedPopover) {
+            closeAllPopovers();
+        }
+    });
+
+    document.addEventListener("keydown", (event) => {
+        if (event.key === "Escape") {
+            closeAllPopovers();
+        }
+    });
+</script>

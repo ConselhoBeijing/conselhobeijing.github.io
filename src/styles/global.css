@@ -152,8 +152,39 @@
         @apply h-9 w-9 rounded-md border-0 bg-transparent p-0 text-black/80 hover:text-black focus:ring-brazil-blue/35 dark:text-gray-100/90 dark:hover:text-white;
     }
 
+    .mobile-menu-button[aria-expanded="true"] svg:first-of-type {
+        display: none;
+    }
+
+    .mobile-menu-button[aria-expanded="true"] svg:last-of-type {
+        display: block;
+    }
+
     .nav-mobile-link {
         @apply border-transparent text-black/75 dark:text-gray-200/90;
+    }
+
+    .site-mobile-menu {
+        max-height: 0;
+        opacity: 0;
+        overflow: hidden;
+        pointer-events: none;
+        transform: translateY(-0.35rem);
+        transition: max-height 260ms ease, opacity 200ms ease, transform 260ms ease;
+        will-change: max-height, opacity, transform;
+    }
+
+    .site-mobile-menu.is-open {
+        max-height: 32rem;
+        opacity: 1;
+        pointer-events: auto;
+        transform: translateY(0);
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+        .site-mobile-menu {
+            transition: none;
+        }
     }
 
     .nav-mobile-link:hover {
@@ -226,6 +257,7 @@
     }
 
     .social-link-button {
+        @apply border-0 bg-transparent p-0;
         @apply focus:ring-brazil-blue/40;
     }
 
@@ -233,6 +265,12 @@
         @apply border shadow-xl;
         background-color: #f9f0e3;
         border-color: rgb(0 0 0 / 0.14);
+    }
+
+    .navbar-wechat-popover.is-open .navbar-wechat-popover-panel {
+        pointer-events: auto;
+        visibility: visible;
+        opacity: 1;
     }
 
     :root.dark .social-popover-panel {

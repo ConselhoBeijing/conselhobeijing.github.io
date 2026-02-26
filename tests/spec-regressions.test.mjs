@@ -58,12 +58,59 @@ test("social icon links are available in navbar and footer", () => {
   assert.ok(config.includes("iconClass"));
 });
 
+test("wechat social control uses popup-only button behavior instead of navigation", () => {
+  const socialLinks = read("src/components/SocialLinks.astro");
+  const styles = read("src/styles/global.css");
+  assert.ok(socialLinks.includes("social.showQrPopover ?"));
+  assert.ok(socialLinks.includes("<button"));
+  assert.ok(socialLinks.includes('type="button"'));
+  assert.ok(socialLinks.includes('aria-expanded="false"'));
+  assert.ok(socialLinks.includes("popover.classList.add(\"is-open\")"));
+  assert.ok(socialLinks.includes("event.preventDefault()"));
+  assert.ok(styles.includes(".navbar-wechat-popover.is-open .navbar-wechat-popover-panel"));
+  assert.ok(socialLinks.includes('class="social-link-button inline-flex rounded transition focus:outline-none focus:ring-2"'));
+});
+
 test("navbar keeps consistent spacing between social icons and theme toggle on desktop and mobile", () => {
   const navbar = read("src/components/Navbar.astro");
   assert.ok((navbar.match(/<ThemeToggle/g) ?? []).length >= 2);
   assert.ok(navbar.includes("hidden md:flex items-center gap-4"));
   assert.ok(navbar.includes('SocialLinks class="flex items-center gap-4" popoverAlign="left"'));
   assert.ok(!navbar.includes("navbar-utility-divider"));
+});
+
+test("mobile navbar menu uses smooth animated open and close states", () => {
+  const navbar = read("src/components/Navbar.astro");
+  const styles = read("src/styles/global.css");
+  assert.ok(navbar.includes('class="site-mobile-menu sm:hidden" id="mobile-menu"'));
+  assert.ok(navbar.includes("menu.classList.add(\"is-open\")"));
+  assert.ok(navbar.includes("menu.classList.remove(\"is-open\")"));
+  assert.ok(styles.includes(".site-mobile-menu {"));
+  assert.ok(styles.includes("transition: max-height"));
+  assert.ok(styles.includes(".site-mobile-menu.is-open {"));
+});
+
+test("mobile navbar menu closes only after actual scroll movement once open", () => {
+  const navbar = read("src/components/Navbar.astro");
+  assert.ok(navbar.includes("let openScrollY = 0"));
+  assert.ok(navbar.includes("let isMenuSettling = false"));
+  assert.ok(navbar.includes("let lastScrollIntentAt = 0"));
+  assert.ok(navbar.includes("const SCROLL_INTENT_WINDOW_MS = 450"));
+  assert.ok(navbar.includes("const markScrollIntent = () => {"));
+  assert.ok(navbar.includes("lastScrollIntentAt = performance.now()"));
+  assert.ok(navbar.includes("window.addEventListener(\"touchmove\", markScrollIntent, { passive: true })"));
+  assert.ok(navbar.includes("window.addEventListener(\"wheel\", markScrollIntent, { passive: true })"));
+  assert.ok(!navbar.includes("window.addEventListener(\"touchstart\", markScrollIntent"));
+  assert.ok(navbar.includes("if (performance.now() - lastScrollIntentAt > SCROLL_INTENT_WINDOW_MS)"));
+  assert.ok(navbar.includes("openScrollY = window.scrollY"));
+  assert.ok(navbar.includes("isMenuSettling = true"));
+  assert.ok(navbar.includes("requestAnimationFrame(() => {"));
+  assert.ok(navbar.includes("isMenuSettling = false"));
+  assert.ok(navbar.includes("if (isMenuSettling)"));
+  assert.ok(navbar.includes("Math.abs(window.scrollY - openScrollY) < 2"));
+  assert.ok(navbar.includes("if (!menu.classList.contains(\"is-open\"))"));
+  assert.ok(navbar.includes("window.addEventListener(\"scroll\", handleScrollClose, { passive: true })"));
+  assert.ok(navbar.includes("btn.setAttribute(\"aria-expanded\", \"false\")"));
 });
 
 test("navbar centers primary links in the header layout", () => {
