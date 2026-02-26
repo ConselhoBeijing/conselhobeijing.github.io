@@ -17,9 +17,12 @@ import remarkCustomDirectives from "./src/markdown/remark-custom-directives.mjs"
 
 import markdoc from "@astrojs/markdoc";
 
+import vercel from "@astrojs/vercel";
+
 // https://astro.build/config
 export default defineConfig({
   output: "static",
+
   vite: {
     plugins: [tailwindcss()],
   },
@@ -52,4 +55,6 @@ export default defineConfig({
       prefixDefaultLocale: false,
     },
   },
+
+  adapter: vercel(),
 });
