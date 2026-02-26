@@ -1,9 +1,12 @@
 {
   "name": "Daniel Morinigo",
-  "photo": "/team/daniel.morinigo.jpg",
-  "bio": "Bacharel em Ciência da Computação com 15+ anos de experiência em software e delivery. Especialista em Cloud Native, DevOps e CI/CD, vive em Pequim desde 2011. Apaixonado por inovação, automação, música e esportes, busca sempre novos desafios e aprendizados.",
-  "linkedin": "https://www.linkedin.com/in/danielfbm/",
   "role": "Conselheiro",
+  "bio": "Bacharel em Ciência da Computação com 15+ anos de experiência em software e delivery. Especialista em Cloud Native, DevOps e CI/CD, vive em Pequim desde 2011. Apaixonado por inovação, automação, música e esportes, busca sempre novos desafios e aprendizados.",
+  "photo": "/team/daniel.morinigo/photo.jpg",
   "group": "executive",
-  "workgroups": ["Comunicação", "Mapeamento"]
+  "workgroups": [
+    "Comunicação",
+    "Mapeamento"
+  ],
+  "linkedin": "https://www.linkedin.com/in/danielfbm/"
 }

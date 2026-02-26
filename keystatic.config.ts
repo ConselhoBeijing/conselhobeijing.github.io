@@ -5,6 +5,14 @@ export default config({
     kind: "local",
   },
   ui: {
+    brand: {
+      name: "Conselho Beijing",
+      // mark: ({ colorScheme }) => {
+      //   let path = colorScheme === "dark" ? "/icons/conselho-footer-dark.png" : "/icons/conselho-footer-light.png";
+
+      //   return "<img src={ path } height = { 24} />";
+      // },
+    },
     navigation: {
       Conteudo: ["news", "events", "projects", "team"],
       Paginas: ["aboutPage", "faqPage"],
@@ -152,6 +160,7 @@ export default config({
     aboutPage: singleton({
       label: "Sobre",
       path: "src/content/pages/about",
+      entryLayout: "content",
       format: { contentField: "content" },
       schema: {
         title: fields.text({ label: "Title" }),
@@ -170,6 +179,7 @@ export default config({
     }),
     faqPage: singleton({
       label: "FAQ",
+      entryLayout: "content",
       path: "src/content/pages/faq",
       format: { contentField: "content" },
       schema: {

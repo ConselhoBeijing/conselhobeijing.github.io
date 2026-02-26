@@ -1,9 +1,11 @@
 {
   "name": "Luis Ribeiro",
-  "photo": "/team/luis.ribeiro.jpg",
-  "bio": "Luís Enrique Batista Ribeiro é um especialista em gastronomia brasileira, atuando no restaurante Latina, em Pequim. Natural de Tabatinga, São Paulo, vive na China há cerca de 17 anos e, ao longo desse período, vem promovendo a riqueza e a diversidade da culinária brasileira na China. É reconhecido por seu ar amistoso e por proporcionar aos clientes chineses e do mundo todo uma experiência memorável e genuína da culinária brasileira.",
-  "instagram": "https://www.instagram.com/luisenriquebr/",
   "role": "Conselheiro",
+  "bio": "Luís Enrique Batista Ribeiro é um especialista em gastronomia brasileira, atuando no restaurante Latina, em Pequim. Natural de Tabatinga, São Paulo, vive na China há cerca de 17 anos e, ao longo desse período, vem promovendo a riqueza e a diversidade da culinária brasileira na China. É reconhecido por seu ar amistoso e por proporcionar aos clientes chineses e do mundo todo uma experiência memorável e genuína da culinária brasileira.",
+  "photo": "/team/luis.ribeiro/photo.jpg",
   "group": "executive",
-  "workgroups": ["Eventos"]
+  "workgroups": [
+    "Eventos"
+  ],
+  "instagram": "https://www.instagram.com/luisenriquebr/"
 }

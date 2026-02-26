@@ -2,8 +2,11 @@
   "name": "Taís Bahia",
   "role": "Conselheira",
   "bio": "Fundadora e CEO da Xianzai (EdTech) e do Nuxing, Laboratorio de Mulheres na Pesquisa e Cooperacao Sino-Brasileira. Doutoranda em Administracao na Universidade de Pequim, advogada com mais de 10 anos em Direito Societario e M&A, especialista em relacoes Brasil-China. Primeira Secretaria-Geral Adjunta da OAB-RJ e membro da CEBRAONU. Condecorada com a Laurea de Agradecimento do Conselho Federal da OAB.",
+  "photo": "/team/tais.bahia/photo.jpg",
   "group": "executive",
-  "linkedin": "https://www.linkedin.com/in/taisbahia",
-  "photo": "/team/tais.bahia.jpg",
-  "workgroups": ["Eventos", "Mapeamento"]
+  "workgroups": [
+    "Eventos",
+    "Mapeamento"
+  ],
+  "linkedin": "https://www.linkedin.com/in/taisbahia"
 }

@@ -2,8 +2,11 @@
   "name": "William Guey",
   "role": "Conselheiro",
   "bio": "Co-Fundador do Print It 3D, doutorando na Universidade Tsinghua, mestre em Engenharia de Producao, pesquisador de HMI, membro do BRACHAM e pesquisador residente no Observa China.",
+  "photo": "/team/william.guey/photo.jpg",
   "group": "executive",
-  "linkedin": "https://www.linkedin.com/in/williamguey/",
-  "photo": "/team/william.guey.jpg",
-  "workgroups": ["Comunicação", "Apoio ao Brasileiro"]
+  "workgroups": [
+    "Comunicação",
+    "Apoio ao Brasileiro"
+  ],
+  "linkedin": "https://www.linkedin.com/in/williamguey/"
 }

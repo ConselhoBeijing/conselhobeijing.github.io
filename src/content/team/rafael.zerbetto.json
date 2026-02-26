@@ -1,9 +1,13 @@
 {
   "name": "Rafael Zerbetto",
-  "photo": "/team/rafael.zerbetto.jpg",
-  "bio": "Jornalista brasileiro, diretor cofundador do Conselho dos Cidadãos Brasileiros de Beijing. Escreve sobre desenvolvimento e relações Brasil-China, promovendo o diálogo via Esperanto. Atua na mídia e em eventos culturais, fortalecendo a comunidade brasileira local.",
-  "linkedin": "https://www.linkedin.com/in/rafael-henrique-zerbetto-72a00670",
   "role": "Diretor",
+  "bio": "Jornalista brasileiro, diretor cofundador do Conselho dos Cidadãos Brasileiros de Beijing. Escreve sobre desenvolvimento e relações Brasil-China, promovendo o diálogo via Esperanto. Atua na mídia e em eventos culturais, fortalecendo a comunidade brasileira local.",
+  "photo": "/team/rafael.zerbetto/photo.jpg",
   "group": "director",
-  "workgroups": ["Apoio ao Brasileiro", "Comunicação", "Eventos"]
+  "workgroups": [
+    "Apoio ao Brasileiro",
+    "Comunicação",
+    "Eventos"
+  ],
+  "linkedin": "https://www.linkedin.com/in/rafael-henrique-zerbetto-72a00670"
 }
