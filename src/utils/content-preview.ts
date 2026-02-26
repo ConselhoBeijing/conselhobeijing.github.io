@@ -42,6 +42,18 @@ export interface FaqEntry {
 }
 
 export function extractFaqEntries(markdown: string): FaqEntry[] {
+  const detailBlocks = Array.from(
+    markdown.matchAll(/:::details\{summary="([^"]+)"\}\s*([\s\S]*?)\s*:::/g),
+    (match) => ({
+      question: (match[1] ?? "").trim().replace(/^\d+\.\s*/, ""),
+      content: (match[2] ?? "").trim().replace(/\n{3,}/g, "\n\n"),
+    }),
+  ).filter((entry) => entry.question.length > 0 && entry.content.length > 0);
+
+  if (detailBlocks.length > 0) {
+    return detailBlocks;
+  }
+
   const headings = Array.from(markdown.matchAll(/^###\s+(?:\d+\.\s+)?(.+)$/gm)).map((match) => ({
     index: match.index ?? 0,
     raw: match[0] ?? "",

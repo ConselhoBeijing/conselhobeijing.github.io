@@ -15,6 +15,8 @@ import remarkGithubBlockquoteAlert from "remark-github-blockquote-alert";
 import remarkMath from "remark-math";
 import remarkCustomDirectives from "./src/markdown/remark-custom-directives.mjs";
 
+import markdoc from "@astrojs/markdoc";
+
 // https://astro.build/config
 export default defineConfig({
   output: "static",
@@ -22,7 +24,8 @@ export default defineConfig({
     plugins: [tailwindcss()],
   },
 
-  integrations: [react(), process.env.NODE_ENV === "development" ? keystatic() : null],
+  // integrations: [react(), process.env.NODE_ENV === "development" ? keystatic() : null, markdoc()],
+  integrations: [react(), markdoc(), keystatic()],
 
   markdown: {
     remarkPlugins: [remarkGfm, remarkDirective, remarkCustomDirectives, remarkGithubBlockquoteAlert, remarkMath],

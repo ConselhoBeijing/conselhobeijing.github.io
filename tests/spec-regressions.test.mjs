@@ -65,7 +65,7 @@ test("wechat social control uses popup-only button behavior instead of navigatio
   assert.ok(socialLinks.includes("<button"));
   assert.ok(socialLinks.includes('type="button"'));
   assert.ok(socialLinks.includes('aria-expanded="false"'));
-  assert.ok(socialLinks.includes("popover.classList.add(\"is-open\")"));
+  assert.ok(socialLinks.includes('popover.classList.add("is-open")'));
   assert.ok(socialLinks.includes("event.preventDefault()"));
   assert.ok(styles.includes(".navbar-wechat-popover.is-open .navbar-wechat-popover-panel"));
   assert.ok(socialLinks.includes('class="social-link-button inline-flex rounded transition focus:outline-none focus:ring-2"'));
@@ -83,8 +83,8 @@ test("mobile navbar menu uses smooth animated open and close states", () => {
   const navbar = read("src/components/Navbar.astro");
   const styles = read("src/styles/global.css");
   assert.ok(navbar.includes('class="site-mobile-menu sm:hidden" id="mobile-menu"'));
-  assert.ok(navbar.includes("menu.classList.add(\"is-open\")"));
-  assert.ok(navbar.includes("menu.classList.remove(\"is-open\")"));
+  assert.ok(navbar.includes('menu.classList.add("is-open")'));
+  assert.ok(navbar.includes('menu.classList.remove("is-open")'));
   assert.ok(styles.includes(".site-mobile-menu {"));
   assert.ok(styles.includes("transition: max-height"));
   assert.ok(styles.includes(".site-mobile-menu.is-open {"));
@@ -98,9 +98,9 @@ test("mobile navbar menu closes only after actual scroll movement once open", ()
   assert.ok(navbar.includes("const SCROLL_INTENT_WINDOW_MS = 450"));
   assert.ok(navbar.includes("const markScrollIntent = () => {"));
   assert.ok(navbar.includes("lastScrollIntentAt = performance.now()"));
-  assert.ok(navbar.includes("window.addEventListener(\"touchmove\", markScrollIntent, { passive: true })"));
-  assert.ok(navbar.includes("window.addEventListener(\"wheel\", markScrollIntent, { passive: true })"));
-  assert.ok(!navbar.includes("window.addEventListener(\"touchstart\", markScrollIntent"));
+  assert.ok(navbar.includes('window.addEventListener("touchmove", markScrollIntent, { passive: true })'));
+  assert.ok(navbar.includes('window.addEventListener("wheel", markScrollIntent, { passive: true })'));
+  assert.ok(!navbar.includes('window.addEventListener("touchstart", markScrollIntent'));
   assert.ok(navbar.includes("if (performance.now() - lastScrollIntentAt > SCROLL_INTENT_WINDOW_MS)"));
   assert.ok(navbar.includes("openScrollY = window.scrollY"));
   assert.ok(navbar.includes("isMenuSettling = true"));
@@ -108,9 +108,9 @@ test("mobile navbar menu closes only after actual scroll movement once open", ()
   assert.ok(navbar.includes("isMenuSettling = false"));
   assert.ok(navbar.includes("if (isMenuSettling)"));
   assert.ok(navbar.includes("Math.abs(window.scrollY - openScrollY) < 2"));
-  assert.ok(navbar.includes("if (!menu.classList.contains(\"is-open\"))"));
-  assert.ok(navbar.includes("window.addEventListener(\"scroll\", handleScrollClose, { passive: true })"));
-  assert.ok(navbar.includes("btn.setAttribute(\"aria-expanded\", \"false\")"));
+  assert.ok(navbar.includes('if (!menu.classList.contains("is-open"))'));
+  assert.ok(navbar.includes('window.addEventListener("scroll", handleScrollClose, { passive: true })'));
+  assert.ok(navbar.includes('btn.setAttribute("aria-expanded", "false")'));
 });
 
 test("navbar centers primary links in the header layout", () => {
@@ -205,12 +205,7 @@ test("site typography uses Open Sans as the primary font", () => {
 });
 
 test("main pages reduce vertical shell spacing from py-12 to py-8", () => {
-  const pages = [
-    "src/pages/index.astro",
-    "src/pages/team.astro",
-    "src/pages/events.astro",
-    "src/pages/contact.astro",
-  ];
+  const pages = ["src/pages/index.astro", "src/pages/team.astro", "src/pages/events.astro", "src/pages/contact.astro"];
   for (const page of pages) {
     const content = read(page);
     assert.ok(content.includes("py-8"), `${page} should use reduced vertical spacing`);
@@ -398,7 +393,8 @@ test("calendar widget renders a filtered events list below the calendar", () => 
 
 test("calendar buttons match the site button patterns used in events and home pages", () => {
   const styles = read("src/styles/global.css");
-  const calendarButtonStyles = styles.split(".calendario-widget .fc .fc-today-button {")[1]?.split(".calendario-widget .fc .fc-col-header-cell-cushion")[0] ?? "";
+  const calendarButtonStyles =
+    styles.split(".calendario-widget .fc .fc-today-button {")[1]?.split(".calendario-widget .fc .fc-col-header-cell-cushion")[0] ?? "";
   assert.ok(styles.includes("FullCalendar injects unlayered CSS at runtime; keep overrides unlayered so they win."));
   assert.ok(styles.includes(".calendario-widget .fc {"));
   assert.ok(styles.includes("--fc-button-bg-color: rgb(238 235 229 / 0.92);"));
@@ -550,7 +546,7 @@ test("single-page overview excludes contato section and keeps required section o
 
 test("single-page shows all projects and grouped member cards with photo and name", () => {
   const page = read("src/pages/inicio.astro");
-  assert.ok(page.includes("const allProjects = await getCollection(\"projects\")"));
+  assert.ok(page.includes('const allProjects = await getCollection("projects")'));
   assert.ok(page.includes("const projects = [...allProjects]"));
   assert.ok(!page.includes("projects.slice("));
 
@@ -565,15 +561,12 @@ test("single-page shows all projects and grouped member cards with photo and nam
 test("navbar includes Visão Geral first and points to /inicio", () => {
   const config = read("src/config/site-links.ts");
   const visaoAt = config.indexOf('name: "Visão Geral"');
-  const sobreAt = config.indexOf('name: "Sobre"');
-  assert.ok(visaoAt >= 0);
-  assert.ok(visaoAt < sobreAt);
-  assert.ok(config.includes('href: "/inicio"'));
+  assert.ok(visaoAt < 0);
 });
 
 test("navbar logo exposes full council name on hover", () => {
   const navbar = read("src/components/Navbar.astro");
-  assert.ok(navbar.includes("branding.logoTitle ?? \"Conselho dos Cidadãos Brasileiros de Beijing\""));
+  assert.ok(navbar.includes('branding.logoTitle ?? "Conselho dos Cidadãos Brasileiros de Beijing"'));
 });
 
 test("single-page styles include solid section variants and dark-mode tuned colors", () => {

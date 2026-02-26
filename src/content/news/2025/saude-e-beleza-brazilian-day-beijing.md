@@ -1,6 +1,6 @@
 ---
 title: "共叙健康之美 共筑友谊之桥 - 京城俱乐部巴西节庆日纪实"
-date: "2025-09-07"
+date: 2025-09-07
 type: "external"
 description: "Artigo em chinês com registro fotográfico da celebração do dia do Brasil em Pequim, com música, comidas e intercâmbio entre as pessoas."
 thumbnail: "/news/2025/IMG_6831-scaled.jpg"

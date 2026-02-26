@@ -5,7 +5,14 @@ import { getCollection, type CollectionEntry } from "astro:content";
 const team = await getCollection("team");
 
 function sortMembersByName(members: CollectionEntry<"team">[]) {
-    return [...members].sort((a, b) => a.data.name.localeCompare(b.data.name, "pt-BR", { sensitivity: "base" }));
+    return [...members].sort((a, b) => {
+        const orderA = a.data.order ?? Number.MAX_SAFE_INTEGER;
+        const orderB = b.data.order ?? Number.MAX_SAFE_INTEGER;
+        if (orderA !== orderB) {
+            return orderA - orderB;
+        }
+        return a.data.name.localeCompare(b.data.name, "pt-BR", { sensitivity: "base" });
+    });
 }
 
 const directors = sortMembersByName(team.filter((member) => member.data.group === "director"));

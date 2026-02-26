@@ -12,12 +12,13 @@ export async function getStaticPaths() {
 
 const { entry } = Astro.props;
 const { Content } = await entry.render();
+const projectImage = entry.data.thumbnail ?? entry.data.cover;
 ---
 
 <Layout title={`${entry.data.title} - Projetos`}>
     <div class="max-w-4xl mx-auto px-3 py-8 sm:px-5">
         <h1 class="internal-page-title mb-4">{entry.data.title}</h1>
-        {entry.data.cover && <img src={entry.data.cover} alt={entry.data.title} class="w-full h-96 object-cover rounded-lg mb-8 shadow-lg" />}
+        {projectImage && <img src={projectImage} alt={entry.data.title} class="w-full h-96 object-cover rounded-lg mb-8 shadow-lg" />}
         <div class="markdown-content max-w-none">
             <Content />
         </div>

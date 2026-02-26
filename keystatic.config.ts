@@ -1,111 +1,189 @@
-import { config, fields, collection } from "@keystatic/core";
+import { config, fields, collection, singleton } from "@keystatic/core";
 
 export default config({
   storage: {
     kind: "local",
   },
+  ui: {
+    navigation: {
+      Conteudo: ["news", "events", "projects", "team"],
+      Paginas: ["aboutPage", "faqPage"],
+    },
+  },
   collections: {
     news: collection({
-      label: "News",
+      label: "Notícias",
       slugField: "title",
-      path: "src/content/news/*",
+      path: "src/content/news/**",
       format: { contentField: "content" },
+      columns: ["title", "date", "type"],
       schema: {
-        title: fields.slug({ name: { label: "Title" } }),
-        date: fields.date({ label: "Date" }),
+        title: fields.slug({ name: { label: "Título" } }),
+        date: fields.date({ label: "Data" }),
         type: fields.select({
-          label: "Type",
+          label: "Tipo",
           options: [
             { label: "Artigo", value: "local" },
             { label: "Link Externo", value: "external" },
           ],
-          defaultValue: "local",
+          defaultValue: "external",
         }),
-        thumbnail: fields.image({
-          label: "Thumbnail",
-          directory: "public/images/news",
-          publicPath: "/images/news",
+        description: fields.text({ label: "Descrição", multiline: true }),
+        thumbnail: fields.text({
+          label: "Thumbnail URL or Path",
+          description: "Use a full URL or a site path like /news/2025/banner.png",
         }),
         externalLink: fields.url({ label: "Link Externo" }),
-        content: fields.document({
+        tags: fields.array(fields.text({ label: "Tag" }), {
+          label: "Tags",
+          itemLabel: (props) => props.value || "Tag",
+        }),
+        content: fields.markdoc({
           label: "Content",
-          formatting: true,
-          dividers: true,
-          links: true,
-          images: {
-            directory: "public/images/news",
-            publicPath: "/images/news",
+          extension: "md",
+          options: {
+            image: {
+              directory: "public/news",
+              publicPath: "/news",
+            },
           },
         }),
       },
     }),
     projects: collection({
-      label: "Projects",
+      label: "Projetos",
       slugField: "title",
       path: "src/content/projects/*",
       format: { contentField: "content" },
+      columns: ["title"],
       schema: {
         title: fields.slug({ name: { label: "Title" } }),
         intro: fields.text({ label: "Introduction", multiline: true }),
-        cover: fields.image({
-          label: "Cover Image",
-          directory: "public/images/projects",
-          publicPath: "/images/projects",
+        thumbnail: fields.image({
+          label: "Thumbnail",
+          directory: "public/projects",
+          publicPath: "/projects",
         }),
-        content: fields.document({
+        content: fields.markdoc({
           label: "Content",
-          formatting: true,
-          dividers: true,
-          links: true,
-          images: {
-            directory: "public/images/projects",
-            publicPath: "/images/projects",
+          extension: "md",
+          options: {
+            image: {
+              directory: "public/projects",
+              publicPath: "/projects",
+            },
           },
         }),
       },
     }),
     team: collection({
-      label: "Team",
+      label: "Equipe",
       slugField: "name",
       path: "src/content/team/*",
+      format: "json",
+      columns: ["name", "role", "group"],
       schema: {
         name: fields.slug({ name: { label: "Name" } }),
         role: fields.text({ label: "Role" }),
         bio: fields.text({ label: "Bio", multiline: true }),
+
         photo: fields.image({
-          label: "Photo",
-          directory: "public/images/team",
-          publicPath: "/images/team",
+          label: "Foto",
+          directory: "public/team",
+          publicPath: "/team",
         }),
         group: fields.select({
-          label: "Group",
+          label: "Grupo",
           options: [
-            { label: "Director Counselor", value: "director" },
-            { label: "Executive Counselor", value: "executive" },
+            { label: "Conselheiro Diretor", value: "director" },
+            { label: "Conselheiro Executivo", value: "executive" },
           ],
           defaultValue: "executive",
         }),
+        workgroups: fields.array(
+          fields.select({
+            label: "Workgroup",
+            options: [
+              { label: "Comunicação", value: "Comunicação" },
+              { label: "Eventos", value: "Eventos" },
+              { label: "Mapeamento", value: "Mapeamento" },
+              { label: "Apoio ao Brasileiro", value: "Apoio ao Brasileiro" },
+              { label: "Comunicação", value: "Comunicação" },
+            ],
+            defaultValue: "Comunicação",
+          }),
+          {
+            label: "Workgroups",
+
+            itemLabel: (props) => props.value || "Workgroup",
+          },
+        ),
         linkedin: fields.url({ label: "LinkedIn" }),
-        wechat: fields.text({ label: "WeChat ID" }),
+        wechat: fields.url({ label: "WeChat URL" }),
         instagram: fields.url({ label: "Instagram" }),
         youtube: fields.url({ label: "YouTube" }),
       },
     }),
     events: collection({
-      label: "Events",
+      label: "Eventos",
       slugField: "title",
       path: "src/content/events/*",
       format: { contentField: "content" },
+      columns: ["title", "start", "location"],
       schema: {
-        title: fields.slug({ name: { label: "Title" } }),
-        start: fields.datetime({ label: "Start Time" }),
-        end: fields.datetime({ label: "End Time" }),
-        location: fields.text({ label: "Location" }),
-        content: fields.document({
+        title: fields.slug({ name: { label: "Título" } }),
+        start: fields.datetime({ label: "Início" }),
+        end: fields.datetime({ label: "Término" }),
+        location: fields.text({ label: "Localização" }),
+        content: fields.markdoc({
           label: "Description",
-          formatting: true,
-          dividers: true,
-          links: true,
+          extension: "md",
+          options: {
+            image: {
+              directory: "public/events",
+              publicPath: "/events",
+            },
+          },
+        }),
+      },
+    }),
+  },
+  singletons: {
+    aboutPage: singleton({
+      label: "Sobre",
+      path: "src/content/pages/about",
+      format: { contentField: "content" },
+      schema: {
+        title: fields.text({ label: "Title" }),
+        subtitle: fields.text({ label: "Subtitle" }),
+        content: fields.markdoc({
+          label: "Content",
+          extension: "md",
+          options: {
+            image: {
+              directory: "public/about",
+              publicPath: "/about",
+            },
+          },
+        }),
+      },
+    }),
+    faqPage: singleton({
+      label: "FAQ",
+      path: "src/content/pages/faq",
+      format: { contentField: "content" },
+      schema: {
+        title: fields.text({ label: "Title" }),
+        subtitle: fields.text({ label: "Subtitle" }),
+        content: fields.markdoc({
+          label: "Content (Markdown)",
+          extension: "md",
+          options: {
+            image: {
+              directory: "public/about",
+              publicPath: "/about",
+            },
+          },
         }),
       },
     }),
