@@ -1,5 +1,7 @@
 ---
-title: Conselho dos Cidadãos Brasileiros de Beijing realiza sua primeira festa
+title: >-
+  Conselho dos Cidadãos Brasileiros de Beijing realiza sua primeira Festa Junina
+  em Beijing
 date: 2024-06-17
 type: external
 description: >-
