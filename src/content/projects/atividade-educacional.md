@@ -2,11 +2,11 @@
 title: Atividade Educacional
 intro: >-
   Dentro de nossas atividades educacionais e com o objetivo de promover o
-  português brasileiro na China, organizamos o Papo Brasil-China, uma
-  oportunidade única de praticar tanto o português quanto o mandarim. O evento
-  visa divulgar a língua e a cultura brasileiras, promover o aprendizado e o
-  desenvolvimento pessoal e profissional dos participantes, além de estimular a
-  integração entre brasileiros e chineses."
+  português brasileiro na China, organizamos o Papo Brasil-China (巴葡角, em
+  chinês). Essa é uma oportunidade única de praticar tanto o português quanto o
+  mandarim. O evento visa divulgar a língua e a cultura brasileiras, promover o
+  aprendizado e o desenvolvimento pessoal e profissional dos participantes, além
+  de estimular a integração entre brasileiros e chineses.
 thumbnail: /projects/atividade-educacional/thumbnail.jpg
 ---
 ![](/projects/atividade-educacional/papo-brasil-china-foto.jpg)
