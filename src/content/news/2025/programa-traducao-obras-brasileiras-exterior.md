@@ -1,7 +1,7 @@
 ---
 title: >-
-  Programa de Nacional Tradução e Publicação de Obras Brasileiras no Exterior
-  (Português e Chinês)
+  Fundação Biblioteca Nacional Lança Programa de Tradução e Publicação de Obras
+  Brasileiras no Exterior
 date: 2025-09-10
 type: external
 description: >-
