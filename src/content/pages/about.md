@@ -5,15 +5,11 @@ O **Conselho dos Cidadãos Brasileiros de Beijing (CCBB)** é uma organização 
 
 Iniciado por líderes locais, o CCBB atua como uma ponte entre os brasileiros residentes na região, a Embaixada do Brasil na China e a sociedade local, atendendo às necessidades e interesses de nossos cidadãos.\
 \
-`<!DOCTYPE html>
-<html>
-<body>
+<!DOCTYPE html> <html> <body>
 
-<h2 style="text-align: center;">Centered Title</h2>
-<p style="text-align: center;">This paragraph is centered using inline CSS.</p>
+<h2 style="text-align: center;">Abrangência</h2> <p style="text-align: center;">Área de atuação do Conselho dos Cidadãos Brasileiros de Beijing.</p>
 
-</body>
-</html>`
+</body> </html>
 
 ![Mapa de atuação do Conselho dos Cidadãos Brasileiros de Beijing](/about/conselho-mapa.png)
 
