@@ -18,27 +18,32 @@ Qualquer cidadão brasileiro residente na área de jurisdição da Embaixada de 
 
 :::
 
-:::details{summary="4. O Conselho oferece assistência jurídica?"}\
+:::details{summary="4. O Conselho oferece assistência jurídica?"}
+
 Embora o Conselho não forneça suporte jurídico direto, estamos aqui para orientar os brasileiros sobre como acessar serviços legais. Podemos facilitar o contato com advogados locais e representantes da missão diplomática, assegurando que você tenha acesso à assistência necessária.
 
 :::
 
-:::details{summary="5. O Conselho ajuda brasileiros em situações de emergência?"}\
+:::details{summary="5. O Conselho ajuda brasileiros em situações de emergência?"}
+
 Sim, o Conselho colabora com a embaixada e autoridades para apoiar brasileiros em situações de emergência, fornecendo informações sobre problemas de saúde, perda de documentos ou questões legais. Oferecemos orientação por meio de nossa conta oficial no **WeChat**, no link **SOS**, onde intermediamos o contato com a representação diplomática. Para mais informações, ***consulte nossa conta oficial no WeChat.***
 
 :::
 
-:::details{summary="6. Como encontrar oportunidades de trabalho ou estudo com o apoio do Conselho?"}\
+:::details{summary="6. Como encontrar oportunidades de trabalho ou estudo com o apoio do Conselho?"}
+
 O Conselho ajuda com a divulgação de oportunidades de emprego e estudo por meio de eventos de networking e parcerias com instituições educacionais e empresas, além de compartilhar informações em nossas redes sociais. Buscamos conectar os brasileiros a oportunidades em suas jornadas profissionais e acadêmicas.
 
 :::
 
-:::details{summary="7. Quais eventos e atividades o Conselho organiza para a comunidade?"}\
+:::details{summary="7. Quais eventos e atividades o Conselho organiza para a comunidade?"}
+
 O Conselho organiza uma variedade de eventos, como celebrações de datas nacionais, encontros online e presenciais, palestras informativas, além de atividades voltadas para a promoção da língua e cultura brasileiras. ***Para mais informações consulte a página "Agenda".***
 
 :::
 
-:::details{summary="8. O Conselho pode auxiliar com documentação, como renovação de passaportes?"}\
+:::details{summary="8. O Conselho pode auxiliar com documentação, como renovação de passaportes?"}
+
 O Conselho orienta os brasileiros sobre os procedimentos necessários para a renovação de passaportes e outros serviços consulares, facilitando o acesso à embaixada ou consulado. Para mais informações, ***consulte nosso WeChat.***\
 :::
 
