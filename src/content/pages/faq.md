@@ -24,7 +24,7 @@ Embora o Conselho não forneça suporte jurídico direto, estamos aqui para orie
 :::
 
 :::details{summary="5. O Conselho ajuda brasileiros em situações de emergência?"}\
-Sim, o Conselho colabora com a embaixada e autoridades para apoiar brasileiros em situações de emergência, fornecendo informações sobre problemas de saúde, perda de documentos ou questões legais. Oferecemos orientação por meio de nossa conta oficial no **WeChat**, no link **SOS**, onde intermediamos o contato com a representação diplomática. Para mais informações, consulte nossa conta oficial no **WeChat**.
+Sim, o Conselho colabora com a embaixada e autoridades para apoiar brasileiros em situações de emergência, fornecendo informações sobre problemas de saúde, perda de documentos ou questões legais. Oferecemos orientação por meio de nossa conta oficial no **WeChat**, no link **SOS**, onde intermediamos o contato com a representação diplomática. Para mais informações, ***consulte nossa conta oficial no WeChat.***
 
 :::
 
@@ -34,12 +34,12 @@ O Conselho ajuda com a divulgação de oportunidades de emprego e estudo por mei
 :::
 
 :::details{summary="7. Quais eventos e atividades o Conselho organiza para a comunidade?"}\
-O Conselho organiza uma variedade de eventos, como celebrações de datas nacionais, encontros online e presenciais, palestras informativas, além de atividades voltadas para a promoção da língua e cultura brasileiras. Para mais informações consulte a página "Agenda".
+O Conselho organiza uma variedade de eventos, como celebrações de datas nacionais, encontros online e presenciais, palestras informativas, além de atividades voltadas para a promoção da língua e cultura brasileiras. ***Para mais informações consulte a página "Agenda".***
 
 :::
 
 :::details{summary="8. O Conselho pode auxiliar com documentação, como renovação de passaportes?"}\
-O Conselho orienta os brasileiros sobre os procedimentos necessários para a renovação de passaportes e outros serviços consulares, facilitando o acesso à embaixada ou consulado. Para mais informações, consulte nosso WeChat.\
+O Conselho orienta os brasileiros sobre os procedimentos necessários para a renovação de passaportes e outros serviços consulares, facilitando o acesso à embaixada ou consulado. Para mais informações, ***consulte nosso WeChat.***\
 :::
 
 :::details{summary="9. Quais iniciativas o Conselho tem para promover a cultura e o idioma brasileiros?"}\
@@ -66,5 +66,5 @@ Sim, uma das principais atividades do Conselho é promover o networking entre os
 
 :::details{summary="14. O Conselho oferece apoio a quem deseja retornar ao Brasil?"}
 
-O Conselho oferece suporte aos brasileiros que desejam retornar ao Brasil, fornecendo informações sobre o planejamento da volta, esclarecendo os direitos no processo de retorno e conectando os interessados a recursos disponíveis na missão diplomática. Para mais informações, consulte nossa conta oficial de WeChat.\
+O Conselho oferece suporte aos brasileiros que desejam retornar ao Brasil, fornecendo informações sobre o planejamento da volta, esclarecendo os direitos no processo de retorno e conectando os interessados a recursos disponíveis na missão diplomática. Para mais informações, consulte nossa conta ***oficial de WeChat.***\
 :::
