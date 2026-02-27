@@ -12,19 +12,23 @@ Mantemos plataformas digitais que centralizam informações essenciais sobre a v
 
 Entre nossas ferramentas estão grupos de WeChat que conectam brasileiros da região, permitindo troca de experiências e apoio mútuo; nossa conta oficial no WeChat, com informações constantes sobre eventos, serviços e novidades; além desse  website com conteúdos periodicamente atualizados. Também marcamos presença no LinkedIn e no Instagram, ampliando o alcance das informações e criando espaços para interação, aprendizado e networking.\
 \
-**Website:** [conselhobeijing.org](http://conselhobeijing.org) – informações atualizadas sobre a vida na China.
+**Website:** [**conselhobeijing.org**](http://conselhobeijing.org) – informações atualizadas sobre a vida na China.
 
 **Redes Sociais:** Acompanhe a comunidade no **WeChat** (conta oficial – pesquise por **CONSELHO BJ**), **LinkedIn** e **Instagram** para notícias, eventos e conteúdos relevantes. Também temos um **grupo de WeChat** para você conversar e trocar experiências com brasileiros da região. Entre em contato conosco para ser adicionado ao grupo.
 
 Escaneie os QR codes abaixo para acessar nossas plataformas e se conectar com a comunidade:
 
-**Conta Oficial no WeChat**\
+#### **Conta Oficial no WeChat**
+
+#### \
+
 ![](/projects/plataforma-de-informacoes/image.png)
 
-**LinkedIn**
+#### **LinkedIn**
 
-- ![](/projects/plataforma-de-informacoes/LinkedIN.png)
+![](/projects/plataforma-de-informacoes/LinkedIN.png)
 
-  **Instagram**\
-  ![](/projects/plataforma-de-informacoes/qr-code.png)\
-  \
+#### **Instagram**
+
+\
+![](/projects/plataforma-de-informacoes/qr-code.png)
