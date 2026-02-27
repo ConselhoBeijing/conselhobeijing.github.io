@@ -1,5 +1,7 @@
 ---
-title: Brazilian Day 2025 - Confira as fotos do evento do Conselho dos Cidadãos
+title: >-
+  Brazilian Day 2025 - Confira as fotos do evento do Conselho dos Cidadãos
+  Brasileiros de Beijing
 date: 2025-09-07
 type: external
 description: >-
