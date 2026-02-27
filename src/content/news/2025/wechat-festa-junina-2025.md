@@ -1,5 +1,5 @@
 ---
-title: 'Festa Junina: O que é a Tradição?'
+title: 'Festa Junina: O que é a tradição?'
 date: 2025-06-24
 type: external
 description: >-
