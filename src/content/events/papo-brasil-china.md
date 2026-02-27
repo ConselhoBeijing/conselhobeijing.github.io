@@ -20,4 +20,6 @@ Este  evento nasce da grande demanda de pessoas que querem praticar tanto o  chi
 
 ![](/events/papo-brasil-china/img.jpg)\
 \
-\**Sumário do evento*\*[https://mp.weixin.qq.com/s/O0gYl1yxB5fRy9SpngzYfA?token=2058176951&lang=en_US](https://mp.weixin.qq.com/s/O0gYl1yxB5fRy9SpngzYfA?token=2058176951&lang=en_US)
+**Sumário do evento**
+
+[https://mp.weixin.qq.com/s/O0gYl1yxB5fRy9SpngzYfA?token=2058176951&lang=en_US](https://mp.weixin.qq.com/s/O0gYl1yxB5fRy9SpngzYfA?token=2058176951&lang=en_US)
