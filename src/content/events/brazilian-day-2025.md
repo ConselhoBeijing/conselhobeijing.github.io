@@ -4,3 +4,4 @@ start: 2025-09-10T12:00:00.000Z
 end: 2025-09-10T21:00:00.000Z
 location: Action Bar, Lanyuan Station, distrito de Chaoyang, Beijing
 ---
+###### https://mp.weixin.qq.com/s/eGcXQDidktYNuZbbaAMkHg
