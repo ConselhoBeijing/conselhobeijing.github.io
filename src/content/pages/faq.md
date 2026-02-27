@@ -55,8 +55,8 @@ O Conselho organiza encontros periódicos e eventos culturais, como Festas Junin
 :::
 
 :::details{summary="10. O Conselho apoia empreendedores que querem abrir negócios fora do Brasil?"}
-O Conselho apoia empreendedores brasileiros ao destacar oportunidades de negócios, promover eventos de networking e compartilhar informações sobre o ambiente local. Além disso, trabalhamos para estabelecer parcerias com instituições locais, fomentando o empreendedorismo brasileiro na China.
-:::
+
+O Conselho apoia empreendedores brasileiros ao destacar oportunidades de negócios, promover eventos de networking e compartilhar informações sobre o ambiente local. Além disso, trabalhamos para estabelecer parcerias com instituições locais, fomentando o empreendedorismo brasileiro na China. :::
 
 :::details{summary="11. Como o Conselho ajuda na integração de brasileiros recém chegados?"}
 
