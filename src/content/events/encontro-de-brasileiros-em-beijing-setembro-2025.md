@@ -4,7 +4,7 @@ start: 2025-09-27T18:00:00.000Z
 end: 2025-09-27T21:00:00.000Z
 location: Calma, Sanlitun, distrito de Chaoyang, Beijing
 ---
-# Encontro de Brasileiros em Beijing – 27 de Setembro![](/events/encontro-de-brasileiros-em-beijing-setembro/encontro-01.jpg)
+# Encontro de Brasileiros em Beijing – 27 de Setembro![](/events/encontro-de-brasileiros-em-beijing-setembro-2025/encontro-01.jpg)
 
 **Encontro de Brasileiros em Beijing**
 
