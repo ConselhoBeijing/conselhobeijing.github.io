@@ -18,4 +18,6 @@ Este  evento nasce da grande demanda de pessoas que querem praticar tanto o  chi
 - Todos os níveis de proficiência são bem-vindos (inclusive zero)
 - Trívia de mandarim e português com professores qualificados
 
-![](/events/papo-brasil-china/img.jpg)
+![](/events/papo-brasil-china/img.jpg)\
+\
+\**Sumário do evento**[https://mp.weixin.qq.com/s/O0gYl1yxB5fRy9SpngzYfA?token=2058176951&lang=en_US](https://mp.weixin.qq.com/s/O0gYl1yxB5fRy9SpngzYfA?token=2058176951&lang=en_US)
