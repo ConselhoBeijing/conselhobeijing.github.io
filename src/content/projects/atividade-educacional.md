@@ -9,6 +9,8 @@ intro: >-
   de estimular a integração entre brasileiros e chineses.
 thumbnail: /projects/atividade-educacional/thumbnail.jpg
 ---
-![](/projects/atividade-educacional/papo-brasil-china-foto.jpg)
+![](/projects/atividade-educacional/img.jpg)
 
-Oferecemos uma oportunidade única de praticar tanto o português brasileiro quanto o mandarim por meio do nosso evento PAPO BRASIL-CHINA《巴葡角》. Nosso objetivo é divulgar a língua e a cultura do Brasil, promover o aprendizado e o desenvolvimento pessoal e profissional dos participantes, além de fortalecer os laços entre brasileiros e chineses.
+**Papo Brasil-China《巴葡角》** é uma oportunidade única para praticar o português brasileiro e o mandarim, promovendo a integração cultural entre Brasil e China. O evento conta com atividades interativas, como quizzes e jogos, em ambos os idiomas, conduzidas por professores de universidades de renome e da sociedade local. Também há incentivo à prática do português e do mandarim com falantes nativos, criando um ambiente de aprendizado e troca cultural. Além disso, o evento oferece comida, bebida e um espaço para networking entre brasileiros e chineses. O consumo é individual, e não é permitida a entrada de alimentos e bebidas de fora. É o momento perfeito para conversar, aprender e se conectar com novos amigos!\
+\
+![](/projects/atividade-educacional/Weixin%20Image_20251202230340_146_2143.jpg)
