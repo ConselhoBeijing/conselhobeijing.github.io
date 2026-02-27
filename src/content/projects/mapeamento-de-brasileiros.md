@@ -5,8 +5,8 @@ intro: >-
   suas prioridades, interesses e desafios cotidianos. Com base nessas
   informações, desenvolvemos iniciativas práticas e direcionadas, que facilitam
   o dia a dia, aproximam pessoas e fortalecem a rede de apoio. Nosso objetivo é
-  tornar a experiência de viver na China mais organizada, segura e
-  verdadeiramente positiva para todos.
+  tornar a experiência de viver na China mais segura e verdadeiramente positiva
+  os cidadãos de nosso país.
 thumbnail: /projects/mapeamento-de-brasileiros/thumbnail.jpg
 ---
 Para apoiar de forma eficaz a comunidade brasileira, realizamos um levantamento contínuo que nos permite compreender melhor o perfil, os interesses e as principais demandas dos cidadãos na nossa região de atuação. Esse mapeamento orienta nossas iniciativas e prioridades, garantindo ações mais alinhadas à realidade dos brasileiros que vivem na China.
