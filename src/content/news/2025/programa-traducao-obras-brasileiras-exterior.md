@@ -1,6 +1,6 @@
 ---
 title: >-
-  Fundação Biblioteca Nacional Lança Programa de Tradução e Publicação de Obras
+  Biblioteca Nacional Lança Programa de Tradução e Publicação de Obras
   Brasileiras no Exterior
 date: 2025-09-10
 type: external
