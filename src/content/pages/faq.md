@@ -6,21 +6,15 @@ subtitle: Perguntas frequentes da comunidade brasileira em Pequim.
 O Conselho dos Cidadãos Brasileiros de Beijing é uma iniciativa voluntária que representa e apoia os brasileiros na China, funcionando como um elo entre a comunidade e a missão diplomática. Com atuação nas cidades de Pequim e Tianjin, e nas províncias de Gansu, Hebei, Heilongjiang, Henan, Jiangxi, Jilin, Liaoning, Mongólia Interior, Qinghai, Shanxi, Tibete, e Xinjiang, além da República da Mongólia, o CCBB busca promover a integração e valorizar a identidade cultural brasileira na região.
 :::
 
-:::details{summary="2. Como posso entrar em contato com o Conselho?"}
-Para entrar em contato com o Conselho, acesse a página “Contato” no menu principal e preencha o formulário disponível. Você também pode nos contatar por e-mail ou por meio da nossa conta oficial no WeChat (pesquisando Conselho BJ), garantindo que suas dúvidas e sugestões sejam atendidas de maneira rápida.
-:::
+:::details{summary="2. Como posso entrar em contato com o Conselho?"} Para entrar em contato com o Conselho, clique no ícone de e-mail no canto superior direito do site, se estiver usando um PC, e preencha o formulário disponível. Se estiver utilizando um celular, toque no menu (hamburger link) para acessar o link do e-mail. Você também pode nos contatar através da nossa conta oficial no **WeChat** (pesquisando **Conselho BJ** ou escaneando o QR code disponível), garantindo que suas dúvidas e sugestões sejam atendidas de forma rápida e eficiente. :::
 
-:::details{summary="3. Quem pode participar do Conselho?"}
-Qualquer cidadão brasileiro residente na área de jurisdição da Embaixada de Pequim pode se tornar membro do Conselho dos Cidadãos Brasileiros de Beijing. Para se candidatar, é importante acompanhar o processo de adesão, que acontece periodicamente. O Conselho valoriza a participação da comunidade, permitindo que novos membros contribuam para a promoção da cultura e apoio mútuo entre brasileiros na região. Fique atento às nossas comunicações para mais detalhes sobre as próximas oportunidades de adesão.
-:::
+:::details{summary="3. Quem pode participar do Conselho?"} Qualquer cidadão brasileiro residente na área de jurisdição da Embaixada de Beijing pode se tornar membro do Conselho dos Cidadãos. Para se candidatar, é importante acompanhar o processo de adesão, que acontece periodicamente. O Conselho valoriza a participação da comunidade, permitindo que novos membros contribuam para a promoção da cultura e apoio mútuo entre brasileiros na região. Fique atento às nossas comunicações para mais detalhes sobre as próximas oportunidades de adesão. :::
 
 :::details{summary="4. O Conselho oferece assistência jurídica?"}
 Embora o Conselho não forneça suporte jurídico direto, estamos aqui para orientar os brasileiros sobre como acessar serviços legais. Podemos facilitar o contato com advogados locais e representantes da missão diplomática, assegurando que você tenha acesso à assistência necessária.
 :::
 
-:::details{summary="5. O Conselho ajuda brasileiros em situações de emergência?"}
-Sim, o Conselho colabora com a embaixada e autoridades para apoiar brasileiros em emergências, como questões de saúde, perda de documentos ou problemas legais. Oferecemos orientação por meio de nossas redes sociais e intermediamos o contato com a representação diplomática. Para mais informações, consulte a página emergência.
-:::
+:::details{summary="5. O Conselho ajuda brasileiros em situações de emergência?"}Sim, o Conselho colabora com a embaixada e autoridades para apoiar brasileiros em situações de emergência, fornecendo informações sobre problemas de saúde, perda de documentos ou questões legais. Oferecemos orientação por meio de nossa conta oficial no **WeChat**, no link **SOS**, onde intermediamos o contato com a representação diplomática. Para mais informações, consulte nossa conta oficial no **WeChat**. :::
 
 :::details{summary="6. Como encontrar oportunidades de trabalho ou estudo com o apoio do Conselho?"}
 O Conselho ajuda com a divulgação de oportunidades de emprego e estudo por meio de eventos de networking e parcerias com instituições educacionais e empresas, além de compartilhar informações em suas redes sociais. Buscamos conectar os brasileiros a oportunidades em suas jornadas profissionais e acadêmicas.
