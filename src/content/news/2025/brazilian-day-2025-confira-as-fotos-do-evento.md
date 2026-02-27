@@ -1,5 +1,5 @@
 ---
-title: Brazilian Day 2025 - Confira as fotos do evento
+title: Brazilian Day 2025 - Confira as fotos do evento do Conselho dos Cidadãos
 date: 2025-09-07
 type: external
 description: >-
