@@ -1,5 +1,7 @@
 ---
-title: Uma festa junina brasileira em Beijing
+title: >-
+  Uma Festa Junina Brasileira em Pequim: A Primeira Celebração Pública da
+  Tradição no Coração da Capital Chinesa
 date: 2024-06-19
 type: external
 description: >-
