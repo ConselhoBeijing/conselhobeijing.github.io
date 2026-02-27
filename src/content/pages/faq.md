@@ -44,11 +44,15 @@ O Conselho organiza uma variedade de eventos, como celebrações de datas nacion
 
 :::details{summary="8. O Conselho pode auxiliar com documentação, como renovação de passaportes?"}
 
-O Conselho orienta os brasileiros sobre os procedimentos necessários para a renovação de passaportes e outros serviços consulares, facilitando o acesso à embaixada ou consulado. Para mais informações, ***consulte nosso WeChat.***:::
+O Conselho orienta os brasileiros sobre os procedimentos necessários para a renovação de passaportes e outros serviços consulares, facilitando o acesso à embaixada ou consulado. Para mais informações, ***consulte nosso WeChat.***
+
+:::
 
 :::details{summary="9. Quais iniciativas o Conselho tem para promover a cultura e o idioma brasileiros?"}
 
-O Conselho organiza encontros periódicos e eventos culturais, como Festas Juninas, e o evento PAPO Brasil-China, focado na troca os ideiomas Português do Brasil e Mandarim.:::
+O Conselho organiza encontros periódicos e eventos culturais, como Festas Juninas, e o evento PAPO Brasil-China, focado na troca os ideiomas Português do Brasil e Mandarim.
+
+:::
 
 :::details{summary="10. O Conselho apoia empreendedores que querem abrir negócios fora do Brasil?"}
 O Conselho apoia empreendedores brasileiros ao destacar oportunidades de negócios, promover eventos de networking e compartilhar informações sobre o ambiente local. Além disso, trabalhamos para estabelecer parcerias com instituições locais, fomentando o empreendedorismo brasileiro na China.
