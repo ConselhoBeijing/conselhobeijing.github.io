@@ -44,8 +44,7 @@ O Conselho organiza uma variedade de eventos, como celebrações de datas nacion
 
 :::details{summary="8. O Conselho pode auxiliar com documentação, como renovação de passaportes?"}
 
-O Conselho orienta os brasileiros sobre os procedimentos necessários para a renovação de passaportes e outros serviços consulares, facilitando o acesso à embaixada ou consulado. Para mais informações, ***consulte nosso WeChat.***\
-:::
+O Conselho orienta os brasileiros sobre os procedimentos necessários para a renovação de passaportes e outros serviços consulares, facilitando o acesso à embaixada ou consulado. Para mais informações, ***consulte nosso WeChat.***:::
 
 :::details{summary="9. Quais iniciativas o Conselho tem para promover a cultura e o idioma brasileiros?"}
 
