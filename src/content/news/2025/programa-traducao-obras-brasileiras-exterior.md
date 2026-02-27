@@ -1,5 +1,7 @@
 ---
-title: Programa de Nacional Tradução e Publicação de Obras Brasileiras no Exterior
+title: >-
+  Programa de Nacional Tradução e Publicação de Obras Brasileiras no Exterior
+  (Português e Chinês)
 date: 2025-09-10
 type: external
 description: >-
