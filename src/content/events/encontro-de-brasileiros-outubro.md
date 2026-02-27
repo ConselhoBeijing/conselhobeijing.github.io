@@ -1,5 +1,5 @@
 ---
-title: Encontro de Brasileiros - Outubro
+title: Encontro de Brasileiros - Out
 start: 2025-10-18T18:00:00.000Z
 end: 2025-10-18T21:00:00.000Z
 location: Alkhaleej Mandi Kitchen, Sanlitun, distrito de Chaoyang, Beijing
