@@ -1,7 +1,5 @@
 ---
-title: >-
-  Festa Junina Celebrada em Beijing com Características e Tradições do
-  Hemisfério Norte – Artigo em Inglês
+title: (artigo em inglês) Festa Junina Celebrada em Beijing com Tradições do Brasil
 date: 2025-06-23
 type: external
 description: >-
