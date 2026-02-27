@@ -1,5 +1,5 @@
 ---
-title: PAPO BRASIL-CHINA《巴葡角》
+title: PAPO BRASIL-CHINA
 start: 2025-12-02T19:00:00.000Z
 end: 2025-12-02T21:00:00.000Z
 location: The Local, Sanlitun, distrito de Chaoyang, Beijing
