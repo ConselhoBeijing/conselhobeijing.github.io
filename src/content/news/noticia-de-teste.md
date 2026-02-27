@@ -1,5 +1,5 @@
 ---
-title: Notícia de teste2
+title: Notícia de teste
 date: 2026-02-28
 type: external
 description: um artigo muito interessante
