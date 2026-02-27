@@ -1,6 +1,6 @@
 ---
 title: >-
-  Construindo Pontes de Amizade - Registro do Brazilian Day por revista Health
+  Construindo Pontes de Amizade - Registro do Brazilian Day, por revista Health
   and Beauty
 date: 2025-09-07
 type: external
