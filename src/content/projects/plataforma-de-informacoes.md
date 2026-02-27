@@ -2,9 +2,10 @@
 title: Plataforma de Informações
 intro: >-
   Mantemos plataformas digitais com informações atualizadas sobre saúde,
-  educação, burocracia e oportunidades, conectando brasileiros na China e
-  oferecendo orientação prática, apoio mútuo e conteúdos confiáveis para
-  facilitar a integração de residentes e visitantes.
+  educação, burocracia e oportunidades, conectando brasileiros na China.
+  Oferecemos orientação prática, apoio mútuo e conteúdos confiáveis, facilitando
+  a adaptação, fortalecendo a integração e tornando a experiência de residentes
+  e visitantes mais segura e positiva.
 thumbnail: /projects/plataforma-de-informacoes/thumbnail.jpg
 ---
 Mantemos plataformas digitais que centralizam informações essenciais sobre a vida na China, abordando temas como adaptação, saúde, educação, burocracia e oportunidades. Nosso objetivo é facilitar a integração dos brasileiros, oferecendo recursos práticos, orientações confiáveis e conteúdos atualizados que ajudam tanto residentes quanto visitantes a se sentirem mais seguros e informados.
