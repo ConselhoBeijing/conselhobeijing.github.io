@@ -20,8 +20,6 @@ Este  evento nasce da grande demanda de pessoas que querem praticar tanto o  chi
 
 ![](/events/papo-brasil-china/img.jpg)\
 \
-`<!DOCTYPE html> <html> <head> <meta name="viewport" content="width=device-width, initial-scale=1.0"> <style> .container { max-width: 480px;        /* mobile width limit`*`/`*`*`margin: 0 auto;          /`*`center on bigger screens`*`/`*`*`padding: 16px;`*`*`word-break: break-word;  /`*`prevents long URL overflow`*`/`*`*`}`*`*`a {`*`*`word-break: break-all;   /`*`prevents link from stretching layout */ } </style> </head>`
+`<h3 style="text-align:center;">Sumário do evento</h3>`
 
-`<body> <div class="container"> <h3 style="text-align: center;">Sumário do evento</h3>`
-
-`<p style="text-align: center;"> <a href="https://mp.weixin.qq.com/s/O0gYl1yxB5fRy9SpngzYfA?token=2058176951&lang=en_US" target="_blank"> Acessar conteúdo </a> </p> </div> </body> </html>`
+`<p style="text-align:center;"> <a href="https://mp.weixin.qq.com/s/O0gYl1yxB5fRy9SpngzYfA?token=2058176951&lang=en_US" target="_blank"> Acessar o conteúdo completo </a> </p>`
