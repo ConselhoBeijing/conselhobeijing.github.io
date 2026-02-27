@@ -1,5 +1,5 @@
 ---
-title: 'Festa Junina: O que é a tradição?'
+title: 'Festa Junina: O que é a tradição? Artigo em Esperanto e Chinês'
 date: 2025-06-24
 type: external
 description: >-
