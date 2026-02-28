@@ -1,6 +1,6 @@
 ---
 title: Brasileiro recebe o Prêmio da Amizade do Governo Chinês
-date: 2026-12-29
+date: 2025-12-29
 type: external
 description: >-
   Rafael Henrique Zerbetto, brasileiro e cofundador do Conselho dos Cidadãos
