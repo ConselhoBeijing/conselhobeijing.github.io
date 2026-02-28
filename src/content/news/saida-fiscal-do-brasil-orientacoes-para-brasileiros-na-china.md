@@ -1,5 +1,5 @@
 ---
-title: 'Saída Fiscal do Brasil: Orientações para Brasileiros na China'
+title: 'Saída fiscal do Brasil: orientações para brasileiros na China'
 date: 2025-12-15
 type: external
 description: >-
