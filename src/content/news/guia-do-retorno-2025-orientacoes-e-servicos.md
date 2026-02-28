@@ -1,5 +1,5 @@
 ---
-title: Guia do Retorno 2025, Orientações e Serviços
+title: Guia do Retorno 2025, orientações e serviços
 date: 2025-12-16
 type: external
 description: >-
