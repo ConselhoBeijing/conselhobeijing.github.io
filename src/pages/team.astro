@@ -62,7 +62,7 @@ function getSocialLinks(member: CollectionEntry<"team">) {
     <div class="max-w-7xl mx-auto px-3 py-8 sm:px-5 lg:px-6">
         <header class="internal-page-header">
             <h1 class="internal-page-title">Equipe</h1>
-            <p class="internal-page-subtitle pt-6">
+            <p class="internal-page-subtitle pt-6 w-full max-w-none">
                 A seguir, apresentamos os membros que integram o Conselho dos Cidadãos Brasileiros de Beijing. Cada representante desempenha um papel
                 fundamental na promoção da cultura, integração e bem-estar da comunidade brasileira na China. Com formações e experiências variadas, nossos
                 voluntários se dedicam a fortalecer os laços entre os brasileiros e a criar oportunidades de colaboração com a comunidade local.
@@ -86,7 +86,7 @@ function getSocialLinks(member: CollectionEntry<"team">) {
                                             </div>
                                         ) : (
                                             <div class="team-member-photo-frame team-member-avatar-fallback w-40 h-40 rounded-full mx-auto mb-4 flex items-center justify-center text-4xl">
-                                                👤
+                                                <i class="bi bi-person-fill" aria-hidden="true"></i>
                                             </div>
                                         )}
                                         <h3 class="team-member-name text-xl font-bold">{member.data.name}</h3>

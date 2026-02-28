@@ -136,7 +136,7 @@ const faqPreviewItems = extractFaqQuestions(faqEntry?.body ?? "", HOME_FAQ_ITEMS
                                             data-news-carousel-prev
                                             aria-label="Notícia anterior"
                                         >
-                                            <span aria-hidden="true">‹</span>
+                                            <i class="bi bi-chevron-left" aria-hidden="true"></i>
                                         </button>
                                         <button
                                             type="button"
@@ -144,7 +144,7 @@ const faqPreviewItems = extractFaqQuestions(faqEntry?.body ?? "", HOME_FAQ_ITEMS
                                             data-news-carousel-next
                                             aria-label="Próxima notícia"
                                         >
-                                            <span aria-hidden="true">›</span>
+                                            <i class="bi bi-chevron-right" aria-hidden="true"></i>
                                         </button>
                                     </div>
                                 )}
@@ -170,7 +170,7 @@ const faqPreviewItems = extractFaqQuestions(faqEntry?.body ?? "", HOME_FAQ_ITEMS
                                     <p class="home-bento-kicker text-xs font-semibold uppercase tracking-wide">
                                         {new Date(event.startISO).toLocaleDateString("pt-BR", { day: "2-digit", month: "short" }).replace(".", "")}
                                     </p>
-                                    <p class="home-bento-item-title mt-1 text-sm font-semibold group-hover:underline">{event.title}</p>
+                                    <p class="home-bento-item-title mt-1 group-hover:underline">{event.title}</p>
                                 </a>
                             ))
                         ) : (
@@ -190,7 +190,7 @@ const faqPreviewItems = extractFaqQuestions(faqEntry?.body ?? "", HOME_FAQ_ITEMS
                                     <p class="home-bento-kicker text-xs font-semibold uppercase tracking-wide">
                                         {new Date(event.startISO).toLocaleDateString("pt-BR", { day: "2-digit", month: "short" }).replace(".", "")}
                                     </p>
-                                    <p class="home-bento-item-title mt-1 text-sm font-semibold group-hover:underline">{event.title}</p>
+                                    <p class="home-bento-item-title mt-1 group-hover:underline">{event.title}</p>
                                 </a>
                             ))
                         ) : (

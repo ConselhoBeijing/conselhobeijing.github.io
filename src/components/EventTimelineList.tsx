@@ -83,6 +83,14 @@ function toViewMode(value: string | null): EventListMode {
   return value === "past" ? "past" : "upcoming";
 }
 
+function viewModeSwitchClass(active: boolean): string {
+  const base = "site-button calendario-feed-switch px-4 py-2 text-xs";
+  if (active) {
+    return `${base} calendario-feed-switch--active calendario-feed-switch--active-local`;
+  }
+  return `${base} calendario-feed-switch--inactive`;
+}
+
 export default function EventTimelineList({ events }: Props) {
   const today = useMemo(() => {
     const now = new Date();
@@ -218,27 +226,19 @@ export default function EventTimelineList({ events }: Props) {
           <div className="flex items-center gap-2">
             <button
               type="button"
-              onClick={() => setViewMode("upcoming")}
-              aria-pressed={viewMode === "upcoming"}
-              className={`site-button px-4 py-2 text-xs ${
-                viewMode === "upcoming"
-                  ? "border-black/25 bg-white/90 text-gray-900 dark:border-white/35 dark:bg-white/20 dark:text-gray-100"
-                  : "border-black/15 bg-white/55 text-gray-700 dark:border-white/20 dark:bg-white/5 dark:text-gray-300"
-              }`}
+              onClick={() => setViewMode("past")}
+              aria-pressed={viewMode === "past"}
+              className={viewModeSwitchClass(viewMode === "past")}
             >
-              Próximos
+              Anteriores
             </button>
             <button
               type="button"
-              onClick={() => setViewMode("past")}
-              aria-pressed={viewMode === "past"}
-              className={`site-button px-4 py-2 text-xs ${
-                viewMode === "past"
-                  ? "border-black/25 bg-white/90 text-gray-900 dark:border-white/35 dark:bg-white/20 dark:text-gray-100"
-                  : "border-black/15 bg-white/55 text-gray-700 dark:border-white/20 dark:bg-white/5 dark:text-gray-300"
-              }`}
+              onClick={() => setViewMode("upcoming")}
+              aria-pressed={viewMode === "upcoming"}
+              className={viewModeSwitchClass(viewMode === "upcoming")}
             >
-              Anteriores
+              Próximos
             </button>
           </div>
 

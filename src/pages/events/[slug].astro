@@ -35,7 +35,10 @@ const endTime = entry.data.end
 
 <Layout title={`${entry.data.title} - Eventos`} description={`Detalhes do evento ${entry.data.title}`}>
     <article class="max-w-4xl mx-auto px-3 py-8 sm:px-5">
-        <a href="/events" class="internal-back-link text-sm font-semibold hover:underline">← Voltar para Eventos</a>
+        <a href="/events" class="internal-back-link text-sm font-semibold hover:underline">
+            <i class="bi bi-arrow-left" aria-hidden="true"></i>
+            <span>Voltar para Eventos</span>
+        </a>
         <h1 class="internal-page-title mt-4">{entry.data.title}</h1>
 
         <header class="event-detail-header mt-4 rounded-3xl p-8 shadow-sm">

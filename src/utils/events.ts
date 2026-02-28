@@ -19,6 +19,7 @@ export function toDateInput(date: Date): string {
 
 function stripMarkdown(markdown: string): string {
   return markdown
+    .replace(/<[^>]*>/g, ' ')
     .replace(/```[\s\S]*?```/g, ' ')
     .replace(/`[^`]*`/g, ' ')
     .replace(/!\[[^\]]*\]\([^)]*\)/g, ' ')
