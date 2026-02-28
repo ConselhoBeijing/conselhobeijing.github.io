@@ -40,7 +40,7 @@ O **Conselho** ajuda com a divulgação de oportunidades de emprego e estudo por
 
 :::details{summary="7. Quais eventos e atividades o Conselho organiza para a comunidade?"}
 
-O **Conselho** organiza uma variedade de eventos, como celebrações de datas nacionais, encontros online e presenciais, palestras informativas, além de atividades voltadas para a promoção da língua e cultura brasileiras. ***Para mais informações consulte a página "Agenda".***
+O **Conselho** organiza uma variedade de eventos, como celebrações de datas nacionais, encontros online e presenciais, palestras informativas, além de atividades voltadas para a promoção da língua e cultura brasileiras. *Para mais informações **consulte a página "Agenda".***
 
 :::
 
@@ -78,5 +78,5 @@ Sim, uma das principais atividades do **Conselho** é promover o networking entr
 
 :::details{summary="14. O Conselho oferece apoio a quem deseja retornar ao Brasil?"}
 
-O **Conselho** oferece suporte aos brasileiros que desejam retornar ao Brasil, fornecendo informações sobre o planejamento da volta, esclarecendo os direitos no processo de retorno e conectando os interessados a recursos disponíveis na missão diplomática. Para mais informações, consulte nossa **conta** ***oficial de WeChat.***
+O **Conselho** oferece suporte aos brasileiros que desejam retornar ao Brasil, fornecendo informações sobre o planejamento da volta, esclarecendo os direitos no processo de retorno e conectando os interessados a recursos disponíveis na missão diplomática. Para mais informações, ***consulte nossa conta oficial de WeChat.***
 :::
