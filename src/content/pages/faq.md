@@ -1,6 +1,6 @@
 ---
 title: FAQ
-subtitle: Perguntas frequentes da comunidade brasileira em Pequim.
+subtitle: Perguntas frequentes da comunidade brasileira em Beijing.
 ---
 :::details{summary="1. O que é o Conselho dos Cidadãos Brasileiros de Beijing?"}
 
