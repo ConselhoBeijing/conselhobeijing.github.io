@@ -89,10 +89,14 @@
 }
 
 @layer base {
-    :root {
-        color-scheme: light;
-        --site-font-family: "Open Sans", "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-    }
+:root {
+    color-scheme: light;
+    --site-font-family: "Open Sans", "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 16px; /* new */
+    -webkit-text-size-adjust: 100%; /* new, fixes iOS Safari scaling */
+    -moz-text-size-adjust: 100%; /* new, fixes Firefox scaling */
+    -ms-text-size-adjust: 100%; /* new, fixes Edge scaling */
+}
 
     :root.dark {
         color-scheme: dark;
