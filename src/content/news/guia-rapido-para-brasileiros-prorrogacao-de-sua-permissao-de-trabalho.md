@@ -1,5 +1,5 @@
 ---
-title: 'Guia Rápido para Brasileiros: Prorrogação de sua Permissão de Trabalho'
+title: 'Guia rápido para brasileiros: prorrogação de sua permissão de trabalho'
 date: 2026-02-13
 type: external
 description: >-
