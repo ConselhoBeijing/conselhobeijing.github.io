@@ -5,6 +5,7 @@
   "scripts": {
     "dev": "astro dev",
     "build": "astro build",
+    "build:pages": "DEPLOY_TARGET=pages astro build",
     "preview": "astro preview",
     "test": "node --test tests/**/*.test.mjs",
     "astro": "astro"

@@ -19,6 +19,9 @@ import markdoc from "@astrojs/markdoc";
 
 import vercel from "@astrojs/vercel";
 
+const deployTarget = process.env.DEPLOY_TARGET ?? "vercel";
+const isVercel = deployTarget !== "pages";
+
 // https://astro.build/config
 export default defineConfig({
   output: "static",
@@ -27,8 +30,7 @@ export default defineConfig({
     plugins: [tailwindcss()],
   },
 
-  // integrations: [react(), process.env.NODE_ENV === "development" ? keystatic() : null, markdoc()],
-  integrations: [react(), markdoc(), keystatic()],
+  integrations: [react(), markdoc(), ...(isVercel ? [keystatic()] : [])],
 
   markdown: {
     remarkPlugins: [remarkGfm, remarkDirective, remarkCustomDirectives, remarkGithubBlockquoteAlert, remarkMath],
@@ -56,5 +58,5 @@ export default defineConfig({
     },
   },
 
-  adapter: vercel(),
+  ...(isVercel ? { adapter: vercel() } : {}),
 });
