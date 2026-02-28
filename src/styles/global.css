@@ -91,7 +91,7 @@
 @layer base {
 :root {
     color-scheme: light;
-    --site-font-family: "Open Sans", "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+--site-font-family: "Open Sans", "Segoe UI", Tahoma, Geneva, Verdana, sans-serif, "Segoe UI Emoji", "Apple Color Emoji", "Noto Color Emoji", "Twemoji Mozilla";
     font-size: 16px; /* new */
     -webkit-text-size-adjust: 100%; /* new, fixes iOS Safari scaling */
     -moz-text-size-adjust: 100%; /* new, fixes Firefox scaling */
