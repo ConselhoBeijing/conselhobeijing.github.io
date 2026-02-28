@@ -10,7 +10,7 @@ O **Conselho dos Cidadãos Brasileiros de Beijing (CCBB)** é uma iniciativa vol
 
 :::details{summary="2. Como posso entrar em contato com o Conselho?"}
 
-Para entrar em contato com o **Conselho**, clique no ícone de e-mail no canto superior direito do site, se estiver usando um PC, e preencha o formulário disponível. Se estiver utilizando um celular, toque no menu (hamburger link) para acessar o link do e-mail. Você também pode nos contatar através da nossa conta oficial no **WeChat** (pesquisando **Conselho BJ** ou escaneando o QR code disponível), garantindo que suas dúvidas e sugestões sejam atendidas de forma rápida e eficiente.
+Para entrar em contato com o **Conselho**, clique no ícone de e-mail no canto superior direito do site, se estiver usando um PC, e preencha o formulário disponível. Se estiver utilizando um celular, toque no menu (hamburger link) para acessar o link do e-mail. Você também pode nos contatar através da nossa **conta oficial no** **WeChat** (pesquisando **Conselho BJ** ou escaneando o QR code disponível no menu), garantindo que suas dúvidas e sugestões sejam atendidas de forma rápida e eficiente.
 
 :::
 
