@@ -1,6 +1,6 @@
 ---
 title: >-
-  Encontro com os Premiados Escritores Brasileiros Julián Fuks e Jeferson
+  Encontro com os premiados escritores brasileiros Julián Fuks e Jeferson
   Tenório
 date: 2026-01-07
 type: external
