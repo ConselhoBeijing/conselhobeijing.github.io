@@ -1,5 +1,5 @@
 ---
-title: Brasileiro recebe o Prêmio da Amizade do Governo Chinês
+title: Brasileiro recebe o Prêmio da Amizade do governo chinês
 date: 2025-12-29
 type: external
 description: >-
