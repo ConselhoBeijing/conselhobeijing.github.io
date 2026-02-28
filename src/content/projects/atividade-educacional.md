@@ -6,7 +6,7 @@ intro: >-
   chinês). Essa é uma oportunidade única de praticar tanto o português quanto o
   mandarim. O evento visa divulgar a língua e a cultura brasileiras, promover o
   aprendizado e o desenvolvimento pessoal e profissional dos participantes, além
-  de estimular a integração entre brasileiros e chineses.
+  de estimular a integração entre brasileiros e chineses. Saiba mais.
 thumbnail: /projects/atividade-educacional/thumbnail.jpg
 ---
 ![](/projects/atividade-educacional/img.jpg)
