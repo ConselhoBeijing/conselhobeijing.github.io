@@ -1,5 +1,5 @@
 ---
-title: Cartilha de Proteção ao Trabalhador no Sudeste Asiático (Disponível em PDF)
+title: Cartilha de proteção ao trabalhador no Sudeste Asiático (Disponível em PDF)
 date: 2026-02-27
 type: external
 description: >
