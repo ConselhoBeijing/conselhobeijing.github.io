@@ -20,13 +20,12 @@ Escaneie os QR codes abaixo para acessar nossas plataformas e se conectar com a 
 
 ##### **Conta Oficial no WeChat**
 
-![](/projects/plataforma-de-informacoes/image.png)
+![](/projects/plataforma-de-informacoes/QR03.png)
 
 ##### **LinkedIn**
 
-![](/projects/plataforma-de-informacoes/LinkedIN.png)
+![](/projects/plataforma-de-informacoes/QR02.png)
 
-##### **Instagram**
+##### **Instagram**\
 
-\
-![](/projects/plataforma-de-informacoes/qr-code.png)
+![](/projects/plataforma-de-informacoes/QR01.png)
