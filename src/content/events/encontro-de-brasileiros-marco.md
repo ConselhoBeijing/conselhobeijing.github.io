@@ -30,10 +30,8 @@ Seja você morador da cidade ou visitante, esta é uma ótima oportunidade de tr
 ![](/events/encontro-de-brasileiros-marco/640.png)\
 \***Poucas vagas disponíveis\***
 
-![](/events/encontro-de-brasileiros-marco/640.jpg)
-
-***![](/events/encontro-de-brasileiros-marco/640.jpg)\
-![](/events/encontro-de-brasileiros-marco/633.jpg)***
+![](/events/encontro-de-brasileiros-marco/640.jpg)\
+![](/events/encontro-de-brasileiros-marco/633.jpg)
 
 **Por que participar?**
 
