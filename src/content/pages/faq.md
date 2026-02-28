@@ -2,7 +2,11 @@
 title: FAQ
 subtitle: Perguntas frequentes da comunidade brasileira em Pequim.
 ---
-:::details{summary="1. O que é o Conselho dos Cidadãos Brasileiros de Beijing?"} O **Conselho dos Cidadãos Brasileiros de Beijing (CCBB)** é uma iniciativa voluntária que representa e apoia os brasileiros na China, funcionando como um elo entre a comunidade e a missão diplomática. Com atuação nas cidades de Pequim e Tianjin, e nas províncias de Gansu, Hebei, Heilongjiang, Henan, Jiangxi, Jilin, Liaoning, Mongólia Interior, Qinghai, Shanxi, Tibete, e Xinjiang, além da República da Mongólia, o CCBB busca promover a integração e valorizar a identidade cultural brasileira na região. :::
+:::details{summary="1. O que é o Conselho dos Cidadãos Brasileiros de Beijing?"}
+
+O **Conselho dos Cidadãos Brasileiros de Beijing (CCBB)** é uma iniciativa voluntária que representa e apoia os brasileiros na China, funcionando como um elo entre a comunidade e a missão diplomática. Com atuação nas cidades de Pequim e Tianjin, e nas províncias de Gansu, Hebei, Heilongjiang, Henan, Jiangxi, Jilin, Liaoning, Mongólia Interior, Qinghai, Shanxi, Tibete, e Xinjiang, além da República da Mongólia, o CCBB busca promover a integração e valorizar a identidade cultural brasileira na região.
+
+:::
 
 :::details{summary="2. Como posso entrar em contato com o Conselho?"}
 
@@ -48,7 +52,7 @@ O **Conselho** orienta os brasileiros sobre os procedimentos necessários para a
 
 :::details{summary="9. Quais iniciativas o Conselho tem para promover a cultura e o idioma brasileiros?"}
 
-O **Conselho** organiza encontros periódicos e eventos culturais, como Festas Juninas, e o evento PAPO Brasil-China, focado na troca os ideiomas Português do Brasil e Mandarim.
+O **Conselho** organiza encontros periódicos e eventos culturais, como Festas Juninas, e o evento PAPO Brasil-China, focado na troca os idiomas Português do Brasil e Mandarim.
 
 :::
 
