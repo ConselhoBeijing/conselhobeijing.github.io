@@ -8,8 +8,7 @@ description: >
   tecnologia e acabam forçados a aplicar golpes online. Antes de aceitar
   qualquer proposta, informe-se. Leia a cartilha oficial e saiba como
   identificar riscos e se proteger.
-thumbnail: >-
-  https://mmbiz.qpic.cn/mmbiz_jpg/KHBZ53msiaricASR6O7BZETic8Utz7njC4HwlQyoKVQehQTFCtEAbzUyR6KjHLYyh1piaV3BBLuic6Gwgxn3uTW95BNRK8N8BkN3Uk8tHe4BKmo0/640?wx_fmt=jpeg&tp=webp&wxfrom=5&wx_lazy=1#imgIndex=2
+thumbnail: blob:https://conselhobj.vercel.app/6cb5de7c-af51-4211-adaa-55d6effb175d
 externalLink: https://mp.weixin.qq.com/s/fohzNcL6CYE19D0wqqe9wg?token=2058176951&lang=en_US
 tags:
   - Utilidade Pública
