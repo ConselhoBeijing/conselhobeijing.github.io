@@ -87,7 +87,10 @@ test("mobile navbar menu uses smooth animated open and close states", () => {
   assert.ok(navbar.includes('menu.classList.add("is-open")'));
   assert.ok(navbar.includes('menu.classList.remove("is-open")'));
   assert.ok(styles.includes(".site-mobile-menu {"));
-  assert.ok(styles.includes("transition: max-height"));
+  assert.match(
+    styles,
+    /transition:\s*max-height 260ms ease,\s*opacity 200ms ease,\s*transform 260ms ease;/
+  );
   assert.ok(styles.includes(".site-mobile-menu.is-open {"));
 });
 
@@ -689,4 +692,23 @@ test("faq content uses expandable details blocks for all questions", () => {
   const detailsMatches = faqContent.match(/:::details\{summary=/g) ?? [];
   assert.equal(detailsMatches.length, 14);
   assert.ok(!faqContent.includes("### 1."));
+});
+
+test("footer background color can change by section while other pages keep the default", async () => {
+  let footerThemeModule = {};
+
+  try {
+    footerThemeModule = await import(new URL("../src/utils/footer-theme.ts", import.meta.url));
+  } catch {
+    footerThemeModule = {};
+  }
+
+  assert.equal(typeof footerThemeModule.resolveFooterBackgroundColor, "function");
+  assert.equal(footerThemeModule.resolveFooterBackgroundColor("/news"), "#7ef056");
+  assert.equal(footerThemeModule.resolveFooterBackgroundColor("/news/2025/example"), "#7ef056");
+  assert.equal(footerThemeModule.resolveFooterBackgroundColor("/events"), "#fae43f");
+  assert.equal(footerThemeModule.resolveFooterBackgroundColor("/events/calendario"), "#fae43f");
+  assert.equal(footerThemeModule.resolveFooterBackgroundColor("/projects"), "#61e3ff");
+  assert.equal(footerThemeModule.resolveFooterBackgroundColor("/projects/example"), "#61e3ff");
+  assert.equal(footerThemeModule.resolveFooterBackgroundColor("/contact"), null);
 });

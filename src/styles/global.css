@@ -170,7 +170,10 @@
         overflow: hidden;
         pointer-events: none;
         transform: translateY(-0.35rem);
-        transition: max-height 260ms ease, opacity 200ms ease, transform 260ms ease;
+        transition:
+            max-height 260ms ease,
+            opacity 200ms ease,
+            transform 260ms ease;
         will-change: max-height, opacity, transform;
     }
 
@@ -221,7 +224,7 @@
     .site-footer {
         @apply w-full border-t;
         border-color: rgb(0 0 0 / 0.12);
-        background-color: #f9f0e3;
+        background-color: var(--site-footer-bg-color, #f9f0e3);
     }
 
     :root.dark .site-footer {
@@ -368,7 +371,7 @@
 
     .project-card-intro {
         @apply text-base leading-relaxed text-gray-600 dark:text-gray-400;
-        text-align: justify;
+        text-align: left;
     }
 
     .project-card-thumbnail-placeholder {
