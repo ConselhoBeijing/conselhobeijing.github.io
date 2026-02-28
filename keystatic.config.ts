@@ -1,11 +1,12 @@
 import { config, fields, collection, singleton } from "@keystatic/core";
+import { createRichMarkdocField } from "./src/keystatic/rich-markdoc";
 
 export default config({
   storage: {
-    // kind: "local",
+    kind: "local",
 
-    kind: "github",
-    repo: `conselhobeijing/website`,
+    // kind: "github",
+    // repo: `conselhobeijing/website`,
   },
   ui: {
     brand: {
@@ -49,15 +50,10 @@ export default config({
           label: "Tags",
           itemLabel: (props) => props.value || "Tag",
         }),
-        content: fields.markdoc({
+        content: createRichMarkdocField({
           label: "Content",
-          extension: "md",
-          options: {
-            image: {
-              directory: "public/news",
-              publicPath: "/news",
-            },
-          },
+          directory: "public/news",
+          publicPath: "/news",
         }),
       },
     }),
@@ -75,15 +71,10 @@ export default config({
           directory: "public/projects",
           publicPath: "/projects",
         }),
-        content: fields.markdoc({
+        content: createRichMarkdocField({
           label: "Content",
-          extension: "md",
-          options: {
-            image: {
-              directory: "public/projects",
-              publicPath: "/projects",
-            },
-          },
+          directory: "public/projects",
+          publicPath: "/projects",
         }),
       },
     }),
@@ -146,15 +137,10 @@ export default config({
         start: fields.datetime({ label: "Início" }),
         end: fields.datetime({ label: "Término" }),
         location: fields.text({ label: "Localização" }),
-        content: fields.markdoc({
+        content: createRichMarkdocField({
           label: "Description",
-          extension: "md",
-          options: {
-            image: {
-              directory: "public/events",
-              publicPath: "/events",
-            },
-          },
+          directory: "public/events",
+          publicPath: "/events",
         }),
       },
     }),
@@ -168,15 +154,10 @@ export default config({
       schema: {
         title: fields.text({ label: "Title" }),
         subtitle: fields.text({ label: "Subtitle" }),
-        content: fields.markdoc({
+        content: createRichMarkdocField({
           label: "Content",
-          extension: "md",
-          options: {
-            image: {
-              directory: "public/about",
-              publicPath: "/about",
-            },
-          },
+          directory: "public/about",
+          publicPath: "/about",
         }),
       },
     }),
@@ -188,15 +169,10 @@ export default config({
       schema: {
         title: fields.text({ label: "Title" }),
         subtitle: fields.text({ label: "Subtitle" }),
-        content: fields.markdoc({
+        content: createRichMarkdocField({
           label: "Content (Markdown)",
-          extension: "md",
-          options: {
-            image: {
-              directory: "public/about",
-              publicPath: "/about",
-            },
-          },
+          directory: "public/about",
+          publicPath: "/about",
         }),
       },
     }),

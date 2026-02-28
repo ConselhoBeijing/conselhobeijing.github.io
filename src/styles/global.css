@@ -1586,4 +1586,52 @@
             transition: none;
         }
     }
+
+    .rich-text-color {
+        color: inherit;
+    }
+
+    .rich-image-wrapper {
+        display: block;
+        margin: 1.5rem auto;
+    }
+
+    .rich-image-wrapper--align-left {
+        margin-left: 0;
+        margin-right: auto;
+    }
+
+    .rich-image-wrapper--align-center {
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .rich-image-wrapper--align-right {
+        margin-left: auto;
+        margin-right: 0;
+    }
+
+    .rich-image-figure {
+        display: block;
+        width: 100%;
+        height: auto;
+        border-radius: 1rem;
+        box-shadow: 0 12px 30px rgb(0 0 0 / 0.08);
+    }
+
+    .rich-image-caption {
+        margin-top: 0.65rem;
+        text-align: center;
+        font-size: 0.95rem;
+        line-height: 1.5;
+        color: var(--single-page-muted, rgb(55 65 81));
+    }
+
+    @media (max-width: 768px) {
+        .rich-image-wrapper {
+            max-width: 100% !important;
+            margin-left: auto;
+            margin-right: auto;
+        }
+    }
 }
