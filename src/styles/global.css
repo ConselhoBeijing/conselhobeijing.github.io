@@ -22,6 +22,7 @@
     --fc-button-hover-border-color: rgb(188 188 188 / 0.98);
     --fc-button-active-bg-color: rgb(246 243 237 / 0.95);
     --fc-button-active-border-color: rgb(188 188 188 / 0.98);
+    --fc-today-bg-color: rgb(238 235 229 / 0.92);
 }
 
 .calendario-widget .fc .fc-toolbar .fc-button {
@@ -73,6 +74,7 @@
     --fc-button-hover-border-color: rgb(255 255 255 / 0.35);
     --fc-button-active-bg-color: rgb(255 255 255 / 0.2);
     --fc-button-active-border-color: rgb(255 255 255 / 0.35);
+    --fc-today-bg-color: rgb(255 255 255 / 0.16);
 }
 
 :root.dark .calendario-widget .fc .fc-toolbar .fc-button:focus {
@@ -1246,21 +1248,13 @@
         border-color: rgb(126 240 86 / 0.45);
     }
 
-    .calendario-widget .fc .fc-daygrid-day.fc-day-today {
-        background-color: rgb(234 228 63 / 0.2);
-    }
-
     .calendario-widget .fc .fc-daygrid-day.fc-day-today .fc-daygrid-day-number {
-        color: #111827;
+        color: rgb(15 23 42);
         font-weight: 700;
     }
 
     :root.dark .calendario-widget .fc-theme-standard .fc-scrollgrid {
         border-color: rgb(97 227 255 / 0.35);
-    }
-
-    :root.dark .calendario-widget .fc .fc-daygrid-day.fc-day-today {
-        background-color: rgb(97 227 255 / 0.14);
     }
 
     :root.dark .calendario-widget .fc .fc-daygrid-day.fc-day-today .fc-daygrid-day-number {

@@ -499,6 +499,18 @@ test("calendar buttons match the site button patterns used in events and home pa
   assert.ok(!styles.includes("background: transparent !important;"));
 });
 
+test("calendar today cell uses the same neutral palette as the today button", () => {
+  const styles = read("src/styles/global.css");
+  const calendarVars = styles.split(".calendario-widget .fc {")[1]?.split(".calendario-widget .fc .fc-toolbar .fc-button {")[0] ?? "";
+  const darkCalendarVars =
+    styles.split(":root.dark .calendario-widget .fc {")[1]?.split(":root.dark .calendario-widget .fc .fc-toolbar .fc-button:focus {")[0] ?? "";
+
+  assert.ok(calendarVars.includes("--fc-today-bg-color: rgb(238 235 229 / 0.92);"));
+  assert.ok(darkCalendarVars.includes("--fc-today-bg-color: rgb(255 255 255 / 0.16);"));
+  assert.ok(!styles.includes("background-color: rgb(234 228 63 / 0.2);"));
+  assert.ok(!styles.includes("background-color: rgb(97 227 255 / 0.14);"));
+});
+
 test("events date inputs and calendar controls use the site palette styling", () => {
   const styles = read("src/styles/global.css");
   assert.ok(styles.includes(".eventos-filter-input::-webkit-calendar-picker-indicator"));
