@@ -1,16 +1,17 @@
 ---
+import Footer from "../components/Footer.astro";
+import Navbar from "../components/Navbar.astro";
 import "../styles/global.css";
+import { resolveFooterBackgroundColor } from "../utils/footer-theme";
 
 interface Props {
     title: string;
     description?: string;
 }
 
-const { title, description = "Conselho de Cidadãos do Brasil em Pequim" } = Astro.props;
+const { title, description = "Conselho de Cidadãos do Brasil em Pequim" }: Props = Astro.props;
 const lang = Astro.currentLocale || "pt";
-
-import Navbar from "../components/Navbar.astro";
-import Footer from "../components/Footer.astro";
+const footerBackgroundColor = resolveFooterBackgroundColor(Astro.url.pathname);
 ---
 
 <!doctype html>
@@ -50,7 +51,7 @@ import Footer from "../components/Footer.astro";
             <main class="flex-1">
                 <slot />
             </main>
-            <Footer />
+            <Footer backgroundColor={footerBackgroundColor} />
         </div>
     </body>
 </html>
