@@ -1,4 +1,5 @@
 import { useEffect, useMemo, useState } from "react";
+import { formatEventDateValue, toDateInput, toEventDayValue } from "../utils/events";
 
 interface LocalEvent {
   slug: string;
@@ -16,30 +17,26 @@ interface Props {
 
 type EventListMode = "upcoming" | "past";
 
-function toDateInput(date: Date): string {
-  const year = date.getFullYear();
-  const month = String(date.getMonth() + 1).padStart(2, "0");
-  const day = String(date.getDate()).padStart(2, "0");
-  return `${year}-${month}-${day}`;
-}
-
 function addDays(date: Date, days: number): Date {
   const next = new Date(date);
   next.setDate(next.getDate() + days);
   return next;
 }
 
+function toDayInput(dayValue: number): string {
+  const value = String(dayValue).padStart(8, "0");
+  return `${value.slice(0, 4)}-${value.slice(4, 6)}-${value.slice(6, 8)}`;
+}
+
 function formatDateBlock(dateIso: string): { day: string; month: string } {
-  const date = new Date(dateIso);
   return {
-    day: String(date.getDate()).padStart(2, "0"),
-    month: date.toLocaleDateString("pt-BR", { month: "short" }).replace(".", "").toUpperCase(),
+    day: formatEventDateValue(dateIso, "pt-BR", { day: "2-digit" }),
+    month: formatEventDateValue(dateIso, "pt-BR", { month: "short" }).replace(".", "").toUpperCase(),
   };
 }
 
 function formatTimeWindow(startIso: string, endIso?: string): string {
-  const start = new Date(startIso);
-  const startText = start.toLocaleTimeString("pt-BR", {
+  const startText = formatEventDateValue(startIso, "pt-BR", {
     hour: "2-digit",
     minute: "2-digit",
   });
@@ -48,8 +45,7 @@ function formatTimeWindow(startIso: string, endIso?: string): string {
     return startText;
   }
 
-  const end = new Date(endIso);
-  const endText = end.toLocaleTimeString("pt-BR", {
+  const endText = formatEventDateValue(endIso, "pt-BR", {
     hour: "2-digit",
     minute: "2-digit",
   });
@@ -58,15 +54,11 @@ function formatTimeWindow(startIso: string, endIso?: string): string {
 }
 
 function normalizeToDay(dateInput: string): number {
-  const date = new Date(`${dateInput}T00:00:00`);
-  date.setHours(0, 0, 0, 0);
-  return date.valueOf();
+  return Number(dateInput.replace(/-/g, ""));
 }
 
 function normalizeIsoToDay(dateIso: string): number {
-  const date = new Date(dateIso);
-  date.setHours(0, 0, 0, 0);
-  return date.valueOf();
+  return toEventDayValue(dateIso);
 }
 
 function clampDateInput(value: string, min: string, max: string): string {
@@ -92,13 +84,8 @@ function viewModeSwitchClass(active: boolean): string {
 }
 
 export default function EventTimelineList({ events }: Props) {
-  const today = useMemo(() => {
-    const now = new Date();
-    now.setHours(0, 0, 0, 0);
-    return now;
-  }, []);
-
-  const todayValue = today.valueOf();
+  const today = useMemo(() => new Date(), []);
+  const todayValue = toEventDayValue(today);
   const todayInput = toDateInput(today);
 
   const minDateInput = useMemo(() => {
@@ -111,7 +98,7 @@ export default function EventTimelineList({ events }: Props) {
       return value < currentMin ? value : currentMin;
     }, Number.POSITIVE_INFINITY);
 
-    return toDateInput(new Date(minValue));
+    return toDayInput(minValue);
   }, [events, today]);
 
   const maxDateInput = useMemo(() => {
@@ -124,8 +111,7 @@ export default function EventTimelineList({ events }: Props) {
       return value > currentMax ? value : currentMax;
     }, Number.NEGATIVE_INFINITY);
 
-    const baseMax = Math.max(maxValue, todayValue);
-    return toDateInput(new Date(baseMax));
+    return toDayInput(Math.max(maxValue, todayValue));
   }, [events, today, todayValue]);
 
   const defaultRanges = useMemo(() => {

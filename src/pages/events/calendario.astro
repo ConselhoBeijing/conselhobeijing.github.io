@@ -4,12 +4,13 @@ import CalendarWidget from "../../components/CalendarWidget";
 import { getCollection } from "astro:content";
 import holidaysCn from "../../data/holidays-cn.json";
 import holidaysBr from "../../data/holidays-br.json";
+import { toEventTimezoneISOString } from "../../utils/events";
 
 const events = await getCollection("events");
 const localEvents = events.map((entry) => ({
     title: entry.data.title,
-    start: entry.data.start.toISOString(),
-    end: entry.data.end?.toISOString(),
+    start: toEventTimezoneISOString(entry.data.start),
+    end: entry.data.end ? toEventTimezoneISOString(entry.data.end) : undefined,
     location: entry.data.location,
     url: `/events/${entry.slug}`,
 }));

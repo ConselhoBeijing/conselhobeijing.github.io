@@ -1,6 +1,7 @@
 ---
 import Layout from "../../layouts/Layout.astro";
 import { getCollection, type CollectionEntry } from "astro:content";
+import { formatEventDateValue } from "../../utils/events";
 
 export async function getStaticPaths() {
     const events = await getCollection("events");
@@ -13,20 +14,20 @@ export async function getStaticPaths() {
 const { entry } = Astro.props as { entry: CollectionEntry<"events"> };
 const { Content } = await entry.render();
 
-const dateText = entry.data.start.toLocaleDateString("pt-BR", {
+const dateText = formatEventDateValue(entry.data.start, "pt-BR", {
     weekday: "long",
     day: "2-digit",
     month: "long",
     year: "numeric",
 });
 
-const startTime = entry.data.start.toLocaleTimeString("pt-BR", {
+const startTime = formatEventDateValue(entry.data.start, "pt-BR", {
     hour: "2-digit",
     minute: "2-digit",
 });
 
 const endTime = entry.data.end
-    ? entry.data.end.toLocaleTimeString("pt-BR", {
+    ? formatEventDateValue(entry.data.end, "pt-BR", {
           hour: "2-digit",
           minute: "2-digit",
       })

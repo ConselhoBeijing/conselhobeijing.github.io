@@ -2,7 +2,7 @@
 import Layout from "../layouts/Layout.astro";
 import { getCollection, getEntry } from "astro:content";
 import SinglePageSection from "../components/single-page/SinglePageSection.astro";
-import { toLocalEventSummary } from "../utils/events";
+import { formatEventDateValue, toEventDayValue, toLocalEventSummary } from "../utils/events";
 import { stripMarkdown, summarize, extractFirstImageUrl, extractFaqEntries } from "../utils/content-preview";
 import { singlePageSections } from "../config/single-page";
 
@@ -35,12 +35,10 @@ const latestNews = [...allNews]
     summary: summarize(stripMarkdown((entry.data.description ?? entry.body) || "Leia a notícia completa para mais detalhes."), 160),
   }));
 
-const todayStart = new Date();
-todayStart.setHours(0, 0, 0, 0);
-const todayStartValue = todayStart.valueOf();
+const todayDayValue = toEventDayValue(new Date());
 
 const upcomingEvents = allEvents
-  .filter((entry) => entry.data.start.valueOf() >= todayStartValue)
+  .filter((entry) => toEventDayValue(entry.data.start) >= todayDayValue)
   .sort((a, b) => a.data.start.valueOf() - b.data.start.valueOf())
   .slice(0, 3)
   .map((entry) => {
@@ -75,7 +73,7 @@ if (!heroSection || !sobreSection || !noticiasSection || !agendaSection || !proj
 }
 
 function formatEventDate(startISO: string): string {
-  return new Date(startISO).toLocaleDateString("pt-BR", { day: "2-digit", month: "short" }).replace(".", "");
+  return formatEventDateValue(startISO, "pt-BR", { day: "2-digit", month: "short" }).replace(".", "");
 }
 
 function splitFaqContent(content: string): string[] {

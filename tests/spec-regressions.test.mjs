@@ -455,8 +455,12 @@ test("calendar widget renders a filtered events list below the calendar", () => 
   assert.ok(calendar.includes("filteredEvents"));
   assert.ok(calendar.includes("datesSet"));
   assert.ok(calendar.includes("visibleMonthRange"));
-  assert.ok(calendar.includes("eventDate >= visibleMonthRange.start"));
-  assert.ok(calendar.includes("eventDate < visibleMonthRange.end"));
+  assert.ok(calendar.includes("toEventDayValue"));
+  assert.ok(calendar.includes("const visibleStart = toEventDayValue(visibleMonthRange.start)"));
+  assert.ok(calendar.includes("const visibleEnd = toEventDayValue(visibleMonthRange.end)"));
+  assert.ok(calendar.includes("eventDate >= visibleStart"));
+  assert.ok(calendar.includes("eventDate < visibleEnd"));
+  assert.ok(calendar.includes("timeZone={EVENT_TIME_ZONE}"));
   assert.ok(calendar.includes("calendario-filtered-list-panel"));
   assert.ok(calendar.includes("calendario-filtered-list"));
   assert.ok(calendar.includes("calendario-filtered-item"));

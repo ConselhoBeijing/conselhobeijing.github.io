@@ -3,6 +3,7 @@ import FullCalendar from "@fullcalendar/react";
 import dayGridPlugin from "@fullcalendar/daygrid";
 import interactionPlugin from "@fullcalendar/interaction";
 import ptBrLocale from "@fullcalendar/core/locales/pt-br";
+import { EVENT_TIME_ZONE, formatEventDateValue, toEventDayValue } from "../utils/events";
 
 interface Event {
   title: string;
@@ -78,9 +79,11 @@ export default function CalendarWidget({ holidaysCn, holidaysBr, localEvents }: 
   }, [showCn, showBr, showLocal, holidaysCn, holidaysBr, localEvents]);
 
   const filteredEvents = useMemo(() => {
+    const visibleStart = toEventDayValue(visibleMonthRange.start);
+    const visibleEnd = toEventDayValue(visibleMonthRange.end);
     const monthEvents = events.filter((event) => {
-      const eventDate = new Date(event.start).valueOf();
-      return eventDate >= visibleMonthRange.start.valueOf() && eventDate < visibleMonthRange.end.valueOf();
+      const eventDate = toEventDayValue(event.start);
+      return eventDate >= visibleStart && eventDate < visibleEnd;
     });
 
     return monthEvents.sort((first, second) => {
@@ -110,13 +113,11 @@ export default function CalendarWidget({ holidaysCn, holidaysBr, localEvents }: 
   }
 
   function formatEventDate(start: string | Date, end?: string | Date): string {
-    const startDate = new Date(start);
-    const startLabel = startDate.toLocaleDateString("pt-BR", { day: "2-digit", month: "short", year: "numeric" });
+    const startLabel = formatEventDateValue(start, "pt-BR", { day: "2-digit", month: "short", year: "numeric" });
     if (!end) {
       return startLabel;
     }
-    const endDate = new Date(end);
-    const endLabel = endDate.toLocaleDateString("pt-BR", { day: "2-digit", month: "short", year: "numeric" });
+    const endLabel = formatEventDateValue(end, "pt-BR", { day: "2-digit", month: "short", year: "numeric" });
     return `${startLabel} - ${endLabel}`;
   }
 
@@ -141,7 +142,7 @@ export default function CalendarWidget({ holidaysCn, holidaysBr, localEvents }: 
   }
 
   function formatVisibleMonthLabel(start: Date): string {
-    return start.toLocaleDateString("pt-BR", { month: "long", year: "numeric" });
+    return formatEventDateValue(start, "pt-BR", { month: "long", year: "numeric" });
   }
 
   function jumpToCalendarDate(start: string | Date): void {
@@ -207,6 +208,7 @@ export default function CalendarWidget({ holidaysCn, holidaysBr, localEvents }: 
           plugins={[dayGridPlugin, interactionPlugin]}
           initialView="dayGridMonth"
           locale={ptBrLocale}
+          timeZone={EVENT_TIME_ZONE}
           headerToolbar={{
             left: "prev,next today",
             center: "title",

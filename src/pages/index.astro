@@ -3,7 +3,7 @@ import Layout from "../layouts/Layout.astro";
 import BentoGrid from "../components/BentoGrid.astro";
 import BentoCard from "../components/BentoCard.astro";
 import { getCollection, getEntry } from "astro:content";
-import { toLocalEventSummary } from "../utils/events";
+import { formatEventDateValue, toEventDayValue, toLocalEventSummary } from "../utils/events";
 import { HOME_FAQ_ITEMS_PREVIEW_LIMIT, HOME_LATEST_NEWS_CARDS_LIMIT } from "../config/home";
 
 const allNews = await getCollection("news");
@@ -50,17 +50,15 @@ const hasNewsCarouselControls = latestNewsCards.length > 1;
 const primaryBentoButtonClass = "site-button home-bento-cta";
 
 const allEvents = await getCollection("events");
-const todayStart = new Date();
-todayStart.setHours(0, 0, 0, 0);
-const todayStartValue = todayStart.valueOf();
+const todayDayValue = toEventDayValue(new Date());
 
 const upcomingEvents = allEvents
-    .filter((entry) => entry.data.start.valueOf() >= todayStartValue)
+    .filter((entry) => toEventDayValue(entry.data.start) >= todayDayValue)
     .sort((a, b) => a.data.start.valueOf() - b.data.start.valueOf())
     .slice(0, 3)
     .map((entry) => toLocalEventSummary(entry));
 const pastEvents = allEvents
-    .filter((entry) => entry.data.start.valueOf() < todayStartValue)
+    .filter((entry) => toEventDayValue(entry.data.start) < todayDayValue)
     .sort((a, b) => b.data.start.valueOf() - a.data.start.valueOf())
     .map((entry) => toLocalEventSummary(entry));
 const visiblePastEvents = pastEvents.slice(0, 3);
@@ -168,7 +166,7 @@ const faqPreviewItems = extractFaqQuestions(faqEntry?.body ?? "", HOME_FAQ_ITEMS
                             upcomingEvents.map((event) => (
                                 <a href={event.url} class="home-upcoming-event-link group block rounded-xl p-3 transition">
                                     <p class="home-bento-kicker text-xs font-semibold uppercase tracking-wide">
-                                        {new Date(event.startISO).toLocaleDateString("pt-BR", { day: "2-digit", month: "short" }).replace(".", "")}
+                                        {formatEventDateValue(event.startISO, "pt-BR", { day: "2-digit", month: "short" }).replace(".", "")}
                                     </p>
                                     <p class="home-bento-item-title mt-1 group-hover:underline">{event.title}</p>
                                 </a>
@@ -188,7 +186,7 @@ const faqPreviewItems = extractFaqQuestions(faqEntry?.body ?? "", HOME_FAQ_ITEMS
                             visiblePastEvents.map((event) => (
                                 <a href={event.url} class="home-upcoming-event-link group block rounded-xl p-3 transition">
                                     <p class="home-bento-kicker text-xs font-semibold uppercase tracking-wide">
-                                        {new Date(event.startISO).toLocaleDateString("pt-BR", { day: "2-digit", month: "short" }).replace(".", "")}
+                                        {formatEventDateValue(event.startISO, "pt-BR", { day: "2-digit", month: "short" }).replace(".", "")}
                                     </p>
                                     <p class="home-bento-item-title mt-1 group-hover:underline">{event.title}</p>
                                 </a>

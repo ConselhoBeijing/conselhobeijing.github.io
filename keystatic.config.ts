@@ -1,4 +1,5 @@
 import { config, fields, collection, singleton } from "@keystatic/core";
+import { fixedTimezoneDatetimeField } from "./src/keystatic/fixed-timezone-datetime";
 import { createRichMarkdocField } from "./src/keystatic/rich-markdoc";
 
 export default config({
@@ -134,8 +135,8 @@ export default config({
       columns: ["title", "start", "location"],
       schema: {
         title: fields.slug({ name: { label: "Título" } }),
-        start: fields.datetime({ label: "Início" }),
-        end: fields.datetime({ label: "Término" }),
+        start: fixedTimezoneDatetimeField({ label: "Início" }),
+        end: fixedTimezoneDatetimeField({ label: "Término" }),
         location: fields.text({ label: "Localização" }),
         content: createRichMarkdocField({
           label: "Description",
