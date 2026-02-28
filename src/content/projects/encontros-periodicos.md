@@ -6,7 +6,7 @@ intro: >-
   oportunidades de troca de experiências, apoio mútuo, networking e celebrações
   culturais. Realizamos mensalmente os Encontros de Brasileiros, além de eventos
   anuais como as Festas Juninas e o Brazilian Day de Beijing, contribuindo para
-  destacar e valorizar a cultura brasileira na China. Saiba mais.
+  destacar e valorizar a cultura brasileira na China.
 thumbnail: /projects/encontros-periodicos/thumbnail.jpg
 ---
 Promovemos encontros presenciais para fortalecer, na prática, a integração da comunidade brasileira em Beijing e nas outras cidades onde atuamos. Viver fora do Brasil exige adaptação constante, e eventos comunitários criam um ponto de encontro onde as pessoas podem se conhecer, trocar informações úteis e ampliar suas conexões pessoais e profissionais.
