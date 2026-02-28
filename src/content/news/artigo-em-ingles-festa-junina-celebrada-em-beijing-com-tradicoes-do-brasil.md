@@ -1,11 +1,11 @@
 ---
-title: (artigo em inglês) Festa Junina Celebrada em Beijing com Tradições do Brasil
+title: Festa Junina celebrada em Beijing com tradições do Brasil
 date: 2025-06-23
 type: external
 description: >-
-  Reportagem no site Fantastic China sobre a Festa Junina de 21 de junho na
-  Langyuan Station, com música, danças tradicionais, comidas típicas e muita
-  troca cultural.
+  (artigo em inglês) Reportagem no site Fantastic China sobre a Festa Junina de
+  21 de junho na Langyuan Station, com música, danças tradicionais, comidas
+  típicas e muita troca cultural.
 thumbnail: >-
   https://www.heychinaculture.com/static/upload/image/20250624/1750745089585534.jpg
 externalLink: https://www.heychinaculture.com/list_227/4519.html
