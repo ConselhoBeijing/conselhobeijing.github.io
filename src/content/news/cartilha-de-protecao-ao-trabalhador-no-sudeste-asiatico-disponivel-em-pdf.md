@@ -14,3 +14,4 @@ externalLink: https://mp.weixin.qq.com/s/fohzNcL6CYE19D0wqqe9wg?token=2058176951
 tags:
   - Utilidade Pública
 ---
+![](/news/cartilha-de-protecao-ao-trabalhador-no-sudeste-asiatico-disponivel-em-pdf/cartilha%20Sudeste%20Asiatico-05.png)
