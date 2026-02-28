@@ -231,7 +231,14 @@
         @apply w-full border-t;
         border-color: rgb(0 0 0 / 0.12);
         background-color: var(--site-footer-bg-color, #f9f0e3);
-    }
+}
+
+/* ADD THIS: only footer emoji font for Edge */
+.site-footer .footer-emoji {
+    font-family: "Segoe UI Symbol", "Segoe UI Emoji", sans-serif;
+}
+
+}  /* <-- end of @layer components */
 
     :root.dark .site-footer {
         border-color: rgb(255 255 255 / 0.2);
