@@ -1,9 +1,9 @@
 ---
-title: 《巴葡角》PAPO BRASIL-CHINA > Últimas Vagas!
+title: '《巴葡角》PAPO BRASIL-CHINA: Últimas Vagas!'
 date: 2025-11-17
 type: external
 description: >-
-  Últimas vagas para 《巴葡角》PAPO BRASIL-CHINA! 
+  Últimas vagas para o《巴葡角》PAPO BRASIL-CHINA! 
 
   Quer praticar mandarim, se divertir e fazer novos amigos? Venha para um evento
   gratuito repleto de música, comida, quiz de idiomas e networking entre
