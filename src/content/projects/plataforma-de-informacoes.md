@@ -14,7 +14,7 @@ Entre nossas ferramentas estão grupos de WeChat que conectam brasileiros da reg
 \
 **Website:** [conselhobeijing.org](http://conselhobeijing.org) – informações atualizadas sobre a vida na China.
 
-**Redes Sociais:** Acompanhe a comunidade no **WeChat** (conta oficial – pesquise por **CONSELHO BJ**), **LinkedIn** e **Instagram** para notícias, eventos e conteúdos relevantes. Também temos um **grupo de WeChat** para você conversar e trocar experiências com brasileiros da região. Entre em contato conosco para ser adicionado ao grupo.
+**Redes Sociais:** Acompanhe o Conselho em nossa conta oficial no **WeChat** (pesquisando **CONSELHO BJ**), no **LinkedIn** e no **Instagram** para notícias, eventos e conteúdos relevantes. Também temos um **grupo de WeChat** para você conversar e trocar experiências com outros brasileiros da região. *Entre em contato conosco para ser adicionado ao grupo.*
 
 Escaneie os QR codes abaixo para acessar nossas plataformas e se conectar com a comunidade:
 
