@@ -1,5 +1,5 @@
 ---
-title: 'Ano novo em Beijing: eventos pra celebrar a cultura de perto'
+title: 'Ano novo em Beijing: eventos pra celebrar a cultura chinesa bem de perto'
 date: 2026-02-12
 type: external
 description: >-
