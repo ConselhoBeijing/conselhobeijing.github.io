@@ -7,7 +7,6 @@ Iniciado por líderes locais, o CCBB atua como uma ponte entre os brasileiros re
 
 <h2 style="text-align: center;">Abrangência</h2> <p style="text-align: center;">*Área de atuação do Conselho dos Cidadãos Brasileiros de Beijing*</p>
 
-</body> </html>
 
 ![Mapa de atuação do Conselho dos Cidadãos Brasileiros de Beijing](/about/conselho-mapa.png)
 
@@ -18,5 +17,3 @@ Com uma atuação que se estende pela municipalidade de Beijing e Tianjin, além
 Com o objetivo de facilitar o relacionamento entre a comunidade brasileira e a sociedade local, promovemos atividades culturais e educacionais que valorizam nossa cultura e estimulam o senso de comunidade. Ao compartilhar informações essenciais com nossa comunidade e também fomentar a colaboração com os diferentes setores locais, fortalecemos os laços entre os brasileiros, criando um senso de pertencimento fundamental a todos que vivem fora de seu país.
 
 Todas as nossas atividades são voluntárias,sem fins lucrativos, fundamentadas em princípios éticos e com o objetivo de promover e representar a comunidade brasileira e o nosso país de forma digna na China. Com uma postura neutra, sem vínculos políticos ou religiosos, o CCBB permanece comprometido em apoiar à comunidade, construindo caminhos de inclusão de seus cidadãos, atuando com independência em prol da comunidade.
-
-&nbsp;

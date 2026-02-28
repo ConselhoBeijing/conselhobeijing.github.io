@@ -233,7 +233,9 @@ function splitFaqContent(content: string): string[] {
                       member.data.photo ? (
                         <img src={member.data.photo} alt={`Foto de ${member.data.name}`} class="single-page-member-photo" loading="lazy" />
                       ) : (
-                        <span class="single-page-member-photo-placeholder" aria-hidden="true">👤</span>
+                        <span class="single-page-member-photo-placeholder" aria-hidden="true">
+                          <i class="bi bi-person-fill"></i>
+                        </span>
                       )
                     }
                     <span class="single-page-member-body">
@@ -260,7 +262,9 @@ function splitFaqContent(content: string): string[] {
                       member.data.photo ? (
                         <img src={member.data.photo} alt={`Foto de ${member.data.name}`} class="single-page-member-photo" loading="lazy" />
                       ) : (
-                        <span class="single-page-member-photo-placeholder" aria-hidden="true">👤</span>
+                        <span class="single-page-member-photo-placeholder" aria-hidden="true">
+                          <i class="bi bi-person-fill"></i>
+                        </span>
                       )
                     }
                     <span class="single-page-member-body">

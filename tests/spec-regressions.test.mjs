@@ -4,6 +4,7 @@ import test from "node:test";
 import assert from "node:assert/strict";
 
 const root = path.resolve(import.meta.dirname, "..");
+const { buildEventIntro } = await import(new URL("../src/utils/events.ts", import.meta.url));
 
 function read(relPath) {
   return readFileSync(path.join(root, relPath), "utf8");
@@ -120,6 +121,20 @@ test("navbar centers primary links in the header layout", () => {
   assert.ok(navbar.includes("flex min-w-0 flex-1 items-center justify-end gap-2"));
 });
 
+test("desktop nav and home cards use the requested larger typography", () => {
+  const navbar = read("src/components/Navbar.astro");
+  const styles = read("src/styles/global.css");
+
+  assert.ok(navbar.includes('class="nav-primary-link inline-flex items-center px-1 pt-1 border-b-2 text-sm font-semibold"'));
+  assert.ok(!navbar.includes('class="nav-primary-link inline-flex items-center px-1 pt-1 border-b-2 text-xs font-semibold"'));
+  assert.ok(styles.includes(".home-bento-item-title,\n    .home-project-item-title,\n    .home-faq-item-title {"));
+  assert.ok(styles.includes("@apply text-sm font-semibold leading-snug;"));
+  assert.ok(!styles.includes("@apply text-[0.82rem] font-semibold leading-snug;"));
+  assert.ok(styles.includes(".home-bento-cta {"));
+  assert.ok(styles.includes("@apply text-xs font-bold;"));
+  assert.ok(!styles.includes("@apply text-[0.66rem] font-bold;"));
+});
+
 test("navigation links are configurable via shared site-links config", () => {
   const navbar = read("src/components/Navbar.astro");
   const socialLinks = read("src/components/SocialLinks.astro");
@@ -147,6 +162,17 @@ test("top navigation follows requested order and naming", () => {
   assert.ok(agendaAt < equipeAt);
   assert.ok(!config.includes('name: "Eventos"'));
   assert.ok(!config.includes("Knowledge Base"));
+});
+
+test("theme toggle, footer caption, and overview subtitles follow the requested tweaks", () => {
+  const projects = read("src/pages/projects/index.astro");
+  const team = read("src/pages/team.astro");
+  const styles = read("src/styles/global.css");
+
+  assert.ok(projects.includes('class="internal-page-subtitle pt-6 w-full max-w-none"'));
+  assert.ok(team.includes('class="internal-page-subtitle pt-6 w-full max-w-none"'));
+  assert.ok(styles.includes(".theme-toggle-button:hover {\n        color: #7ef056;"));
+  assert.ok(styles.includes(".footer-caption {\n        @apply text-[10px] font-semibold leading-none text-black whitespace-nowrap sm:text-xs dark:text-gray-100;"));
 });
 
 test("footer uses a compact single-row gradient bar", () => {
@@ -225,6 +251,55 @@ test("home removes animated background and bento cards use title-line accents", 
   assert.ok(styles.includes("--bento-title-line: #ffce0f"));
   assert.ok(styles.includes("--bento-title-line: #61e3ff"));
   assert.ok(styles.includes("--bento-title-line: #c9c9c9"));
+});
+
+test("event filter toggles render previous events before upcoming events", () => {
+  const events = read("src/components/EventTimelineList.tsx");
+  const pastAt = events.indexOf('onClick={() => setViewMode("past")}');
+  const upcomingAt = events.indexOf('onClick={() => setViewMode("upcoming")}');
+
+  assert.ok(pastAt >= 0);
+  assert.ok(upcomingAt >= 0);
+  assert.ok(pastAt < upcomingAt);
+});
+
+test("event view toggle reuses calendar active and inactive button styling", () => {
+  const events = read("src/components/EventTimelineList.tsx");
+
+  assert.ok(events.includes("calendario-feed-switch--active-local"));
+  assert.ok(events.includes("calendario-feed-switch--inactive"));
+  assert.ok(!events.includes("border-black/25 bg-white/90"));
+});
+
+test("event list intro strips embedded html tags from markdown content", () => {
+  assert.equal(buildEventIntro('<p style="text-align:center;">Oi <strong>mundo</strong></p>'), "Oi mundo");
+  assert.equal(buildEventIntro('<p><a href="https://example.com">Acessar o conteúdo completo</a></p>'), "Acessar o conteúdo completo");
+});
+
+test("interactive controls avoid raw unicode glyphs that can fall back to emoji fonts", () => {
+  const news = read("src/pages/news/[...page].astro");
+  const home = read("src/pages/index.astro");
+  const eventDetail = read("src/pages/events/[slug].astro");
+  const team = read("src/pages/team.astro");
+  const singlePage = read("src/pages/inicio.astro");
+  const styles = read("src/styles/global.css");
+
+  assert.ok(news.includes("bi bi-box-arrow-up-right"));
+  assert.ok(!news.includes(">↗<"));
+  assert.ok(home.includes("bi bi-chevron-left"));
+  assert.ok(home.includes("bi bi-chevron-right"));
+  assert.ok(!home.includes(">‹<"));
+  assert.ok(!home.includes(">›<"));
+  assert.ok(eventDetail.includes("bi bi-arrow-left"));
+  assert.ok(!eventDetail.includes("← Voltar para Eventos"));
+  assert.ok(team.includes("bi bi-person-fill"));
+  assert.ok(singlePage.includes("bi bi-person-fill"));
+  assert.ok(!team.includes("👤"));
+  assert.ok(!singlePage.includes("👤"));
+  assert.ok(styles.includes(".markdown-content .markdown-details-summary::-webkit-details-marker"));
+  assert.ok(styles.includes(".markdown-content .markdown-details-summary::before {"));
+  assert.ok(styles.includes("border-r-2 border-b-2"));
+  assert.ok(!styles.includes('content: "▶";'));
 });
 
 test("team page renders all optional social links consistently", () => {
@@ -495,7 +570,8 @@ test("home page interaction layout matches requested refinements", () => {
   assert.ok(home.includes('href="/events?view=past"'));
   assert.ok(!home.includes('aria-hidden="true">→</span>'));
   assert.ok((home.match(/class=\{primaryBentoButtonClass\}/g) ?? []).length >= 2);
-  assert.ok(styles.includes("text-[0.66rem]"));
+  assert.ok(styles.includes("text-xs"));
+  assert.ok(!styles.includes("text-[0.66rem]"));
 });
 
 test("home page latest news is a configurable swipeable card carousel", () => {

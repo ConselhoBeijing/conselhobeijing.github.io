@@ -207,7 +207,11 @@
     }
 
     .theme-toggle-button {
-        @apply h-9 w-9 border-0 bg-transparent p-0 text-black/80 hover:text-black focus:ring-brazil-blue/35 dark:text-gray-100 dark:hover:text-white dark:focus:ring-blue-500/40;
+        @apply h-9 w-9 border-0 bg-transparent p-0 text-black/80 focus:ring-brazil-blue/35 dark:text-gray-100 dark:focus:ring-blue-500/40;
+    }
+
+    .theme-toggle-button:hover {
+        color: #7ef056;
     }
 
     .social-links {
@@ -236,7 +240,7 @@
     }
 
     .footer-caption {
-        @apply text-xs font-semibold leading-none text-black whitespace-nowrap dark:text-gray-100;
+        @apply text-[10px] font-semibold leading-none text-black whitespace-nowrap sm:text-xs dark:text-gray-100;
     }
 
     .footer-social-links {
@@ -311,7 +315,7 @@
     }
 
     .internal-back-link {
-        /*@apply text-brazil-green dark:text-green-300;*/
+        @apply inline-flex items-center gap-2;
     }
 
     .event-detail-header {
@@ -340,6 +344,10 @@
 
     .news-list-badge {
         @apply bg-gray-200 dark:bg-gray-700;
+    }
+
+    .news-list-external-icon {
+        @apply text-[0.7rem] leading-none;
     }
 
     .news-list-title-link {
@@ -401,6 +409,10 @@
 
     .team-member-avatar-fallback {
         @apply bg-gray-200 text-gray-400 dark:bg-gray-700 dark:text-gray-300;
+    }
+
+    .team-member-avatar-fallback .bi {
+        @apply leading-none;
     }
 
     .team-member-name {
@@ -552,12 +564,6 @@
         @apply border border-black/10 bg-white/45 hover:bg-white/75 dark:border-white/20 dark:bg-white/5 dark:hover:bg-white/10;
     }
 
-    .home-bento-headline,
-    .home-bento-item-title,
-    .home-project-link {
-        color: var(--bento-text-primary, currentColor);
-    }
-
     .home-project-item {
         @apply relative border border-black/10 bg-white/45 hover:bg-white/75 dark:border-white/20 dark:bg-white/5 dark:hover:bg-white/10;
     }
@@ -576,8 +582,16 @@
         /*background-color: #61e3ff;*/
     }
 
-    .home-project-item-title {
-        @apply text-sm font-semibold text-gray-950 dark:text-gray-100;
+    .home-bento-headline,
+    .home-project-link {
+        color: var(--bento-text-primary, currentColor);
+    }
+
+    .home-bento-item-title,
+    .home-project-item-title,
+    .home-faq-item-title {
+        @apply text-sm font-semibold leading-snug;
+        color: var(--bento-text-primary, currentColor);
     }
 
     .home-faq-item {
@@ -585,8 +599,6 @@
     }
 
     .home-faq-item-title {
-        @apply text-[0.82rem] font-semibold leading-snug;
-        color: var(--bento-text-primary, currentColor);
         display: -webkit-box;
         -webkit-line-clamp: 2;
         -webkit-box-orient: vertical;
@@ -630,8 +642,12 @@
         color: var(--bento-text-primary, rgb(17 24 39));
     }
 
+    .home-news-carousel-control .bi {
+        @apply text-base leading-none;
+    }
+
     .home-bento-cta {
-        @apply text-[0.66rem] font-bold;
+        @apply text-xs font-bold;
         color: var(--bento-text-primary, currentColor);
     }
 
@@ -794,7 +810,22 @@
     }
 
     .markdown-content .markdown-details-summary {
-        @apply cursor-pointer font-semibold text-gray-900 dark:text-gray-100;
+        @apply flex cursor-pointer items-center gap-3 font-semibold text-gray-900 dark:text-gray-100;
+        list-style: none;
+    }
+
+    .markdown-content .markdown-details-summary::-webkit-details-marker {
+        display: none;
+    }
+
+    .markdown-content .markdown-details-summary::before {
+        content: "";
+        @apply inline-block h-2.5 w-2.5 shrink-0 border-r-2 border-b-2 border-black/70 transition-transform dark:border-gray-200;
+        transform: rotate(-45deg);
+    }
+
+    .markdown-content .markdown-details[open] .markdown-details-summary::before {
+        transform: rotate(45deg);
     }
 
     .markdown-content .katex-display {
@@ -1417,6 +1448,10 @@
         @apply inline-flex h-12 w-12 items-center justify-center rounded-full border border-black/10 bg-white/70 text-xl;
     }
 
+    .single-page-member-photo-placeholder .bi {
+        @apply leading-none;
+    }
+
     .single-page-member-body {
         @apply flex min-w-0 flex-col;
     }
@@ -1449,12 +1484,13 @@
     }
 
     .single-page-faq-item-summary::before {
-        content: "▶";
-        @apply text-xs text-black/75 transition-transform dark:text-gray-200;
+        content: "";
+        @apply inline-block h-2.5 w-2.5 shrink-0 border-r-2 border-b-2 border-black/70 transition-transform dark:border-gray-200;
+        transform: rotate(-45deg);
     }
 
     .single-page-faq-item[open] .single-page-faq-item-summary::before {
-        transform: rotate(90deg);
+        transform: rotate(45deg);
     }
 
     .single-page-faq-item-content {

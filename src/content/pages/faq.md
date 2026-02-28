@@ -62,7 +62,7 @@ O Conselho apoia empreendedores brasileiros ao destacar oportunidades de negóci
 
 :::details{summary="11. Como o Conselho ajuda na integração de brasileiros recém chegados?"}
 
-O Conselho apoia novos residentes brasileiros na integração à comunidades local oferecendo informações em suas redes sociais e conexões em pessoa para ajudar a navegar na China. Além disso, disponibilizamos detalhes sobre serviços essenciais e promovemos eventos de integração, facilitando a adaptação e o fortalecimento de laços entre brasileiros.\
+O Conselho apoia novos residentes brasileiros na integração à comunidades local oferecendo informações em suas redes sociais e conexões em pessoa para ajudar a navegar na China. Além disso, disponibilizamos detalhes sobre serviços essenciais e promovemos eventos de integração, facilitando a adaptação e o fortalecimento de laços entre brasileiros.
 :::
 
 :::details{summary="12. Existe alguma taxa para participar das atividades do Conselho?"}
@@ -71,10 +71,10 @@ A participação no Conselho é totalmente gratuita, pois somos um grupo de volu
 
 :::details{summary="13. O Conselho promove networking entre brasileiros na China?"}
 
-Sim, uma das principais atividades do Conselho é promover o networking entre os brasileiros. Conectamos profissionais, estudantes e empreendedores por meio de eventos sociais e reuniões online, criando oportunidades valiosas para troca de experiências e colaboração. Fique atento aos **Encontros de Brasileiros** mensais e aos nossos eventos anuais.\
+Sim, uma das principais atividades do Conselho é promover o networking entre os brasileiros. Conectamos profissionais, estudantes e empreendedores por meio de eventos sociais e reuniões online, criando oportunidades valiosas para troca de experiências e colaboração. Fique atento aos **Encontros de Brasileiros** mensais e aos nossos eventos anuais.
 :::
 
 :::details{summary="14. O Conselho oferece apoio a quem deseja retornar ao Brasil?"}
 
-O Conselho oferece suporte aos brasileiros que desejam retornar ao Brasil, fornecendo informações sobre o planejamento da volta, esclarecendo os direitos no processo de retorno e conectando os interessados a recursos disponíveis na missão diplomática. Para mais informações, consulte nossa conta ***oficial de WeChat.***\
+O Conselho oferece suporte aos brasileiros que desejam retornar ao Brasil, fornecendo informações sobre o planejamento da volta, esclarecendo os direitos no processo de retorno e conectando os interessados a recursos disponíveis na missão diplomática. Para mais informações, consulte nossa conta ***oficial de WeChat.***
 :::
