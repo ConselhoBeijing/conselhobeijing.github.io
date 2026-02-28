@@ -4,10 +4,10 @@ import { createRichMarkdocField } from "./src/keystatic/rich-markdoc";
 
 export default config({
   storage: {
-    kind: "local",
+    // kind: "local",
 
-    // kind: "github",
-    // repo: `conselhobeijing/website`,
+    kind: "github",
+    repo: `conselhobeijing/website`,
   },
   ui: {
     brand: {
