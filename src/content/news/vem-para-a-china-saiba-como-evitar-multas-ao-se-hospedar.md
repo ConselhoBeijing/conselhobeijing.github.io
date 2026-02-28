@@ -1,6 +1,6 @@
 ---
 title: >-
-  Vem para a China? Tudo o que você precisa savber para evitar multas ao se
+  Vem para a China? Tudo o que você precisa saber para evitar multas ao se
   hospedar
 date: 2026-02-18
 type: external
