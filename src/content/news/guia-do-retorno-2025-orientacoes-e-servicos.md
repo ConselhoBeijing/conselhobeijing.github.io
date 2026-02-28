@@ -1,6 +1,6 @@
 ---
 title: Guia do Retorno 2025, Orientações e Serviços
-date: 2026-12-16
+date: 2025-12-16
 type: external
 description: >-
   Descubra o Guia do Retorno 2025, com informações essenciais para brasileiros
