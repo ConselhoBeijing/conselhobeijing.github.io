@@ -26,6 +26,6 @@ Escaneie os QR codes abaixo para acessar nossas plataformas e se conectar com a 
 
 ![](/projects/plataforma-de-informacoes/QR02.png)
 
-##### **Instagram**\
+##### **Instagram**
 
 ![](/projects/plataforma-de-informacoes/QR01.png)
