@@ -1,6 +1,7 @@
 ---
 import Layout from "../../layouts/Layout.astro";
 import { getCollection } from "astro:content";
+import { resolveNewsThumbnail } from "../../utils/news-thumbnails";
 
 export async function getStaticPaths({ paginate }) {
     const allNews = await getCollection("news");
@@ -9,6 +10,10 @@ export async function getStaticPaths({ paginate }) {
 }
 
 const { page } = Astro.props;
+const newsItems = page.data.map((post) => ({
+    post,
+    thumbnail: resolveNewsThumbnail(post),
+}));
 
 function stripMarkdown(markdown: string): string {
     return markdown
@@ -37,9 +42,9 @@ function summarize(text: string, maxLength = 120): string {
         </header>
         <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
             {
-                page.data.map((post) => (
+                newsItems.map(({ post, thumbnail }) => (
                     <article class="news-list-card rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow flex flex-col h-full">
-                        {post.data.thumbnail && <img src={post.data.thumbnail} alt={post.data.title} class="w-full h-48 object-cover" />}
+                        {thumbnail && <img src={thumbnail} alt={post.data.title} class="w-full h-48 object-cover" />}
                         <div class="p-6 flex flex-col flex-1">
                             <div class="news-list-meta text-sm mb-2">
                                 {post.data.date.toLocaleDateString()}

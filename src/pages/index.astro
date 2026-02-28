@@ -4,6 +4,7 @@ import BentoGrid from "../components/BentoGrid.astro";
 import BentoCard from "../components/BentoCard.astro";
 import { getCollection, getEntry } from "astro:content";
 import { formatEventDateValue, toEventDayValue, toLocalEventSummary } from "../utils/events";
+import { resolveNewsThumbnail } from "../utils/news-thumbnails";
 import { HOME_FAQ_ITEMS_PREVIEW_LIMIT, HOME_LATEST_NEWS_CARDS_LIMIT } from "../config/home";
 
 const allNews = await getCollection("news");
@@ -44,6 +45,7 @@ const latestNewsCards = [...allNews]
         entry,
         href: entry.data.type === "external" ? (entry.data.externalLink ?? "/news") : `/news/${entry.slug}`,
         isExternal: entry.data.type === "external",
+        thumbnail: resolveNewsThumbnail(entry),
         description: summarize(stripMarkdown((entry.data.description ?? entry.body) || "Leia a notícia completa para mais detalhes.")),
     }));
 const hasNewsCarouselControls = latestNewsCards.length > 1;
@@ -84,13 +86,13 @@ const faqPreviewItems = extractFaqQuestions(faqEntry?.body ?? "", HOME_FAQ_ITEMS
                         <div class="flex h-full flex-col gap-4" data-news-carousel>
                             <div class="home-news-carousel-viewport flex-1" data-news-carousel-viewport>
                                 <div class="home-news-carousel-track h-full" data-news-carousel-track>
-                                    {latestNewsCards.map(({ entry, href, isExternal, description }, index) => (
+                                    {latestNewsCards.map(({ entry, href, isExternal, thumbnail, description }, index) => (
                                         <article
                                             class="home-news-carousel-slide flex h-full min-w-full snap-start flex-col gap-4"
                                             data-news-carousel-slide
                                             data-news-carousel-slide-index={index}
                                         >
-                                            {entry.data.thumbnail && (
+                                            {thumbnail && (
                                                 <a
                                                     href={href}
                                                     target={isExternal ? "_blank" : "_self"}
@@ -98,7 +100,7 @@ const faqPreviewItems = extractFaqQuestions(faqEntry?.body ?? "", HOME_FAQ_ITEMS
                                                     class="home-main-news-image-link block overflow-hidden rounded-xl"
                                                 >
                                                     <img
-                                                        src={entry.data.thumbnail}
+                                                        src={thumbnail}
                                                         alt={entry.data.title}
                                                         class="home-main-news-image h-52 w-full object-cover transition duration-200 hover:scale-[1.02] md:h-64"
                                                     />

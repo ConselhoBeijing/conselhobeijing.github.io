@@ -3,6 +3,7 @@ import Layout from "../layouts/Layout.astro";
 import { getCollection, getEntry } from "astro:content";
 import SinglePageSection from "../components/single-page/SinglePageSection.astro";
 import { formatEventDateValue, toEventDayValue, toLocalEventSummary } from "../utils/events";
+import { resolveNewsThumbnail } from "../utils/news-thumbnails";
 import { stripMarkdown, summarize, extractFirstImageUrl, extractFaqEntries } from "../utils/content-preview";
 import { singlePageSections } from "../config/single-page";
 
@@ -31,7 +32,7 @@ const latestNews = [...allNews]
     dateLabel: entry.data.date.toLocaleDateString("pt-BR"),
     href: entry.data.type === "external" ? (entry.data.externalLink ?? "/news") : `/news/${entry.slug}`,
     isExternal: entry.data.type === "external",
-    newsThumbnail: entry.data.thumbnail ?? extractFirstImageUrl(entry.body || ""),
+    newsThumbnail: resolveNewsThumbnail(entry),
     summary: summarize(stripMarkdown((entry.data.description ?? entry.body) || "Leia a notícia completa para mais detalhes."), 160),
   }));
 

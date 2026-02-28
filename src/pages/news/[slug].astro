@@ -1,6 +1,7 @@
 ---
 import Layout from "../../layouts/Layout.astro";
 import { getCollection } from "astro:content";
+import { resolveNewsThumbnail } from "../../utils/news-thumbnails";
 
 export async function getStaticPaths() {
     const allNews = await getCollection("news");
@@ -13,6 +14,7 @@ export async function getStaticPaths() {
 
 const { entry } = Astro.props;
 const { Content } = await entry.render();
+const thumbnail = resolveNewsThumbnail(entry);
 ---
 
 <Layout title={`${entry.data.title} - Notícias`}>
@@ -20,7 +22,7 @@ const { Content } = await entry.render();
         <div class="mb-8">
             <span class="news-entry-meta text-sm">{entry.data.date.toLocaleDateString()}</span>
             <h1 class="internal-page-title mt-2 mb-4">{entry.data.title}</h1>
-            {entry.data.thumbnail && <img src={entry.data.thumbnail} alt={entry.data.title} class="w-full h-auto rounded-lg shadow-md" />}
+            {thumbnail && <img src={thumbnail} alt={entry.data.title} class="w-full h-auto rounded-lg shadow-md" />}
         </div>
         <div class="markdown-content max-w-none">
             <Content />

@@ -1,7 +1,7 @@
 ---
 title: Encontro de Brasileiros - Mar
-start: 2026-03-01T18:00:00.000Z
-end: 2026-03-01T21:00:00.000Z
+start: 2026-03-01T18:00:00.000+08:00
+end: 2026-03-01T21:00:00.000+08:00
 location: Side Street Jiaodaokou, distrito de Dongcheng, Beijing
 ---
 ![](/events/encontro-de-brasileiros-marco/conselho%20ENCONTROS-03.png)
