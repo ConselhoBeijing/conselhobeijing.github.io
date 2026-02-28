@@ -691,11 +691,34 @@ test("projects page cards use lighter dedicated surface styling", () => {
   assert.ok(styles.includes(".projects-overview-card"));
 });
 
+test("projects list cards include a Saiba mais button styled like home bento CTAs", () => {
+  const page = read("src/pages/projects/index.astro");
+  assert.ok(page.includes("Saiba mais"));
+  assert.ok(page.includes("site-button home-bento-cta"));
+});
+
 test("faq content uses expandable details blocks for all questions", () => {
   const faqContent = read("src/content/pages/faq.md");
   const detailsMatches = faqContent.match(/:::details\{summary=/g) ?? [];
   assert.equal(detailsMatches.length, 14);
   assert.ok(!faqContent.includes("### 1."));
+});
+
+test("layout includes configurable global and China-friendly analytics hooks", () => {
+  const layout = read("src/layouts/Layout.astro");
+  const analyticsComponentPath = path.join(root, "src/components/Analytics.astro");
+  assert.ok(existsSync(analyticsComponentPath));
+  assert.ok(layout.includes('import Analytics from "../components/Analytics.astro";'));
+  assert.ok(layout.includes("<Analytics />"));
+
+  const analyticsComponent = read("src/components/Analytics.astro");
+  assert.ok(analyticsComponent.includes("PUBLIC_CLOUDFLARE_ANALYTICS_TOKEN"));
+  assert.ok(analyticsComponent.includes("PUBLIC_BAIDU_TONGJI_SITE_ID"));
+  assert.ok(analyticsComponent.includes("static.cloudflareinsights.com/beacon.min.js"));
+  assert.ok(analyticsComponent.includes("hm.baidu.com/hm.js?"));
+  assert.ok(analyticsComponent.includes("window.__siteAnalytics"));
+  assert.ok(analyticsComponent.includes("trackPageview"));
+  assert.ok(analyticsComponent.includes("trackEvent"));
 });
 
 test("footer background color can change by section while other pages keep the default", async () => {

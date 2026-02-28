@@ -1,0 +1,87 @@
+---
+const cloudflareAnalyticsToken = import.meta.env.PUBLIC_CLOUDFLARE_ANALYTICS_TOKEN?.trim() ?? "";
+const baiduTongjiSiteId = import.meta.env.PUBLIC_BAIDU_TONGJI_SITE_ID?.trim() ?? "";
+
+const hasCloudflareAnalytics = cloudflareAnalyticsToken.length > 0;
+const hasBaiduAnalytics = baiduTongjiSiteId.length > 0;
+const cloudflareBeaconConfig = hasCloudflareAnalytics
+    ? JSON.stringify({ token: cloudflareAnalyticsToken })
+    : "";
+---
+
+{hasCloudflareAnalytics ? (
+    <script
+        defer
+        src="https://static.cloudflareinsights.com/beacon.min.js"
+        data-cf-beacon={cloudflareBeaconConfig}
+    ></script>
+) : null}
+
+{hasBaiduAnalytics ? (
+    <>
+        <script is:inline>
+            window._hmt = window._hmt || [];
+        </script>
+        <script async src={`https://hm.baidu.com/hm.js?${baiduTongjiSiteId}`}></script>
+    </>
+) : null}
+
+<script is:inline define:vars={{ hasBaiduAnalytics }}>
+    (function () {
+        if (
+            typeof window.__siteAnalytics === "object" &&
+            typeof window.__siteAnalytics.trackPageview === "function" &&
+            typeof window.__siteAnalytics.trackEvent === "function"
+        ) {
+            return;
+        }
+
+        const queue = [];
+
+        function pushBaiduCommand(command) {
+            if (!hasBaiduAnalytics) {
+                return;
+            }
+
+            window._hmt = window._hmt || [];
+            window._hmt.push(command);
+        }
+
+        function toPath(value) {
+            if (typeof value === "string" && value.length > 0) {
+                return value;
+            }
+
+            return `${window.location.pathname}${window.location.search}${window.location.hash}`;
+        }
+
+        function toLabel(metadata) {
+            if (!metadata || typeof metadata !== "object") {
+                return "";
+            }
+
+            try {
+                return JSON.stringify(metadata);
+            } catch {
+                return "[unserializable]";
+            }
+        }
+
+        window.__siteAnalytics = {
+            queue,
+            trackPageview(path) {
+                const resolvedPath = toPath(path);
+                queue.push({ type: "pageview", path: resolvedPath, at: Date.now() });
+                pushBaiduCommand(["_trackPageview", resolvedPath]);
+            },
+            trackEvent(name, metadata = {}) {
+                if (typeof name !== "string" || name.length === 0) {
+                    return;
+                }
+
+                queue.push({ type: "event", name, metadata, at: Date.now() });
+                pushBaiduCommand(["_trackEvent", "site", name, toLabel(metadata)]);
+            },
+        };
+    })();
+</script>

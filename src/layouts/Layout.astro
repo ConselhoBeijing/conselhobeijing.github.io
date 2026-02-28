@@ -1,4 +1,5 @@
 ---
+import Analytics from "../components/Analytics.astro";
 import Footer from "../components/Footer.astro";
 import Navbar from "../components/Navbar.astro";
 import "../styles/global.css";
@@ -31,6 +32,7 @@ const footerBackgroundColor = resolveFooterBackgroundColor(Astro.url.pathname);
         <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" />
         <meta name="generator" content={Astro.generator} />
+        <Analytics />
         <title>{title}</title>
         <script is:inline>
             (() => {

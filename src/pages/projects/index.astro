@@ -4,6 +4,7 @@ import { getCollection } from "astro:content";
 import BentoCard from "../../components/BentoCard.astro";
 
 const projects = await getCollection("projects");
+const primaryBentoButtonClass = "site-button home-bento-cta";
 ---
 
 <Layout title="Projetos - Conselho dos Cidadãos">
@@ -23,19 +24,24 @@ const projects = await getCollection("projects");
 
                     return (
                         <BentoCard title={project.data.title} href={`/projects/${project.slug}`} class="projects-overview-card h-full">
-                            {thumbnail ? (
-                                <img
-                                    src={thumbnail}
-                                    alt={`Miniatura do projeto ${project.data.title}`}
-                                    class="project-card-thumbnail w-full h-40 object-cover rounded-2xl mb-4"
-                                    loading="lazy"
-                                />
-                            ) : (
-                                <div class="project-card-thumbnail-placeholder mb-4 flex h-40 w-full items-center justify-center rounded-2xl">
-                                    <span class="text-sm font-semibold uppercase tracking-wide">Sem miniatura</span>
-                                </div>
-                            )}
-                            <p class="project-card-intro">{project.data.intro}</p>
+                            <div class="flex h-full flex-col">
+                                {thumbnail ? (
+                                    <img
+                                        src={thumbnail}
+                                        alt={`Miniatura do projeto ${project.data.title}`}
+                                        class="project-card-thumbnail w-full h-40 object-cover rounded-2xl mb-4"
+                                        loading="lazy"
+                                    />
+                                ) : (
+                                    <div class="project-card-thumbnail-placeholder mb-4 flex h-40 w-full items-center justify-center rounded-2xl">
+                                        <span class="text-sm font-semibold uppercase tracking-wide">Sem miniatura</span>
+                                    </div>
+                                )}
+                                <p class="project-card-intro">{project.data.intro}</p>
+                                <span class={`${primaryBentoButtonClass} mt-6 w-fit`} aria-hidden="true">
+                                    Saiba mais
+                                </span>
+                            </div>
                         </BentoCard>
                     );
                 })
