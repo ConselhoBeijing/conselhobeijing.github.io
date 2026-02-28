@@ -1,5 +1,5 @@
 ---
-title: Brasil Implementará Isenção De Visto Para Cidadãos Chineses
+title: Brasil Implementará Isenção de Visto Para Cidadãos Chineses em 2026
 date: 2026-01-24
 type: external
 description: >-
