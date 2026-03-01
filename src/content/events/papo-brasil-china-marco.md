@@ -29,13 +29,13 @@ Quiz sobre as culturas e um espaço para a prática dos idiomas do Brasil e da C
 
 19:00: ABERTURA DO EVENTO
 
-19:30: ATIVIDADE 1 - Quiz (Português do Brasil) - Erasto Santos Cruz
+19:30: ATIVIDADE 1 - Quiz (Português do Brasil) - **Erasto Santos Cruz**
 
-20:00: ATIVIDADE 2 - Quiz (Mandarim) - Kim Chen
+20:00: ATIVIDADE 2 - Quiz (Mandarim) - **Kim Chen**
 
-20:30: ATIVIDADE 3 - Quiz Musical (Português do Brasil) - Alan Orlandi
+20:30: ATIVIDADE 3 - Quiz Musical (Português do Brasil) - **Alan Orlandi**
 
-21:00: ATIVIDADE 4 - Quiz (Mandarim)\
+21:00: ATIVIDADE 4 - Quiz (Mandarim)
 
 `<script type="text/javascript" src="https://yoopay.cn/scripts/easyXDM.min.js"></script> <script type="text/javascript"> var REMOTE = "https://yoopay.cn";var transport = new easyXDM.Socket(/** The configuration */{remote: REMOTE + "/proxy.html?url=/payment/payment_widget/05920614%3Fwidth%3Dsmall%26attendeeList%3Dshow%26ref%3D", swf: REMOTE + "/scripts/easyxdm.swf", container: "embedded", onMessage: function(message, origin) {this.container.getElementsByTagName("iframe")[0].style.width = "100%";this.container.getElementsByTagName("iframe")[0].style.height = parseInt(message) + "px";}});</script> <div id="embedded"></div>`\
 ***Inscrições***
