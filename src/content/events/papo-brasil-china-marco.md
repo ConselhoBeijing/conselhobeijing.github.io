@@ -36,7 +36,8 @@ Quiz sobre as culturas e um espaço para a prática dos idiomas do Brasil e da C
 20:30: ATIVIDADE 3 - Quiz Musical (Português do Brasil) - Alan Orlandi
 
 21:00: ATIVIDADE 4 - Quiz (Mandarim)\
-\
+
+`<script type="text/javascript" src="https://yoopay.cn/scripts/easyXDM.min.js"></script> <script type="text/javascript"> var REMOTE = "https://yoopay.cn";var transport = new easyXDM.Socket(/** The configuration */{remote: REMOTE + "/proxy.html?url=/payment/payment_widget/05920614%3Fwidth%3Dsmall%26attendeeList%3Dshow%26ref%3D", swf: REMOTE + "/scripts/easyxdm.swf", container: "embedded", onMessage: function(message, origin) {this.container.getElementsByTagName("iframe")[0].style.width = "100%";this.container.getElementsByTagName("iframe")[0].style.height = parseInt(message) + "px";}});</script> <div id="embedded"></div>`\
 ***Inscrições***
 
 <figure class="rich-image-wrapper rich-image-wrapper--align-left" style="max-width: 33%; width: 100%;"><img class="rich-image-figure" src="/events/papo-brasil-china-marco/QRPAPO.jpg" alt="QR Code evnto" /></figure>
