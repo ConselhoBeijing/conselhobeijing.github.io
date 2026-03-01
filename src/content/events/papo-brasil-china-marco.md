@@ -39,4 +39,4 @@ Quiz sobre as culturas e um espaço para a prática dos idiomas do Brasil e da C
 \
 ***Inscrições***
 
-<figure class="rich-image-wrapper rich-image-wrapper--align-center" style="max-width: 50%; width: 100%;"><img class="rich-image-figure" src="/events/papo-brasil-china-marco/QRPAPO.jpg" alt="QR Code evnto" /></figure>
+<figure class="rich-image-wrapper rich-image-wrapper--align-left" style="max-width: 33%; width: 100%;"><img class="rich-image-figure" src="/events/papo-brasil-china-marco/QRPAPO.jpg" alt="QR Code evnto" /></figure>
