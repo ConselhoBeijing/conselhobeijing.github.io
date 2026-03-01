@@ -1,16 +1,14 @@
 ---
 title: PAPO BRASIL-CHINA
-start: 2025-12-02T19:00:00.000+8:00
-end: 2025-12-02T21:00:00.000+8:00
+start: 2025-12-02T19:00:00.000+08:00
+end: 2025-12-02T21:00:00.000+08:00
 location: The Local, Sanlitun, distrito de Chaoyang, Beijing
 ---
-
 ![](/events/papo-brasil-china/Untitled-2.jpg)
-
 
 **《巴葡角》PAPO BRASIL-CHINA**
 
-Este  evento nasce da grande demanda de pessoas que querem praticar tanto o  chinês quanto o português do Brasil, fazer novas amizades e aproveitar  um ambiente descontraído para socializar enquanto a intensidade do  inverno se aproxima.
+Este  evento nasce da grande demanda de pessoas que querem praticar tanto o  chinês quanto o português do Brasil, fazer novas amizades e aproveitar  um ambiente descontraído para socializar enquanto a intensidade do inverno de Beijing se aproximava.
 
 **Evento gratuito**
 **2 de dezembro, 19h–21h**
