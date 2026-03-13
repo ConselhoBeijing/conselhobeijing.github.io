@@ -35,7 +35,7 @@ Quiz sobre as culturas e um espaço para a prática dos idiomas do Brasil e da C
 
 20:30: ATIVIDADE 3 - Quiz Musical (Português do Brasil) - **Alan Orlandi**
 
-21:00: ATIVIDADE 4 - Quiz (Mandarim)
+21:00: ATIVIDADE 4 - Quiz (Mandarim) - **Alejo Han**
 
 ***Inscrições***
 
