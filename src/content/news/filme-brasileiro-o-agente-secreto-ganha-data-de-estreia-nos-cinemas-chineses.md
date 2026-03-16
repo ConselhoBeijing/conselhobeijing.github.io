@@ -1,5 +1,5 @@
 ---
-title: Filme Brasileiro O Agente Secreto Ganha Data de Estreia nos Cinemas Chineses
+title: Filme Brasileiro O Agente Secreto Ganha Data de Estreia na China
 date: 2026-03-16
 type: external
 description: >-
