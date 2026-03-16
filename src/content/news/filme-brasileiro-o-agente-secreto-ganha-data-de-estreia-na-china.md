@@ -1,15 +1,14 @@
 ---
 title: Filme Brasileiro O Agente Secreto Ganha Data de Estreia na China
 date: 2026-03-16
-type: local
+type: external
 description: >-
   O thriller brasileiro O Agente Secreto (intitulado 密探 em chinês) estreia
   oficialmente nos cinemas da China no dia 27 de março.
+externalLink: blob:https://conselhobj.vercel.app/d2fd0214-f611-426f-898a-86d60a817438
 tags: []
 ---
 ### **Filme&nbsp;*O Agente Secreto*&nbsp;Ganha Data de Estreia na China**
-
-![](/news/filme-brasileiro-o-agente-secreto-ganha-data-de-estreia-na-china/image.png)
 
 O thriller&nbsp;brasileiro O Agente Secreto&nbsp;(intitulado 密探 em chinês) estreia oficialmente nos cinemas da China no dia 27 de março.
 
