@@ -1,5 +1,5 @@
 ---
-title: Professora Qiao, uma ponte entre o Brasil e a Ch
+title: Professora Qiao, uma ponte entre o Brasil e a China
 date: 2026-03-20
 type: external
 description: >-
@@ -10,4 +10,4 @@ thumbnail: blob:https://conselhobj.vercel.app/e56c7ea5-79ee-40cc-959a-40ed0329c7
 externalLink: https://portuguese.cgtn.com/2026/03/17/ARTI1773734244165271
 tags: []
 ---
-![](/news/professora-qiao-uma-ponte-entre-o-brasil-e-a-ch/image.png)
+![](/news/professora-qiao-uma-ponte-entre-o-brasil-e-a-china/image.png)
