@@ -15,4 +15,4 @@ thumbnail: blob:https://conselhobj.vercel.app/3d5ad853-9267-4ed5-b826-b50213c56f
 externalLink: https://mp.weixin.qq.com/s/iKoPid4W0kTgiut0I6Fwig
 tags: []
 ---
-![](/news/carnaval-brasileiro-de-wuhan-comeca-hoje/image.png)
+![](/news/o-carnaval-brasileiro-de-wuhan-comeca-hoje/image.png)
