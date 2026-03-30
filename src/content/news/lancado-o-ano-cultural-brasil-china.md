@@ -1,6 +1,6 @@
 ---
 title: Lançado o Ano Cultural Brasil-China
-date: 2026-03-28
+date: 2026-03-29
 type: external
 description: >-
   Anúncio do governo brasileiro sobre o Ano Cultural Brasil-China 2026
