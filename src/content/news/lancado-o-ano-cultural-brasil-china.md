@@ -1,5 +1,5 @@
 ---
-title: Lançado o Ano Cultural Brasil-China
+title: Lançado o Ano Cultural Brasil-China 2026
 date: 2026-03-29
 type: external
 description: >-
