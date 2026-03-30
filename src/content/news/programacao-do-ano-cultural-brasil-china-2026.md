@@ -2,7 +2,13 @@
 title: Programação do Ano Cultural Brasil-China 2026
 date: 2026-03-30
 type: external
-description: "A Embaixada do Brasil em Pequim anuncia a programação oficial já confirmada do Ano Cultural Brasil-China 2026. \_"
+description: >-
+  A Embaixada do Brasil em Pequim anuncia a programação oficial já confirmada do
+  Ano Cultural Brasil-China 2026. 
+
+  A agenda envolve múltiplas expressões artísticas e culturais e contempla áreas
+  como artes cênicas, artes visuais, música, patrimônio cultural imaterial,
+  audiovisual, diversidade cultural, juventude, formação, turismo e inovação:
 thumbnail: blob:https://conselhobj.vercel.app/de4a0688-f27f-45e0-bf8d-15e11cd92dc1
 externalLink: https://mp.weixin.qq.com/s/8D4MhMiD9hN2gfzCkXr1qQ?scene=1
 tags: []
