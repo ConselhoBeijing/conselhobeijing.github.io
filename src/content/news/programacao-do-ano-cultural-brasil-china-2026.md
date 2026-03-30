@@ -1,5 +1,5 @@
 ---
-title: Programação do Ano Cultural Brasil-China 2026
+title: Programação do Ano Cultural Brasil-China
 date: 2026-03-30
 type: external
 description: >-
