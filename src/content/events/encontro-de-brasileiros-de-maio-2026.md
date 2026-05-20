@@ -28,12 +28,9 @@ location: >-
 
 🍜 Teremos porções de Classic Mexican Salsa with corn chips por conta da casa para dividir!
 
-***Inscreva-se via QR code***
+***Inscreva-se via QR code (Poucas vagas disponíveis)***
 
 <figure class="rich-image-wrapper rich-image-wrapper--align-center" style="max-width: 33%; width: 100%;"><img class="rich-image-figure" src="/events/encontro-de-brasileiros-de-maio-2026/_collection_link_barcode_event_2026-05-20_33536867(1).jpg" alt="Inscreva-se" /></figure>
-
-\
-***Poucas vagas disponíveis***
 
 **Local**
 
