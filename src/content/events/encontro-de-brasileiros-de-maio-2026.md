@@ -1,5 +1,5 @@
 ---
-title: Encontro de Brasileiros de Maio 2026
+title: Encontro de Brasileiros de Maio
 start: 2026-05-23T18:00:00.000+08:00
 end: 2026-05-23T21:00:00.000+08:00
 location: >-
