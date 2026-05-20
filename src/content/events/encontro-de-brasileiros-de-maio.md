@@ -27,17 +27,19 @@ O&nbsp;Conselho de Cidadãos Brasileiros de Beijing&nbsp;dedica-se a fortalecer 
 💚 Bebidas com desconto especial para o nosso grupo: Heineken 30, QMEX lager 35, Corona 25, Gin tonic 35, Rum coke 35, Whiskey coke 35, ROC Mojitos 40, ROC Margaritas 40.
 🍜 Teremos porções de Classic Mexican Salsa with corn chips por conta da casa para dividir!
 
-*Inscreva-se via QR code\
-\
-\
-\
-Poucas vagas disponíveis*
+***Inscreva-se via QR code***
+
+**\
+![](/events/encontro-de-brasileiros-de-maio/_collection_link_barcode_event_2026-05-20_33536867\(1).jpg)\
+*Poucas vagas disponíveis***
+
+**Local**
 
 ![](/events/encontro-de-brasileiros-de-maio/Weixin%20Image_20260520154411_1535_2.jpg)
 
-**![](/events/encontro-de-brasileiros-de-maio/Weixin%20Image_20260520154410_1534_2.jpg)\
+![](/events/encontro-de-brasileiros-de-maio/Weixin%20Image_20260520154410_1534_2.jpg)\
 \
-Por que participar?**
+**Por que participar?**
 •&nbsp;Mais do que um momento de confraternização, este encontro é uma ótima oportunidade para:
 •&nbsp;Ampliar sua rede de contatos com brasileiros e amigos do Brasil, trocando experiências e promovendo apoio mútuo;
 •&nbsp;Conhecer pessoas de diferentes áreas de atuação que vivem ou visitam a cidade;
