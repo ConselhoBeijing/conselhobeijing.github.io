@@ -38,4 +38,12 @@ location: >-
 
 ![](/events/encontro-de-brasileiros-de-maio-2026/Weixin%20Image_20260520154410_1534_2.jpg)\
 \
-**Por que participar?** •&nbsp;Mais do que um momento de confraternização, este encontro é uma ótima oportunidade para: •&nbsp;Ampliar sua rede de contatos com brasileiros e amigos do Brasil, trocando experiências e promovendo apoio mútuo; •&nbsp;Conhecer pessoas de diferentes áreas de atuação que vivem ou visitam a cidade; •&nbsp;Reforçar os laços da comunidade brasileira, fortalecendo nossa presença na China e abrindo novas oportunidades.
+**Por que participar?**
+
+•&nbsp;Mais do que um momento de confraternização, este encontro é uma ótima oportunidade para:
+
+•&nbsp;Ampliar sua rede de contatos com brasileiros e amigos do Brasil, trocando experiências e promovendo apoio mútuo;
+
+•&nbsp;Conhecer pessoas de diferentes áreas de atuação que vivem ou visitam a cidade;
+
+•&nbsp;Reforçar os laços da comunidade brasileira, fortalecendo nossa presença na China e abrindo novas oportunidades.
