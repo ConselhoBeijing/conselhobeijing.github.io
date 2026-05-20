@@ -16,11 +16,11 @@ location: >-
 
 • Sábado, dia 23 de maio de 2025
 
-•&nbsp;
+•&nbsp;Das 18:00 às 21:00
 
 •&nbsp;QMEX Zhongjun World City, Chaoyang CBD, ao lado do The Place (QMEX库迈墨西哥餐吧 中骏世界城店- 金汇路6号中骏世界城F1)
 
-🔵 Esta lista ficará aberta até sexta-feira, dia 22, às 19:00!
+🔵 Esta lista ficará aberta até sexta-feira, dia 22, às 19:00
 
 🟡 A entrada é gratuita, com consumo individual.
 
