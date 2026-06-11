@@ -22,9 +22,7 @@ A Festa Junina é uma das maiores e mais tradicionais celebrações populares do
 Fortemente associada à vida no campo e ao período da colheita do milho, a festa transformou esse ingrediente em um de seus principais símbolos, presente em diversas receitas típicas apreciadas de norte a sul do Brasil.\
 Com danças tradicionais, músicas animadas, trajes inspirados no interior brasileiro e uma rica gastronomia, a Festa Junina permanece como uma das manifestações culturais mais queridas e representativas do Brasil.
 
-**O que vai acontecer**
-
-\
+*O que vai acontecer*\
 A programação contará com comidas e bebidas brasileiras, música ao vivo e DJs, apresentações culturais, danças tradicionais, brincadeiras para todas as idades e atividades interativas que aproximam os visitantes da cultura brasileira de forma leve e divertida.\
 Entre os destaques está a quadrilha, dança tradicional que simboliza as festas juninas em todo o Brasil e convida o público a participar ativamente da celebração.\
 Também haverá brincadeiras típicas e outras atividades inspiradas nas festas realizadas em diferentes regiões do país.\
