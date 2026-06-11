@@ -13,7 +13,7 @@ location: 郎圆Station (Langyuan Station) D9
 Como parte das comemorações do Ano da Cultura Brasil China em 2026, a comunidade brasileira em Beijing e o Conselho dos Cidadãos Brasileiros convidam todos para uma das mais tradicionais e queridas festas populares do Brasil: a nossa Festa Junina.
 
 \
-No dia 27 de junho de 2026, das 17:00 às 21:00, brasileiros, chineses e amigos do Brasil se reunirão em Beijing para celebrar uma tradição que atravessa gerações e ocupa um lugar especial na cultura brasileira. Com expectativa de cerca de 500 participantes, o evento será uma oportunidade única para vivenciar a hospitalidade, a música, a gastronomia e o espírito festivo do Brasil. Participe você tambem!
+No dia 27 de junho de 2026, das 17:00as 21:00, brasileiros, chineses e amigos do Brasil se reunirão em Beijing para celebrar uma tradição que atravessa gerações e ocupa um lugar especial na cultura brasileira. Com expectativa de cerca de 500 participantes, o evento será uma oportunidade única para vivenciar a hospitalidade, a música, a gastronomia e o espírito festivo do Brasil. Participe você tambem!
 
 **A Festa Junina e suas tradições**
 
@@ -34,7 +34,7 @@ Aproveite para vestir trajes típicos, saborear delícias tradicionais e mergulh
 
 \
 Data: 27 de junho de 2026\
-Horário: 17:00às 21:00\
+Horário: 17:00as 21:00\
 Local: Action, Langyuan Station D9, Chaoyang District, Beijing\
 北京朝阳区半截塔路53号郎园Station，Action
 
