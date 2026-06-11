@@ -4,13 +4,8 @@ start: 2026-06-27T17:00:00.000+08:00
 end: 2026-06-27T21:00:00.000+08:00
 location: 郎圆Station (Langyuan Station) D9
 ---
-**Festa Junina de Beijing 2026 celebra o Ano da Cultura Brasil China**
-
-\
-![](/events/festa-junina-2026/Festa%20Junina%202026-01.png)
-
-Como parte das comemorações do Ano da Cultura Brasil China em 2026, a comunidade brasileira em Beijing e o Conselho dos Cidadãos Brasileiros convidam todos para uma das mais tradicionais e queridas festas populares do Brasil: a nossa Festa Junina.\
-No dia 27 de junho de 2026, das 17:00 chineses e amigos do Brasil se reunirão em Beijing para celebrar uma tradição que atravessa gerações e ocupa um lugar especial na cultura brasileira. Com expectativa de cerca de 500 participantes, o evento será uma oportunidade única para vivenciar a hospitalidade, a música, a gastronomia e o espírito festivo do Brasil. Participe você tambem!
+**Festa Junina de Beijing 2026 celebra o Ano da Cultura Brasil China**\
+Como parte das comemorações do Ano da Cultura Brasil China em 2026, a comunidade brasileira em Beijing e o Conselho dos Cidadãos Brasileiros convidam todos para uma das mais tradicionais e queridas festas populares do Brasil: a nossa Festa Junina. No dia 27 de junho de 2026, das 17:00 as 21:00, brasileiros, chineses e amigos do Brasil se reunirão em Beijing para celebrar uma tradição que atravessa gerações e ocupa um lugar especial na cultura brasileira. Com expectativa de cerca de 500 participantes, o evento será uma oportunidade única para vivenciar a hospitalidade, a música, a gastronomia e o espírito festivo do Brasil. Participe você tambem!
 
 **A Festa Junina e suas tradições**\
 A Festa Junina é uma das maiores e mais tradicionais celebrações populares do Brasil, realizada em centenas de cidades por todo o país. Celebrada durante o mês de junho, suas origens remontam às antigas festas europeias ligadas ao solstício de verão, mas ao longo dos séculos incorporou influências indígenas, africanas e portuguesas, tornando se uma expressão multicultural e genuinamente brasileira.\
@@ -27,8 +22,7 @@ Aproveite para vestir trajes típicos, saborear delícias tradicionais e mergulh
 
 **Informações do evento**\
 Data: 27 de junho de 2026\
-Horário: 17:00\
-Local: Action, Langyuan Station D9, Chaoyang District, Beijing\
+Horário: 17:00Local: Action, Langyuan Station D9, Chaoyang District, Beijing\
 北京朝阳区半截塔路53号郎园Station，Action
 
 **Ingressos**
