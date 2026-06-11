@@ -3,9 +3,6 @@ title: Festa Junina de Beijing 2026 celebra o Ano da Cultura Brasil China
 date: 2026-06-27
 type: external
 description: >
-  Festa Junina de Beijing 2026 celebra o Ano da Cultura Brasil China
-
-
   Como parte das comemorações do Ano da Cultura Brasil China em 2026, a
   comunidade brasileira em Beijing e o Conselho dos Cidadãos Brasileiros
   convidam todos para uma das mais tradicionais e queridas festas populares do
