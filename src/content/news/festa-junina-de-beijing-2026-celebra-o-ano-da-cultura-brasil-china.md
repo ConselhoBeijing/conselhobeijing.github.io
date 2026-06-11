@@ -12,7 +12,7 @@ description: >
   Brasil: a nossa Festa Junina.
 
 
-  No dia 27 de junho de 2026, das 17:00 às 21:00, brasileiros, chineses e amigos
+  No dia 27 de junho de 2026, das 17:00as 21:00, brasileiros, chineses e amigos
   do Brasil se reunirão em Beijing para celebrar uma tradição que atravessa
   gerações e ocupa um lugar especial na cultura brasileira. Com expectativa de
   cerca de 500 participantes, o evento será uma oportunidade única para
