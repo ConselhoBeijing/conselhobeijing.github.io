@@ -22,7 +22,8 @@ Aproveite para vestir trajes típicos, saborear delícias tradicionais e mergulh
 
 **Informações do evento**\
 Data: 27 de junho de 2026\
-Horário: 17:00Local: Action, Langyuan Station D9, Chaoyang District, Beijing\
+Horário: 17:00 as 12:00\
+Local: Action, Langyuan Station D9, Chaoyang District, Beijing\
 北京朝阳区半截塔路53号郎园Station，Action
 
 **Ingressos**
