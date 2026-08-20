@@ -5,9 +5,6 @@ title: >-
 date: 2026-08-20
 type: external
 description: >-
-  20 de agosto é o prazo para solicitar o voto em trânsito.
-
-
   Quem tem título da Zona Eleitoral do Exterior e estará no Brasil no dia da
   eleição pode solicitar o voto em trânsito e votar para presidente em qualquer
   capital ou município com mais de 100 mil eleitores. Veja como.
